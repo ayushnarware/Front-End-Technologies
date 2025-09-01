@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best HTML Form</title>
+</head>
+
+<body>
+    <center>
+        <table border="1" cellpadding="10" cellspacing="0" style="margin-top:40px;">
+            <tr>
+                <td colspan="2" align="center">
+                    <h1>Contact Us</h1>
+
+                </td>
+            </tr>
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="6eeff825-7e5b-4947-8704-ce53d122da19">
+                <tr>
+                    <td>
+
+
+                        <label for="name">Name</label>
+
+
+                    </td>
+                    <td>
+
+
+                        <input type="text" id="name" name="name" required placeholder="Your Name">
+
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                        <label for="email">Email</label>
+
+
+                    </td>
+                    <td>
+
+
+                        <input type="email" id="email" name="email" required placeholder="you@example.com">
+
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+
+                        <label for="subject">Subject</label>
+
+
+                    </td>
+                    <td>
+
+
+                        <input type="text" id="subject" name="subject" required placeholder="Subject">
+
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+
+                        <label for="message">Message</label>
+
+
+                    </td>
+                    <td>
+
+
+                        <textarea id="message" name="message" rows="4" required
+                            placeholder="Type your message here"></textarea>
+
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+
+                        <label for="reason">Reason for Contact</label>
+
+
+                    </td>
+                    <td>
+
+
+                        <select id="reason" name="reason" required>
+                            <option value="">Select a reason</option>
+                            <option value="support">Support</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+
+
+                    </td>
+                </tr>
+                <tr style="display:none;">
+                    <td colspan="2">
+                        <input type="checkbox" name="botcheck">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+
+
+                        <button type="submit">Send Message</button>
+
+
+                    </td>
+                </tr>
+            </form>
+        </table>
+    </center>
+</body>
+
+</html>
