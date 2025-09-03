@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All HTML Form Inputs Example</title>
+</head>
+
+<body>
+    <h1>All HTML Form Inputs Example</h1>
+    <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter Username">
+        <br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter Password">
+        <br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter Email">
+        <br><br>
+
+        <label for="search">Search:</label>
+        <input type="search" id="search" name="search" placeholder="Search here">
+        <br><br>
+
+        <label for="tel">Phone Number:</label>
+        <input type="tel" id="tel" name="tel" placeholder="123-45-678-90" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}-[0-9]{2}">
+        <br><br>
+
+        <label for="url">Website:</label>
+        <input type="url" id="url" name="url" placeholder="www.example.com">
+        <br><br>
+
+        <label for="number">Age:</label>
+        <input type="number" id="number" name="number" min="1" max="120">
+        <br><br>
+
+        ->
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date">
+        <br><br>
+
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time">
+        <br><br>
+
+        <label for="datetime-local">Date & Time:</label>
+        <input type="datetime-local" id="datetime-local" name="datetime-local">
+        <br><br>
+
+        <label for="month">Month:</label>
+        <input type="month" id="month" name="month">
+        <br><br>
+
+        <label for="week">Week:</label>
+        <input type="week" id="week" name="week">
+        <br><br>
+
+        <label for="file">Upload File:</label>
+        <input type="file" id="file" name="file">
+        <br><br>
+
+        <label for="resume">Upload Resume (.doc, .docx):</label>
+        <input type="file" id="resume" name="resume" accept=".doc,.docx">
+        <br><br>
+
+        <label for="color">Favorite Color:</label>
+        <input type="color" id="color" name="color" value="#ff0000">
+        <br><br>
+
+        <label for="range">Range (0-100):</label>
+        <input type="range" id="range" name="range" min="0" max="100" step="5">
+        <br><br>
+
+        <label>Choose Technologies:</label><br>
+        <input type="checkbox" id="html" name="tech[]" value="HTML" checked>
+        <label for="html">HTML</label>
+        <input type="checkbox" id="css" name="tech[]" value="CSS">
+        <label for="css">CSS</label>
+        <input type="checkbox" id="js" name="tech[]" value="JavaScript">
+        <label for="js">JavaScript</label>
+        <input type="checkbox" id="python" name="tech[]" value="Python">
+        <label for="python">Python</label>
+        <input type="checkbox" id="java" name="tech[]" value="Java">
+        <label for="java">Java</label>
+        <input type="checkbox" id="cpp" name="tech[]" value="C++">
+        <label for="cpp">C++</label>
+        <input type="checkbox" id="c" name="tech[]" value="C">
+        <label for="c">C</label>
+        <input type="checkbox" id="php" name="tech[]" value="PHP">
+        <label for="php">PHP</label>
+        <br><br>
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="gender" value="other">
+        <label for="other">Other</label>
+        <br><br>
+
+        <input type="hidden" name="hiddenValue" value="This is a hidden value">
+
+        <label for="imageBtn">Image Button:</label>
+        <input type="image" id="imageBtn" src="/web/HTML/media/captcha.jpg" alt="Submit" width="50">
+        <br><br>
+
+        <input type="button" value="Simple Button" onclick="alert('Simple Button Clicked!')">
+        <button type="button" onclick="alert('Button Clicked!')">Button Tag</button>
+        <br><br>
+
+
+
+        <label for="about">About Yourself:</label><br>
+        <textarea id="about" name="about" rows="4" cols="50" placeholder="Write about yourself here..."></textarea>
+        <br><br>
+
+        <label for="country">Choose your country:</label>
+        <select id="country" name="country">
+            <option value="india">India</option>
+            <option value="usa">USA</option>
+            <option value="uk">UK</option>
+            <option value="canada">Canada</option>
+            <option value="australia">Australia</option>
+            <option value="germany">Germany</option>
+            <option value="france">France</option>
+            <option value="japan">Japan</option>
+            <option value="china">China</option>
+            <option value="brazil">Brazil</option>
+            <option value="southafrica">South Africa</option>
+            <option value="russia">Russia</option>
+            <option value="italy">Italy</option>
+            <option value="spain">Spain</option>
+            <option value="mexico">Mexico</option>
+            <option value="netherlands">Netherlands</option>
+            <option value="sweden">Sweden</option>
+            <option value="switzerland">Switzerland</option>
+            <option value="newzealand">New Zealand</option>
+            <option value="singapore">Singapore</option>
+            <option value="other">Other</option>
+        </select>
+        <br><br>
+
+        <label for="languages">Favorite Programming Languages:</label><br>
+        <select id="languages" name="languages[]" multiple size="5">
+            <option value="python">Python</option>
+            <option value="javascript">JavaScript</option>
+            <option value="java">Java</option>
+            <option value="csharp">C#</option>
+            <option value="cpp">C++</option>
+            <option value="ruby">Ruby</option>
+            <option value="php">PHP</option>
+            <option value="swift">Swift</option>
+            <option value="go">Go</option>
+            <option value="typescript">TypeScript</option>
+            <option value="kotlin">Kotlin</option>
+            <option value="rust">Rust</option>
+            <option value="scala">Scala</option>
+            <option value="perl">Perl</option>
+            <option value="haskell">Haskell</option>
+            <option value="lua">Lua</option>
+            <option value="dart">Dart</option>
+            <option value="elixir">Elixir</option>
+            <option value="clojure">Clojure</option>
+            <option value="other">Other</option>
+        </select>
+        <br><br>
+
+        <label for="captcha">Enter Captcha:</label>
+        <input type="text" id="captcha" name="captcha" placeholder="Enter Captcha">
+        <br>
+        <img src="/web/HTML/media/captcha.jpg" alt="Captcha Image" width="200">
+        <br><br>
+
+        <label for="autocomplete">Autocomplete:</label>
+        <input type="text" id="autocomplete" name="autocomplete" autocomplete="on" placeholder="Type to autocomplete">
+        <br><br>
+
+        <label for="datalistInput">Choose a browser:</label>
+        <input list="browsers" id="datalistInput" name="browser" placeholder="e.g. Chrome">
+        <datalist id="browsers">
+            <option value="Chrome">
+            <option value="Firefox">
+            <option value="Safari">
+            <option value="Edge">
+            <option value="Opera">
+        </datalist>
+        <br><br>
+
+        <label for="readonlyInput">Readonly Input:</label>
+        <input type="text" id="readonlyInput" name="readonlyInput" value="Readonly value" readonly>
+        <br><br>
+
+        <label for="disabledInput">Disabled Input:</label>
+        <input type="text" id="disabledInput" name="disabledInput" value="Disabled value" disabled>
+        <br><br>
+
+        <label for="patternInput">Pattern Input (3 letters):</label>
+        <input type="text" id="patternInput" name="patternInput" pattern="[A-Za-z]{3}" placeholder="ABC">
+        <br><br>
+
+        <label for="minmaxInput">Min/Max Input (1-10):</label>
+        <input type="number" id="minmaxInput" name="minmaxInput" min="1" max="10">
+        <br><br>
+
+        <label for="stepInput">Step Input (0.5):</label>
+        <input type="number" id="stepInput" name="stepInput" step="0.5" min="0" max="10">
+        <br><br>
+        <label for="progress">Progress:</label>
+        <progress id="progress" value="70" max="100"></progress>
+        <br><br>
+
+        <label for="meter">Meter (score):</label>
+        <meter id="meter" value="6" min="0" max="10" low="3" high="7" optimum="8">6 out of 10</meter>
+        <br><br>
+        <br><br>
+        <input type="reset" value="Reset">
+        <input type="submit" value="Submit">
+        <br><br>
+    </form>
+</body>
+
+</html>
