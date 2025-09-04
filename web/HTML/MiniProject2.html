@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Student Information Form</title>
+</head>
+
+<body>
+    <h2>Student Information Form</h2>
+
+    <form>
+        <!-- Personal Information -->
+        <fieldset>
+            <legend>Personal Information</legend>
+            <br>
+            <label>Full Name: </label>
+            <input type="text" name="fullname"><br><br>
+            <label>Email:</label>
+            <input type="email" name="email"><br><br>
+            <label>Phone: </label>
+            <input type="tel" name="phone"><br><br>
+            <label>Date of Birth: </label>
+            <input type="date" name="dob" placeholder="dd/mm/yyyy"><br><br>
+            <label>Short Bio:</label>
+
+            <textarea name="bio" placeholder="Tell us about yourself"></textarea>
+        </fieldset>
+        <br>
+        <br>
+
+        <!-- Gender -->
+        <fieldset>
+            <legend>Gender</legend>
+            <label>
+                <input type="radio" name="gender" value="male"> Male
+            </label>
+            <br>
+            <label>
+                <input type="radio" name="gender" value="female"> Female
+            </label>
+            <br>
+            <label>
+                <input type="radio" name="gender" value="other"> Other
+            </label>
+        </fieldset>
+        <br>
+        <br>
+
+        <!-- Areas of Interest -->
+        <fieldset>
+            <legend>Areas of Interest</legend>
+            <label>
+                <input type="checkbox" name="interest" value="web"> Web Development
+            </label><br>
+            <label>
+                <input type="checkbox" name="interest" value="ml"> Machine Learning
+            </label><br>
+            <label>
+                <input type="checkbox" name="interest" value="ds"> Data Science
+            </label>
+            <br>
+            <label>
+                <input type="checkbox" name="interest" value="ai"> Artificial Intelligence
+            </label><br>
+            <label>
+                <input type="checkbox" name="interest" value="cloud"> Cloud Computing
+            </label><br>
+            <label>
+                <input type="checkbox" name="interest" value="cybersecurity"> Cybersecurity
+            </label><br>
+        </fieldset>
+
+        <br>
+        <br>
+        
+        <!-- Submit Button -->
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+</html>
