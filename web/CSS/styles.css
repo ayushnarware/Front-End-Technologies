@@ -120,6 +120,9 @@ footer {
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.15);
   transition: 0.3s ease;
+    text-align: center;
+  
+  
 }
 
 .social-links a:hover {
@@ -132,6 +135,7 @@ footer p {
   font-size: 0.85rem;
   opacity: 0.85;
 }
+
 
 
 /* Header */
@@ -341,8 +345,15 @@ pre {
   .links {
     grid-template-columns: repeat(2, 1fr);
   }
-  .mimi {
-    display: none;
+   .footer-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+  }
+  .social-links a {
+    flex: 1 1 calc(50% - 16px);
+    text-align: center;
   }
 
 }
@@ -362,8 +373,16 @@ pre {
   .links {
     grid-template-columns: 1fr;
   }
-  .mimi {
-    display: none;
+  .social-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    
+  }
+  .social-links a {
+    flex: 1 1 calc(50% - 16px);
+    text-align: center;
   }
 }
 .soon {
