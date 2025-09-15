@@ -341,6 +341,9 @@ pre {
   .links {
     grid-template-columns: repeat(2, 1fr);
   }
+  .mimi {
+    display: none;
+  }
 
 }
 
@@ -359,7 +362,9 @@ pre {
   .links {
     grid-template-columns: 1fr;
   }
-
+  .mimi {
+    display: none;
+  }
 }
 .soon {
   font-size: 1.1rem;
