@@ -140,7 +140,7 @@ header {
   padding: 30px 10px;
   background: linear-gradient(135deg, #4f46e5, #9333ea);
   color: white;
-  border-radius: 15px;
+  border-radius: 0px 0px 15px 15px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
   margin-bottom: 30px;
 }

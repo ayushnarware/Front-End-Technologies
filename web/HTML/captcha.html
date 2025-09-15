@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captcha Form</title>
+</head>
+<body>
+    <form action="#" method="post" style="max-width:400px; margin:auto; padding:20px; border:1px solid #ccc; border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+        <h2>Captcha Form</h2>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <!-- Captcha 1: Simple Math -->
+        <fieldset style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+            <legend>Captcha 1</legend>
+            <label for="captcha1">What is <b>3 + 5</b>?</label>
+            <input type="text" id="captcha1" name="captcha1" required>
+        </fieldset>
+
+        <!-- Captcha 2: Type the shown word -->
+        <fieldset style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+            <legend>Captcha 2</legend>
+            <label for="captcha2">Type the word: <span style="background:#eee; padding:2px 6px; border-radius:3px; font-weight:bold;">apple</span></label>
+            <input type="text" id="captcha2" name="captcha2" required>
+        </fieldset>
+
+        <!-- Captcha 3: Select the correct color -->
+        <fieldset style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+            <legend>Captcha 3</legend>
+            <label for="captcha3">Select the color <span style="color:blue; font-weight:bold;">"Blue"</span>:</label>
+            <select id="captcha3" name="captcha3" required>
+                <option value="">Choose...</option>
+                <option value="Red" style="color:red;">Red</option>
+                <option value="Blue" style="color:blue;">Blue</option>
+                <option value="Green" style="color:green;">Green</option>
+            </select>
+        </fieldset>
+
+        <!-- Captcha 4: Type the shown characters (alphanumeric) -->
+        <fieldset style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+            <legend>Captcha 4</legend>
+            <label for="captcha4">Type the characters: <span style="background:#eee; padding:2px 6px; border-radius:3px; font-family:monospace; font-weight:bold;">X7B9Q</span></label>
+            <input type="text" id="captcha4" name="captcha4" required>
+        </fieldset>
+
+        <button type="submit" style="padding:8px 16px; font-size:16px;">Submit</button>
+    </form>
+    
+</body>
+</html>
