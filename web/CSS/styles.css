@@ -193,6 +193,8 @@ h2 {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
+
+
 /* Code Section */
 .code-container {
   background: #f8f9fa;
@@ -316,38 +318,49 @@ pre {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 
-/* Responsive */
+
+/* ================================== */
+/*         Responsive Code            */
+/* ================================== */
+
+/* Tablet or Mobile (768px tak) */
 @media (max-width: 768px) {
+  
+  
   header h1 {
     font-size: 2rem;
   }
-
-  .links a {
-    font-size: 0.95rem;
-    padding: 12px;
+  
+  header p {
+    font-size: 1rem;
   }
+  nav ul {
+    display: none;
+  }
+  
+  .links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
 }
 
+
+/* Mobile (480px ) */
 @media (max-width: 480px) {
+
   header h1 {
     font-size: 1.5rem;
   }
 
   header p {
-    font-size: 1rem;
+    font-size: 0.75rem;
   }
 
   .links {
     grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 768px) {
-  nav ul {
-    display: none;
-  }
 }
-
 .soon {
   font-size: 1.1rem;
   margin-top: 10px;
