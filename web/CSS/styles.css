@@ -28,6 +28,7 @@ nav {
 
 .nav-container {
   max-width: 1200px;
+  height: 2.5rem;
   margin: auto;
   display: flex;
   align-items: center;
