@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Justify Content</title>
+  <link href="../FlexboxStyle.css" rel="stylesheet">
+  <style>
+    .jc-start { justify-content: flex-start; 
+    background-color: aqua;}
+    .jc-end { justify-content: flex-end; }
+    .jc-center { justify-content: center; }
+    .jc-between { justify-content: space-between; }
+    .jc-around { justify-content: space-around; }
+    .jc-evenly { justify-content: space-evenly; }
+    .container {
+      height: 100px;
+      border: 2px solid #000;
+      margin-bottom: 20px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <h2>Justify Content Examples</h2>
+
+  <h3>Flex Start</h3>
+  <div class="container jc-start">
+    <div class="box">A</div><div class="box">B</div><div class="box">C</div>
+  </div>
+
+  <h3>Flex End</h3>
+  <div class="container jc-end">
+    <div class="box">A</div><div class="box">B</div><div class="box">C</div>
+  </div>
+
+  <h3>Center</h3>
+  <div class="container jc-center">
+    <div class="box">A</div><div class="box">B</div><div class="box">C</div>
+  </div>
+
+  <h3>Space Between</h3>
+  <div class="container jc-between">
+    <div class="box">A</div><div class="box">B</div><div class="box">C</div>
+  </div>
+
+  <h3>Space Around</h3>
+  <div class="container jc-around">
+    <div class="box">A</div><div class="box">B</div><div class="box">C</div>
+  </div>
+
+  <h3>Space Evenly</h3>
+  <div class="container jc-evenly">
+    <div class="box">A</div><div class="box">B</div><div class="box">C</div>
+  </div>
+</body>
+</html>

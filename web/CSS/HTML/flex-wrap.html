@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flex Wrap and More</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .wrap { flex-wrap: wrap; }
+    .nowrap { flex-wrap: nowrap; }
+    .wrap-reverse { flex-wrap: wrap-reverse; }
+
+    .box1 { flex-grow: 2; }
+    .box2 { flex-shrink: 0; flex-basis: 150px; }
+    .box3 { order: -1; align-self: flex-end; }
+
+    .gap-example {
+      gap: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Flex Wrap</h2>
+
+  <h3>Wrap</h3>
+  <div class="container wrap">
+    <div class="box">Box</div><div class="box">Box</div><div class="box">Box</div><div class="box">Box</div>
+  </div>
+
+  <h3>Wrap-Reverse</h3>
+  <div class="container wrap-reverse">
+    <div class="box">Box</div><div class="box">Box</div><div class="box">Box</div><div class="box">Box</div>
+  </div>
+
+  <h2>Flex Grow, Shrink, Basis, Order</h2>
+
+  <div class="container nowrap">
+    <div class="box box1">Grow 2</div>
+    <div class="box box2">No Shrink</div>
+    <div class="box box3">Order -1, Align-self end</div>
+  </div>    
+    <h2>Gap Example</h2>
+    <div class="container wrap gap-example">
+      <div class="box">Box</div><div class="box">Box</div><div class="box">Box</div><div class="box">Box</div>
+    </div>
+</body>
+</html>

@@ -1,76 +1,49 @@
-/* Reset styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f2f2f2;
 }
 
-/* Container styles */
 .container {
-    width: 700px;
-    height: 300px;
-    border: 2px solid red;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    /* gap: 10px; */
-    flex-wrap: wrap;
-    align-content: canter;
-    background-color: lavenderblush;
+  display: flex;
+  border: 2px dashed #555;
+  margin: 30px 0;
+  padding: 15px;
+  min-height: 200px;
+  background-color: #fff;
 }
 
-/* Child div styles */
-.container div {
-    width: 100px;
-    margin: 10px;
-    padding: 10px;
-    border: 2px solid blue;
-    background-color: aqua;
-    /* height: 50px; */ /* Height is determined by content */
+.box {
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 100px;
+  height: 100px;
+  flex-grow: 1;
 }
 
-/* Specific styles for each child div */
-
-.container1 {
-     width: 700px;
-    height: 300px;
-    border: 2px solid red;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    /* gap: 10px; */
-    flex-wrap: wrap;
-    align-content: canter;
-    background-color: lavenderblush;
+/* Different background colors for each box */
+.box:nth-child(1) {
+  background-color: #e74c3c; /* red */
 }
 
-/* Child div styles */
-.container1 div {
-    width: 100px;
-    margin: 10px;
-    padding: 10px;
-    border: 2px solid blue;
-    background-color: aqua;
-    
+.box:nth-child(2) {
+  background-color: #3498db; /* blue */
 }
 
-/* Specific styles for each child div */
-#box1 {
-    flex-grow: 1;
-    flex-shrink: 10;
+.box:nth-child(3) {
+  background-color: #2ecc71; /* green */
 }
 
-#box2 {
-    flex-grow: 0;
+.box:nth-child(4) {
+  background-color: #f39c12; /* orange */
 }
 
-#box3 {
-    flex-grow: 2;
-}
-
-#box4 {
-    flex-grow: 5;
-    flex-shrink: 0;
+.box:nth-child(5) {
+  background-color: #9b59b6; /* purple */
 }

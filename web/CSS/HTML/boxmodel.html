@@ -1,31 +1,73 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Box Model</title>
-    <link href="../boxModel.css" rel="stylesheet">
+    <title>CSS Box Model for Kids</title>
+    <style>
+        body {
+            background-color: #0f0f0d;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: #fdfdfd;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #fdfdfd;
+            font-size: 36px;
+        }
+
+        .outerdiv {
+            width: 55%;
+            height: 850px;
+            border: 5px solid rgb(59, 235, 153);
+            text-align: center;
+            padding-top: 5%;
+            padding-left: 10%;
+            
+        }
+        .outerdiv .Padding {
+            margin-right: 20%;
+        }
+
+        .innerdiv {
+            
+            width: 80%;
+            height: 75%;
+            border: 8px double red;
+            color: hsl(0, 0%, 99%);
+            text-align: center;
+            
+        }
+
+        .contact {
+            border: 5px dotted darkcyan;
+            color: #fdfdfd;
+            width: 80%;
+            height: 75%;
+            text-align: center;
+            margin-top: 5%;
+            margin-left: 10%;
+            
+        }
+    </style>
 </head>
-<body>
-    <h1>CSS Box Model Example</h1>
-    <div class="box" >
-        This is a box model example.    
-        <p>Content Area</p>
-        <p>Padding Area</p>
-        <p>Border Area</p>
-        <p>Margin Area</p>
-        <p>Outline Area</p>
-        <p>The box model is a fundamental concept in CSS that describes the rectangular boxes generated for elements in the document tree and how their dimensions and spacing are calculated.</p>  
-        <p>In this example, the box has a content area of 400px width and 200px height, with 20px padding, a 10px double blue border, 10px margin, and a 5px dotted yellowgreen outline.</p>
-    </div>
-    <div id="normaldiv">
-        This is a normal div without any box model properties applied.
-    </div>
-    <div id="borderdiv">
-        This div has a red border.
-    </div>
-    <div id="contactdiv">
-        This div has contact information.
-    </div>
-</body>
+    <body>
+        <h1>CSS Box Model Made</h1>
+        <h3>Outline Area</h3>
+        <div class="outerdiv"><h3 class="Padding">Padding Area</h3>
+            <div class="innerdiv"><h3>Margin Area</h3>
+                <div class="contact"><h3>Content Area</h3></div>
+            </div>
+        </div>
+        <h3>Border Area</h3>
+    </body>
 </html>

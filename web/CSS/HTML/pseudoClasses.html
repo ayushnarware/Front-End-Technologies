@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Pseudo-Classes Guide</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #eef2f7;
+      padding: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section {
+      background-color: #fff;
+      margin-bottom: 25px;
+      padding: 20px;
+      border-left: 6px solid #3498db;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .section h2 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .example {
+      margin-top: 10px;
+      background: #f8f8f8;
+      border: 1px dashed #ccc;
+      padding: 15px;
+      border-radius: 4px;
+    }
+
+    code pre {
+        font-family: Consolas, monospace;
+      background-color: #222;
+      color: #0f0;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+      border-radius: 5px;
+    }
+
+    /* Styling for each pseudo-class (examples) */
+
+    .hover-example button:hover {
+      background-color: #3498db;
+      color: #fff;
+    }
+
+    .focus-example input:focus {
+      border: 2px solid #e67e22;
+      outline: none;
+    }
+
+    .active-example button:active {
+      background-color: #c0392b;
+      color: white;
+    }
+
+    .visited-example a:visited {
+      color: purple;
+    }
+
+    .nth-child-example ul li:nth-child(2) {
+      color: blue;
+      font-weight: bold;
+    }
+
+    .nth-of-type-example div p:nth-of-type(2) {
+      color: green;
+    }
+
+    .first-child-example p:first-child {
+      background-color: #dff0d8;
+    }
+
+    .last-child-example p:last-child {
+      background-color: #f9e79f;
+    }
+
+    .only-child-example div:only-child {
+      color: red;
+      font-weight: bold;
+    }
+
+    .checked-example input:checked+label {
+      color: green;
+      font-weight: bold;
+    }
+
+    .disabled-example input:disabled {
+      background-color: #eee;
+      color: gray;
+    }
+
+    .enabled-example input:enabled {
+      border: 2px solid green;
+    }
+
+    .not-example p:not(.special) {
+      color: gray;
+    }
+
+    .nth-last-child-example ul li:nth-last-child(2) {
+      color: orange;
+    }
+
+    .nth-last-of-type-example div span:nth-last-of-type(1) {
+      color: blueviolet;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Quick Reference Guide to CSS Pseudo-Classes</h1>
+
+  <div class="section hover-example">
+    <h2>:hover</h2>
+    <div class="example">
+      <button>Hover over me</button>
+      <code><pre>
+button:hover {
+  background-color: #3498db;
+  color: white;
+}
+      </pre></code>
+    </div>
+  </div>
+
+  <div class="section focus-example">
+    <h2>:focus</h2>
+    <div class="example">
+      <input type="text" placeholder="Click to focus">
+      <code><pre>
+input:focus {
+  border: 2px solid #e67e22;
+}
+      </pre></code>
+    </div>
+  </div>
+
+  <div class="section active-example">
+    <h2>:active</h2>
+    <div class="example">
+      <button>Click me</button>
+      <code><pre>
+button:active {
+  background-color: #c0392b;
+  color: white;
+}
+      </pre></code>
+    </div>
+  </div>
+
+  <div class="section visited-example">
+    <h2>:visited</h2>
+    <div class="example">
+      <a href="https://example.com" target="_blank">Visited link</a>
+      <code><pre>
+a:visited {
+  color: purple;
+}
+      </pre></code>
+    </div>
+  </div>
+
+  <div class="section nth-child-example">
+    <h2>:nth-child(n)</h2>
+    <div class="example">
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2 (selected)</li>
+        <li>Item 3</li>
+      </ul>
+      <code><pre>
+li:nth-child(2) {
+  color: blue;
+}
+      </pre></code>
+    </div>
+  </div>
+
+  <div class="section nth-of-type-example">
+    <h2>:nth-of-type(n)</h2>
+    <div class="example">
+      <div>
+        <p>Paragraph 1</p>
+        <p>Paragraph 2 (styled)</p>
+      </div>
+      <code><pre>
+p:nth-of-type(2) {
+  color: green;
+}
+      </pre></code>
+    </div>
+  </div>
+
+  <div class="section first-child-example">
+    <h2>:first-child</h2>
+    <div class="example">
+      <p>I'm the first child</p>
+      <p>Second paragraph</p>
+      <code><pre>
+p:first-child {
+  background-color: #dff0d8;
+}
+      </pre></code>
+    </div>
+  </div>
+
+  <div class="section last-child-example">
+    <h2>:last-child</h2>
+    <div class="example">
+      <p>First paragraph</p>
+      <p>I'm the last child</p>
+      <code><pre>
+p:last-child {
+  background-color: #f9e79f;
+}
+      </pre></code>
+    </div>
+  </div>
+
+  <div class="section only-child-example">
+    <h2>:only-child</h2>
+    <div class="example">
+      <div>I'm the only child</div>
+      <code><pre>
+div:only-child {
+  color: red;
+  font-weight: bold;
+}
+      </pre></code>
+    </div>
+  </div>
+
+  <div class="section checked-example">
+    <h2>:checked</h2>
+    <div class="example">
+      <input type="checkbox" id="check1">
+      <label for="check1">I am checked</label>
+      <code><pre>
+input:checked + label {
+  color: green;
+  font-weight: bold;
+}
+      </pre></code>
+    </div>
+  </div>
+
+  <div class="section disabled-example">
+    <h2>:disabled</h2>
+    <div class="example">
+      <input type="text" disabled value="Disabled input">
+      <code><pre>
+input:disabled {
+  background-color: #eee;
+  color: gray;
+}
+      </pre></code>
+    </div>
+  </div>
+
+  <div class="section enabled-example">
+    <h2>:enabled</h2>
+    <div class="example">
+      <input type="text" value="Enabled input">
+      <code><pre>
+input:enabled {
+  border: 2px solid green;
+}
+      </pre></code>
+    </div>
+  </div>
+
+  <div class="section not-example">
+    <h2>:not(selector)</h2>
+    <div class="example">
+      <p>This will be gray</p>
+      <p class="special">This will be excluded</p>
+      <code><pre>
+p:not(.special) {
+  color: gray;
+}
+      </pre></code>
+    </div>
+  </div>
+
+  <div class="section nth-last-child-example">
+    <h2>:nth-last-child(n)</h2>
+    <div class="example">
+      <ul>
+        <li>First</li>
+        <li>Middle</li>
+        <li>Second last (styled)</li>
+        <li>Last</li>
+      </ul>
+      <code><pre>
+li:nth-last-child(2) {
+  color: orange;
+}
+      </pre></code>
+    </div>
+  </div>
+
+  <div class="section nth-last-of-type-example">
+    <h2>:nth-last-of-type(n)</h2>
+    <div class="example">
+      <div>
+        <span>Span 1</span>
+        <span>Span 2</span>
+        <span>Span 3 (last-of-type)</span>
+      </div>
+      <code><pre>
+span:nth-last-of-type(1) {
+  color: blueviolet;
+}
+      </pre></code>
+    </div>
+  </div>
+
+</body>
+
+</html>

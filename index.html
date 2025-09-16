@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to Front-End Development</title>
   <link href="web/CSS/styles.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="web/Images/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
+
 <body>
   <!-- Navbar -->
   <nav>
@@ -60,8 +65,11 @@
   <section id="css">
     <h2>CSS</h2>
     <div class="links">
-      <a href="web/CSS/HTML/boxmodel.html">Day 3 – Box Model</a>
-      <a href="web/CSS/HTML/Flexbox.html">Day 4 – Flexbox</a>
+      <a href="web/CSS/HTML/selectors.html">Day 2 – Selectors</a>
+      <a href="web/CSS/HTML/pseudoClasses.html">Day 3 – Pseudo-Classes</a>
+      <a href="web/CSS/HTML/pseudoElements.html">Day 3 – Pseudo-Elements</a>
+      <a href="web/CSS/HTML/boxmodel.html">Day 4 – Box Model</a>
+      <a href="web/CSS/HTML/Flexbox.html">Day 5-6 – Flexbox</a>
     </div>
   </section>
 
@@ -80,26 +88,39 @@
     </div>
   </section>
 
+
   <!-- Projects Section -->
   <section id="projects">
     <h2>Projects</h2>
     <div class="links">
       <p class="soon">✨ Coming Soon – Exciting projects are being prepared!</p>
     </div>
-
+  </section>
   <!-- About Me -->
   <section id="about">
     <h2>About Me</h2>
     <p style="text-align:center;">Feel free to explore and learn more about development!</p>
-    
     <div class="code-container">
-  <div class="code-header">
-    <span class="dot red"></span>
-    <span class="dot yellow"></span>
-    <span class="dot green"></span>
-    <span class="filename">About-journey.js</span>
-  </div>
-  <pre>
+      
+
+      <div class="code-header">
+        <div class="file-icon">
+          <i class="fas fa-terminal"></i>
+        </div>
+        <span class="filename">About-journey.js</span>
+        <div class="dots">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+      </div>
+
+<!--       
+      <div class=".line-numbers">
+       <div class="count">1</div><div class="count">2</div><div class="count">3</div><div class="count">4</div><div class="count">5</div><div class="count">6</div><div class="count">7</div><div class="count">8</div><div class="count">9</div><div class="count">10</div><div class="count">11</div><div class="count">12</div><div class="count">13</div><div class="count">14</div><div class="count">15</div><div class="count">16</div><div class="count">17</div><div class="count">18</div><div class="count">19</div><div class="count">20</div><div class="count">21</div><div class="count">22</div><div class="count">23</div><div class="count">24</div><div class="count">25</div><div class="count">26</div><div class="count">27</div><div class="count">28</div><div class="count">29</div><div class="count">30</div><div class="count">31</div><div class="count">32</div><div class="count">33</div><div class="count">34</div><div class="count">35</div><div class="count">36</div><div class="count">37</div><div class="count">38</div><div class="count">39</div><div class="count">40</div><div class="count">41</div><div class="count">42</div><div class="count">43</div><div class="count">44</div><div class="count">45</div>
+
+      </div> -->
+      <pre>
 // My KodNest Journey: Learning, Growing, and Landing My Dream Role
 const aboutMe = {
   name: "Ayush Narware",
@@ -145,33 +166,35 @@ console.log("🚀 About Me Loaded Successfully!");
 
 // KodNest believes: Dream big, achieve bigger! 🚀
   </pre>
-</div>
+    </div>
 
-<div class="about-inline">
-  <h1 class="about-heading">More About Me</h1>
-  <a class="portfolio-link" href="https://ayushnarware.github.io/Ayush-Portfolio/" target="_blank">
-    🚀 Visit Portfolio
-  </a>
-</div>
+    <div class="about-inline">
+      <h1 class="about-heading">More About Me</h1>
+      <a class="portfolio-link" href="https://ayushnarware.github.io/Ayush-Portfolio/" target="_blank">
+        🚀 Visit Portfolio
+      </a>
+    </div>
 
 
 
   </section>
 
   <!-- Footer -->
-<footer>
-  <div class="footer-container">
-    <h1 class="footer-logo">My Journey</h1>
-    <div class="social-links">
-      <a href="https://github.com/ayushnarware" target="_blank">🐙 GitHub</a>
-      <a href="https://www.linkedin.com/in/ayushnarware" target="_blank">💼 LinkedIn</a>
-      <a href="https://ayushnarware.github.io/Ayush-Portfolio/" target="_blank">🌐 Portfolio</a>
-      <a href="mailto:ayushnarware04@gmail.com" target="_blank">✉️ Email</a>
-      <a href="https://www.instagram.com/mr_ayush192/" target="_blank">📸 Instagram</a>
+  <footer>
+    <div class="footer-container">
+      <h1 class="footer-logo">My Journey</h1>
+      <div class="social-links">
+        <a href="https://github.com/ayushnarware" target="_blank">🐙 GitHub</a>
+        <a href="https://www.linkedin.com/in/ayushnarware" target="_blank">💼 LinkedIn</a>
+        <a href="https://ayushnarware.github.io/Ayush-Portfolio/" target="_blank">🌐 Portfolio</a>
+        <a href="mailto:ayushnarware04@gmail.com" target="_blank">✉️ Email</a>
+        <a href="https://www.instagram.com/mr_ayush192/" target="_blank">📸 Instagram</a>
+      </div>
     </div>
-  </div>
-  <p>© 2025 Ayush Narware | Built with ❤️ Ayush..!</p>
-</footer>
+    <p>© 2025 Ayush Narware | Built with ❤️ Ayush..!</p>
+  </footer>
+
 
 </body>
+
 </html>

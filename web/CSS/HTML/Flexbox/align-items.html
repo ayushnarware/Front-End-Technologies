@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Align Items & Content</title>
+   <link href="../FlexboxStyle.css" rel="stylesheet">
+  <style>
+    .container {
+      height: 300px;
+      flex-wrap: wrap;
+    }
+
+    .ai-start { align-items: flex-start; }
+    .ai-end { align-items: flex-end; }
+    .ai-center { align-items: center; }
+    .ai-baseline { align-items: baseline; }
+    .ai-stretch { align-items: stretch; }
+
+    .ac-center { align-content: center; }
+    .ac-between { align-content: space-between; }
+    .ac-around { align-content: space-around; }
+    .container {
+      height: 100px;
+      border: 2px solid #000;
+      margin-bottom: 20px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <h2>Align Items</h2>
+
+  <h3>Align Items: Center</h3>
+  <div class="container ai-center">
+    <div class="box">1</div><div class="box">2</div>
+  </div>
+
+  <h3>Align Items: Stretch</h3>
+  <div class="container ai-stretch">
+    <div class="box">1</div><div class="box">2</div>
+  </div>
+
+  <h2>Align Content</h2>
+
+  <h3>Align Content: Center</h3>
+  <div class="container ac-center" style="height: 400px; flex-wrap: wrap;">
+    <div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div>
+  </div>
+</body>
+</html>

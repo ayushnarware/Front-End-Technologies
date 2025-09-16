@@ -13,6 +13,7 @@ body {
   padding: 20px;
 }
 
+
 /* Navbar */
 nav {
   background: rgba(255, 255, 255, 0.8);
@@ -207,7 +208,8 @@ h2 {
   overflow: hidden;
   margin: 20px auto;
   max-width: 800px;
-  font-family: 'Fira Code', 'Courier New', monospace;
+  
+  
 }
 
 .code-header {
@@ -216,13 +218,37 @@ h2 {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #ddd;
+  justify-content: space-between;
+  font-family: 'Fira Code', 'Courier New', monospace;
+}
+.file-icon {
+  background: rgba(16, 187, 255, 0.1);  
+  height: 30px;
+  width: 30px; 
+  color: #333;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 8px;
+  padding: 4px 8px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.code-header .filename {
+  margin-left: 0px;
+  font-size: 14px;
+  color: #555;
+  font-weight: bold;
+  flex-grow: 1;
 }
 
 .code-header .dot {
   height: 12px;
   width: 12px;
   border-radius: 50%;
-  margin-right: 8px;
+  margin-left: 10px;
   display: inline-block;
 }
 
@@ -238,12 +264,6 @@ h2 {
   background: #27c93f;
 }
 
-.code-header .filename {
-  margin-left: auto;
-  font-size: 14px;
-  color: #555;
-  font-weight: bold;
-}
 
 pre {
   background: #ffffff;
@@ -253,6 +273,7 @@ pre {
   line-height: 1.6;
   color: #333;
   overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
 }
 
 

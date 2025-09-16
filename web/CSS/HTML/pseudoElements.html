@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Pseudo-Elements Guide</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f9fd;
+      padding: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section {
+      background-color: #ffffff;
+      border-left: 6px solid #8e44ad;
+      border-radius: 6px;
+      margin-bottom: 25px;
+      padding: 20px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .section h2 {
+      color: #4a4a4a;
+      margin-bottom: 10px;
+    }
+
+    .example {
+      background-color: #fdfdfd;
+      border: 1px dashed #ccc;
+      padding: 15px;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+
+    code pre {
+      background-color: #1c1c1c;
+      color: #00e676;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+
+    /* ::after Example */
+    .after-example p::after {
+      content: " ✔";
+      color: green;
+      font-weight: bold;
+    }
+
+    /* ::first-line Example */
+    .first-line-example p::first-line {
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    /* ::first-letter Example */
+    .first-letter-example p::first-letter {
+      font-size: 2em;
+      color: #d35400;
+    }
+
+    /* ::placeholder Example */
+    .placeholder-example input::placeholder {
+      color: #999;
+      font-style: italic;
+    }
+
+    /* ::selection Example */
+    .selection-example p::selection {
+      background: #ffe600;
+      color: black;
+    }
+
+    /* ::marker Example */
+    .marker-example ul li::marker {
+      color: red;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Common CSS Pseudo-Elements</h1>
+
+  <div class="section after-example">
+    <h2>::after</h2>
+    <div class="example">
+      <p>This paragraph ends with an icon using <code>::after</code>.</p>
+      <code><pre>
+p::after {
+  content: " ✔";
+  color: green;
+}
+      </pre></code>
+    </div>
+  </div>
+
+  <div class="section first-line-example">
+    <h2>::first-line</h2>
+    <div class="example">
+      <p>This is a long paragraph that shows how the first line looks bold and styled differently from the rest.</p>
+      <code><pre>
+p::first-line {
+  font-weight: bold;
+  color: #2c3e50;
+}
+      </pre></code>
+    </div>
+  </div>
+
+  <div class="section first-letter-example">
+    <h2>::first-letter</h2>
+    <div class="example">
+      <p>This paragraph uses a large first letter for styling effect.</p>
+      <code><pre>
+p::first-letter {
+  font-size: 2em;
+  color: #d35400;
+}
+      </pre></code>
+    </div>
+  </div>
+
+  <div class="section placeholder-example">
+    <h2>::placeholder</h2>
+    <div class="example">
+      <input type="text" placeholder="Enter your name">
+      <code><pre>
+input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+      </pre></code>
+    </div>
+  </div>
+
+  <div class="section selection-example">
+    <h2>::selection</h2>
+    <div class="example">
+      <p>Select some of this text to see custom highlight color.</p>
+      <code><pre>
+p::selection {
+  background: #ffe600;
+  color: black;
+}
+      </pre></code>
+    </div>
+  </div>
+
+  <div class="section marker-example">
+    <h2>::marker</h2>
+    <div class="example">
+      <ul>
+        <li>First item</li>
+        <li>Second item</li>
+        <li>Third item</li>
+      </ul>
+      <code><pre>
+li::marker {
+  color: red;
+  font-size: 1.2em;
+}
+      </pre></code>
+    </div>
+  </div>
+
+</body>
+
+</html>
