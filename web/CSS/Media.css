@@ -1,0 +1,47 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: #171d23;
+    color: #fff;
+    font-weight: 700 !important;
+    font-family: Oxanium, sans-serif;
+}
+
+@media (min-width: 768px) {
+    body {
+        background-color: #171d23;
+        color: #742626;
+
+    }
+
+    h1 {
+        font-size: 70px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    body {
+        background-color: #171d23;
+        color: #7a98b1;
+
+    }
+
+    h1 {
+        font-size: 70px;
+    }
+}
+
+
+
+
+
+/* Mobile (480px ) */
+@media (max-width: 480px) {
+    h1 {
+        background-color: #171d23;
+        color: #7a98b1;
+    }
+}
