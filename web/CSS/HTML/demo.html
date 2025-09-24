@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .box {
+      width: 150px;
+      height: 150px;
+      position: absolute; /* important for z-index to work */
+    }
+
+    .red {
+      background-color: red;
+      top: 20px;
+      left: 20px;
+      z-index: 2; /* lower priority */
+    }
+
+    .blue {
+      background-color: blue;
+      top: 60px;
+      left: 60px;
+      z-index: 3; /* higher priority -> appears above red */
+    }
+
+    .green {
+      background-color: green;
+      top: 100px;
+      left: 100px;
+      z-index: 1; /* highest priority -> appears above all */
+    }
+  </style>
+</head>
+<body>
+  <div class="box red"></div>
+  <div class="box blue"></div>
+  <div class="box green"></div>
+</body>
+</html>
