@@ -1,44 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internal Js</title>
-    <style>
-        body {background-color: lightblue; text-align: center; font-family: Arial, sans-serif;}   
-        h1 {color: darkblue;}
-        p {color: darkgreen; font-size: 18px;}
-        pre {background-color: #f4f4f4; padding: 10px; border-radius: 5px; text-align: left; display: inline-block;}
-        code {font-family: 'Courier New', Courier, monospace; color: #333;}
-        a {text-decoration: none; color: darkred; font-weight: bold;}
-        a:hover {text-decoration: underline;}
-
-
-    </style>
+  <meta charset="UTF-8">
+  <title>JavaScript Day 1</title>
+  <style>
+    body {
+      margin: 0; padding: 0;font-family: Arial, sans-serif;background: linear-gradient(135deg, #00c6ff, #0072ff); position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+font-size: larger;}
+    .box {background: #fff;padding: 30px;border-radius: 12px;text-align: center;box-shadow: 0 8px 20px rgba(0,0,0,0.2);width: 350px;animation: fadeIn 1s ease-in-out;}
+    h1 {color: #0072ff;margin-bottom: 15px;}
+    p {color: #333;margin-bottom: 20px;}
+    button {padding: 12px 20px;border: none;background: #0072ff;color: #fff;font-size: 16px;border-radius: 8px;cursor: pointer;transition: 0.3s;}
+    button:hover {background: #00c6ff;transform: translateY(-2px);}
+    @keyframes fadeIn {from {opacity: 0; transform: scale(0.9);} to {opacity: 1; transform: scale(1);}}
+  </style>
 </head>
 <body>
-    <h1>This is Internal Js</h1>
-    <script>
-        document.write("Hello, this is written using internal JavaScript!");
-    </script>
-    <script src="scr.js"></script>
-    <br><br>
-    <p>Code Snippet:</p>
-    <pre>
-        <code>
-        document.write("Hello, this is written using internal JavaScript!");
-        </code>
-    </pre>
-    <br><br>
-    <h1> External Js code here:</h1>
-    <pre>
-        <code>
-        console.log("Hello, this is an external JavaScript file!");
-        </code>
-    </pre>
-    <p>view output in console (F12) of browser - Press F12 to open developer tools and navigate to the Console tab.</p>
-    <br><br>
-    <a href="../../index.html">Back to Home</a>
+    
+  <div class="box">
+    <h1>Welcome to JavaScript!</h1>
+    <p>Click the button to see magic ✨</p>
+    <button onclick="showMessage()">Click Me</button>
+  </div>
+ 
 
+  <script>
+    
+    document.write("<p style='text-align:center;color:#333;font-size:18px;'>Hello User, Welcome to JavaScript Learning! 🚀</p>");
+
+    function showMessage() {
+      alert("🎉 You clicked the button! Welcome to JavaScript🚀");
+    }
+  </script>
 </body>
 </html>
