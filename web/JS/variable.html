@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +8,21 @@
     <style>
         body {background-color: lightyellow; text-align: center; font-family: Arial, sans-serif;}   
         h1 {color: darkorange;}
-        h2 {color: darkred;}
+        h2 {color: red;}
         p {color: darkgreen; font-size: 18px;}
-        pre {background-color: #f4f4f4; padding: 10px; border-radius: 5px; text-align: left; display: inline-block;}
+        pre {background-color: #f4f4f4; padding: 10px; border-radius: 5px; text-align: left; display: inline-block; padding-right: 80px;}
         code {font-family: 'Courier New', Courier, monospace; color: #333;}
-        ul {text-align: left; display: inline-block; color: darkblue;}
+        ul {text-align: left; display: inline-block; color: tomato;}
         a {text-decoration: none; color: darkred; font-weight: bold;}
         a:hover {text-decoration: underline;}
-
     </style>
 </head>
+
 <body>
     <h1>JavaScript Variables</h1>
-    <p>In JavaScript, variables are used to store data values. You can declare a variable using the <code>var</code>, <code>let</code>, or <code>const</code> keywords.</p>
-    
+    <p>In JavaScript, variables are used to store data values. You can declare a variable using the <code>var</code>,
+        <code>let</code>, or <code>const</code> keywords.</p>
+
     <h2>Declaring Variables</h2>
     <pre>
         <code>
@@ -58,23 +60,42 @@
     <br><br>
     <a href="../../index.html">Back to Home</a>
     <script>
-         // Using var
+        // Using var
         var name = "Ayush";
-        
+
         // Using let
         let age = 21;
-        
+
         // Using const
         const pi = 3.14;
         console.log(name + " is " + age + " years old. Pi is approximately " + pi);
         // Another Example
 
-       var firstName = "Ayush";
+        var firstName = "Ayush";
         let lastName = "Narware";
         const birthYear = 2004;
         console.log(firstName + " " + lastName + " was born in " + birthYear);
-        
 
+        //KodNest Example-
+        let number1 = 10;
+        let number2 = 20;
+        let sum = number1 + number2;
+
+        console.log("The sum is: " + sum);
+
+        let score = 50;
+        console.log("Initial score:", score);
+
+        score = 75; // reassigning a new value
+        console.log("Updated score:", score);
+
+        const maxScore = 100;
+        console.log("Max score is:", maxScore);
+
+        
+        maxScore = 150; // This will cause an error because const variables cannot be reassigned
+        console.log("Updated max score is:", maxScore);
     </script>
 </body>
+
 </html>
