@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Operators</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: #fff;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-in-out;
+
+        }
+        h1, h2, h3 {
+            color: #0072ff;
+            
+        }
+        pre {
+            background-color: #e8e8e8;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        ul {
+            list-style-type: square;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        p {
+            line-height: 1.6;
+        }
+        a {
+            color: #0072ff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+
+    </style>
+
+</head>
+<body>
+    <h1>JavaScript Operators</h1>
+    <p>Operators are special symbols that perform operations on operands (values and variables). They are used to manipulate data and perform calculations.</p>
+
+    <h2>Types of Operators</h2>
+    <ul>
+        <P>Commonly used operators in JavaScript include:</P>
+        <li><strong>Arithmetic Operators:</strong> +, -, *, /, %, ++, --</li>
+        <li><strong>Assignment Operators:</strong> =, +=, -=, *=, /=, %=</li>
+        <li><strong>Comparison Operators:</strong> ==, ===, !=, !==, >, <, >=, <=</li>
+        <li><strong>Logical Operators:</strong> && (AND), || (OR), ! (NOT)</li>
+        <li><strong>String Operators:</strong> + (concatenation), += (concatenation assignment)</li>
+        <li><strong>Ternary Operator:</strong> condition ? expr1 : expr2</li>
+        <li><strong>Type Operators:</strong> typeof, instanceof</li>
+    </ul>
+
+    <h2>Examples</h2>
+    <h3>Arithmetic Operators</h3>
+    <P>These operators are used to perform mathematical calculations.</P>
+    <pre><code>let a = 10;
+let b = 5;
+let sum = a + b; // 15
+let difference = a - b; // 5
+let product = a * b; // 50
+let quotient = a / b; // 2
+let remainder = a % b; // 0
+a++; // 11
+b--; // 4
+</code></pre>
+
+    <h3>Assignment Operators</h3>
+    <P>These operators are used to assign values to variables.</P>
+    <pre><code>let x = 10;
+x += 5; // 15
+x -= 3; // 12
+x *= 2; // 24
+x /= 4; // 6
+x %= 4; // 2
+</code></pre>
+
+    <h3>Comparison Operators</h3>
+    <P>These operators are used to compare two values and return a boolean result.</P>
+    <pre><code>let p = 10;
+let q = '10';
+console.log(p == q); // true (value comparison)
+console.log(p === q); // false (value and type comparison)
+console.log(p != q); // false
+console.log(p !== q); // true
+console.log(p > 5); // true
+console.log(p < 15); // true
+console.log(p >= 10); // true
+console.log(p <= 10); // true
+</code></pre>
+    <h3>Logical Operators</h3>
+    <P>These operators are used to combine multiple boolean expressions.</P>
+    <pre><code>let isAdult = true;
+let hasID = false;
+console.log(isAdult && hasID); // false
+console.log(isAdult || hasID); // true
+console.log(!isAdult); // false
+</code></pre>
+
+    <h3>String Operators</h3>
+    <P>These operators are used to manipulate strings.</P>
+    <pre><code>let firstName = "John";
+let lastName = "Doe";
+let fullName = firstName + " " + lastName; // "John Doe"
+firstName += " Smith"; // "John Smith"
+</code></pre>
+
+    <h3>Ternary Operator</h3>
+    <P>This operator is a shorthand for an if-else statement.</P>
+    <pre><code>let age = 18;
+let canVote = (age >= 18) ? "Yes" : "No"; // "Yes"
+</code></pre>
+
+    <h3>Type Operators</h3>
+    <P>These operators are used to check the type of a variable or object.</P>
+    <pre><code>let num = 42;
+console.log(typeof num); // "number"
+let str = "Hello";
+console.log(typeof str); // "string"
+let arr = [1, 2, 3];
+console.log(arr instanceof Array); // true
+</code></pre>
+
+    <p>Understanding and using operators effectively is crucial for performing various operations in JavaScript programming.</p>
+    <p>For more details, you can refer to the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators">MDN Web Docs on Expressions and Operators</a>.</p>
+
+</body>
+</html>
