@@ -1,74 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Operators</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-            color: #333;
-            line-height: 1.6;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            background: #fff;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            box-sizing: border-box;
-            margin-top: 40px;
-            margin-bottom: 40px;
-            animation: fadeIn 1s ease-in-out;
-
-        }
-        h1, h2, h3 {
-            color: #0072ff;
-            
-        }
-        pre {
-            background-color: #e8e8e8;
-            padding: 10px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
-        code {
-            font-family: 'Courier New', Courier, monospace;
-        }
-        ul {
-            list-style-type: square;
-        }
-        li {
-            margin-bottom: 8px;
-        }
-        p {
-            line-height: 1.6;
-        }
-        a {
-            color: #0072ff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-
-
+        body, footer, footer ul, footer a {font-family: Arial, sans-serif;box-sizing: border-box;border-radius: 8px;border: 1px solid #ddd;box-shadow: 0 0 10px rgba(0,0,0,0.1);background: #fff;animation: fadeIn 1s ease-in-out;}
+        @keyframes fadeIn {from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);}}
+        body {margin: 40px auto;max-width: 800px;padding: 20px;color: #333;line-height: 1.6;}
+        h1, h2, h3 {color: #0072ff; margin-bottom: 10px;}
+        pre {background: #e8e8e8; padding: 10px; border-radius: 5px; overflow-x: auto;}
+        code {font-family: 'Courier New', Courier, monospace;}
+        ul { list-style-type: square; }
+        li { margin-bottom: 8px; }
+        p { line-height: 1.6; }
+        a {color: #0072ff;text-decoration: none;transition: background-color 0.3s, color 0.3s;}
+        a:hover { text-decoration: underline; }
+        footer { text-align: center; margin: 40px auto 20px; max-width: 800px; padding: 20px; font-size: 14px;  color: #666; border-top: 1px solid #ddd;}
+        footer ul { list-style: none; margin: 10px auto; padding: 10px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; max-width: 400px; font-size: 14px; color: #666;}
+        footer ul li {display: inline;margin: 0 10px;}
+        footer a {display: inline-block; margin: 0 10px; padding: 5px 10px; font-size: 14px; background: #f9f9f9;}
+        note {display: block; background: #fffae6; border-left: 5px solid #ffecb3; padding: 10px; margin: 20px 0; color: #665c00;}
     </style>
 
 </head>
+
 <body>
     <h1>JavaScript Operators</h1>
-    <p>Operators are special symbols that perform operations on operands (values and variables). They are used to manipulate data and perform calculations.</p>
+    <p>Operators are special symbols that perform operations on operands (values and variables). They are used to
+        manipulate data and perform calculations.</p>
 
     <h2>Types of Operators</h2>
     <ul>
         <P>Commonly used operators in JavaScript include:</P>
         <li><strong>Arithmetic Operators:</strong> +, -, *, /, %, ++, --</li>
         <li><strong>Assignment Operators:</strong> =, +=, -=, *=, /=, %=</li>
-        <li><strong>Comparison Operators:</strong> ==, ===, !=, !==, >, <, >=, <=</li>
+        <li><strong>Comparison Operators:</strong> ==, ===, !=, !==, >, <,>=, <=< /li>
         <li><strong>Logical Operators:</strong> && (AND), || (OR), ! (NOT)</li>
         <li><strong>String Operators:</strong> + (concatenation), += (concatenation assignment)</li>
         <li><strong>Ternary Operator:</strong> condition ? expr1 : expr2</li>
@@ -76,6 +44,8 @@
     </ul>
 
     <h2>Examples</h2>
+    <note>Here are some examples of how these operators work in JavaScript. And Press <strong>F12</strong> to open the
+        console. See the examples in action! <br></note>
     <h3>Arithmetic Operators</h3>
     <P>These operators are used to perform mathematical calculations.</P>
     <pre><code>let a = 10;
@@ -123,10 +93,10 @@ console.log(!isAdult); // false
 
     <h3>String Operators</h3>
     <P>These operators are used to manipulate strings.</P>
-    <pre><code>let firstName = "John";
-let lastName = "Doe";
-let fullName = firstName + " " + lastName; // "John Doe"
-firstName += " Smith"; // "John Smith"
+    <pre><code>let firstName = "Ayush";
+let lastName = "Narware";
+let fullName = firstName + " " + lastName; // "Ayush Narware"
+firstName += " Gyan"; // "Ayush Smith"
 </code></pre>
 
     <h3>Ternary Operator</h3>
@@ -145,8 +115,104 @@ let arr = [1, 2, 3];
 console.log(arr instanceof Array); // true
 </code></pre>
 
-    <p>Understanding and using operators effectively is crucial for performing various operations in JavaScript programming.</p>
-    <p>For more details, you can refer to the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators">MDN Web Docs on Expressions and Operators</a>.</p>
 
+    <p>Understanding and using operators effectively is crucial for performing various operations in JavaScript
+        programming.</p>
+    <p>For more details, you can refer to the <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators">MDN Web Docs
+            on Expressions and Operators</a>.</p>
+    <footer>
+        <p>&copy; 2024 Ayush Narware. All rights reserved.</p>
+        <ul>
+            <li><a href="https//:github.com/ayushnarware">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/ayushnarware/">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com/mr_ayush192/">Instagram</a></li>
+        </ul>
+        <p class="soon">More content coming soon... Stay tuned!</p>
+        <p>Happy Coding! 🚀</p>
+
+    </footer>
+    <script>
+        console.log("🚀 JavaScript Operators Page Loaded Successfully!");
+        console.log("Arthmetic Operators: +, -, *, /, %, ++, --");
+        let a = 10;
+        let b = 5;
+        let sum = a + b; // 15
+        console.log("Sum:", sum);
+        let difference = a - b; // 5
+        console.log("Difference:", difference);
+        let product = a * b; // 50
+        console.log("Product:", product);
+        let quotient = a / b; // 2
+        console.log("Quotient:", quotient);
+        let remainder = a % b; // 0
+        console.log("Remainder:", remainder);
+        a++; // 11
+        console.log("Incremented a:", a);
+        b--; // 4
+        console.log("Decremented b:", b);
+        console.log("=============================================================");
+
+        console.log("Assignment Operators: =, +=, -=, *=, /=, %=");
+        let x = 10;
+        console.log("Initial x:", x);
+        x += 5; // 15
+        console.log("x after += 5:", x);
+        x -= 3; // 12
+        console.log("x after -= 3:", x);
+        x *= 2; // 24
+        console.log("x after *= 2:", x);
+        x /= 4; // 6
+        console.log("x after /= 4:", x);
+        x %= 4; // 2
+        console.log("x after %= 4:", x);
+        console.log("=============================================================");
+
+        console.log("Comparison Operators: ==, ===, !=, !==, >, <, >=, <=");
+        let p = 10;
+        let q = '10';
+        console.log("p == q:", p == q); // true (value comparison)
+        console.log("p === q:", p === q); // false (value and type comparison)
+        console.log("p != q:", p != q); // false
+        console.log("p !== q:", p !== q); // true
+        console.log("p > 5:", p > 5); // true
+        console.log("p < 15:", p < 15); // true
+        console.log("p >= 10:", p >= 10); // true
+        console.log("p <= 10:", p <= 10); // true
+        console.log("=============================================================");
+
+        console.log("Logical Operators: && (AND), || (OR), ! (NOT)");
+        let isAdult = true;
+        let hasID = false;
+        console.log("isAdult && hasID:", isAdult && hasID); // false
+        console.log("isAdult || hasID:", isAdult || hasID); // true
+        console.log("!isAdult:", !isAdult); // false
+        console.log("=============================================================");
+
+        console.log("String Operators: + (concatenation), += (concatenation assignment)");
+        let firstName = "Ayush";
+        let lastName = "Narware";
+        let fullName = firstName + " " + lastName; // "Ayush Narware"
+        console.log("Full Name:", fullName);
+        firstName += " Smith"; // "Ayush Smith"
+        console.log("First Name after += ' Smith':", firstName);
+        console.log("=============================================================");
+
+        console.log("Ternary Operator: condition ? expr1 : expr2");
+        let age = 18;
+        let canVote = (age >= 18) ? "Yes" : "No"; // "Yes"
+        console.log("Can Vote:", canVote);
+        console.log("Type Operators: typeof, instanceof");
+        let num = 42;
+        console.log("Type of num:", typeof num); // "number"
+        let str = "Hello";
+        console.log("Type of str:", typeof str); // "string"
+        let arr = [1, 2, 3];
+        console.log("arr instanceof Array:", arr instanceof Array); // true
+
+
+        console.log("💡 Keep Learning and Exploring JavaScript!");
+    </script>
 </body>
+
 </html>
