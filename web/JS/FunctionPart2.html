@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Part 2</title>
+    <link href="../CSS/styleJS.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <h1>JavaScript Function - Part 2</h1>
+    <p>Welcome to the second part of the JavaScript Function page! Here, you'll find more advanced concepts and
+        examples to further enhance your understanding of JavaScript functions.</p>
+
+    <note>Here are some examples of how these Functions work in JavaScript. And Press <strong>F12</strong> to open
+        theconsole. See the examples in action! <br></note>
+
+    <h2>Function Parameters and Arguments</h2>
+    <p>Functions can accept parameters, which are placeholders for values that will be passed to the function when it is
+        called.
+        Arguments are the actual values passed to the function.</p>
+    <pre><code>function greet(name) {
+    console.log("Hello, " + name + "!");
+}
+greet("Ayush"); // Output: Hello, Ayush!</code></pre>
+
+    <h2>Default Parameters</h2>
+    <p>You can set default values for function parameters. If no argument is provided, the default value will be used.
+    </p>
+    <pre><code>function greet(name = "Ayush") {
+    console.log("Hello, " + name + "!");
+}
+greet(); // Output: Hello, Ayush!</code></pre>
+
+    <h2>Rest Parameters</h2>
+    <p>Rest parameters allow you to represent an indefinite number of arguments as an array.</p>
+    <pre><code>function sum(...numbers) {
+    return numbers.reduce((total, num) => total + num, 0);
+}
+console.log(sum(1, 2, 3, 4)); // Output: 10</code></pre>
+
+    <h2>Callback Functions</h2>
+    <p>A callback function is a function passed into another function as an argument, which is then invoked inside the
+        outer function.</p>
+    <pre><code>function fetchData(callback) {
+    setTimeout(() => {
+        const data = { name: "Ayush", age: 30 };
+        callback(data);
+    }, 1000);
+}
+fetchData(function(data) {
+    console.log("Data received:", data);
+});</code></pre>
+
+    <h2>Arrow Functions with Implicit Return</h2>
+    <p>For concise functions, you can use arrow functions with implicit return.</p>
+    <pre><code>const multiply = (a, b) => a * b;
+console.log(multiply(5, 3)); // Output: 15</code></pre>
+    <h2>Function Scope</h2>
+    <p>Functions create their own scope. Variables defined inside a function are not accessible outside
+        the function.</p>
+    <pre><code>function myFunction() {
+    let message = "Hello, World!";
+    console.log(message); // Output: Hello, World!
+}
+myFunction();
+console.log(message); // Error: message is not defined</code></pre>
+    <h2>Closures</h2>
+    <p>A closure is a function that retains access to its lexical scope, even when the
+        function is executed outside that scope.</p>
+    <pre><code>function outerFunction(outerVariable) {
+    return function innerFunction(innerVariable) {
+        console.log("Outer Variable: " + outerVariable);
+        console.log("Inner Variable: " + innerVariable);
+    };
+}
+const newFunction = outerFunction("outside");
+newFunction("inside");</code></pre>
+
+
+    <hr>
+
+    <footer>
+        <p></p>
+        <ul>
+            <li><a href="https//:github.com/ayushnarware">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/ayushnarware/">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com/mr_ayush192/">Instagram</a></li>
+        </ul>
+        <p class="soon">More content coming soon... Stay tuned!</p>
+        <p>Happy Coding! 🚀</p>
+
+        <a href="../../index.html">Back to Home</a>
+
+
+    </footer>
+    <script>
+
+        function greet(name) {
+            console.log("Hello, " + name + "!");
+        }
+        console.log("Function Parameters and Arguments->");
+        greet("Ayush"); // Output: Hello, Ayush!
+
+        function greetDefault(name = "Ayush") {
+            console.log("Hello, " + name + "!");
+        }
+        console.log("Default Parameters->");
+        greetDefault(); // Output: Hello, Ayush!
+        function sum(...numbers) {
+            return numbers.reduce((total, num) => total + num, 0);
+        }
+        console.log("Rest Parameters->");
+        console.log(sum(1, 2, 3, 4)); // Output: 10
+        function fetchData(callback) {
+            setTimeout(() => {
+                const data = { name: "Ayush", age: 20 };
+                callback(data);
+            }, 1000);
+        }
+        console.log("Callback Functions-->");
+        fetchData(function (data) {
+            console.log("Data received:", data);
+        });
+        const multiply = (a, b) => a * b;
+        console.log("Arrow Functions with Implicit Return-->");
+        console.log(multiply(5, 3)); // Output: 15
+        function myFunction() {
+            let message = "Hello, World!";
+            console.log(message); // Output: Hello, World!
+        }
+        console.log("Function Scope-->");
+        myFunction();
+        // console.log(message); // Error: message is not defined
+        function outerFunction(outerVariable) {
+            return function innerFunction(innerVariable) {
+                console.log("Outer Variable: " + outerVariable);
+                console.log("Inner Variable: " + innerVariable);
+            };
+        }
+        console.log("Closures");
+        const newFunction = outerFunction("outside");
+        newFunction("inside");
+
+
+        function add() {
+            let a = 5;
+            let b = 10;
+            let sum = a + b;
+            console.log("Adding " + a + " and " + b + " by simpal function");
+            console.log("Sum is: " + sum);
+        }
+        
+        function add(a, b) {
+            let sum = a + b;
+            console.log("Adding " + a + " and " + b + " by function with parameters");
+            console.log("Sum is: " + sum);
+        }
+        
+        function add(a, b, c) {
+            return a + b + c;
+        }
+        
+
+        const multiply1 = (x, y) => x * y;
+
+        add();
+        add(15, 25);
+        add(20, 30 , 40);
+
+        console.log("Multiplying 5 and 4 using Arrow Function");
+        console.log("Product is: " + multiply1(5, 4));
+
+
+
+
+        //Footer Year Update
+        const year = new Date().getFullYear();
+        document.querySelector('footer p').innerHTML = `&copy; ${year} Ayush Narware. All rights reserved.`;        
+    </script>
+
+</body>
+
+</html>

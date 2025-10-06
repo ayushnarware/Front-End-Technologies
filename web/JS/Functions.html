@@ -14,7 +14,7 @@
 
     <h2>Types of Functions in JavaScript</h2>
     <p>JavaScript supports several types of functions, each serving different purposes:</p>
-    <note>Here are some examples of how these operators work in JavaScript. And Press <strong>F12</strong> to open the
+    <note>Here are some examples of how these Functions work in JavaScript. And Press <strong>F12</strong> to open the
         console. See the examples in action! <br></note>
 
     <ul>
@@ -137,6 +137,33 @@ console.log(add(5, 10)); // Output: 15</code></pre>
             let message = "This is an IIFE example!";
             console.log(message);
         })();
+
+
+            // Exstra function examples
+        console.log("🚀==================================🚀");
+
+        function factorial(n) {
+            if (n === 0 || n === 1) {
+                return 1;
+            }
+            return n * factorial(n - 1);
+        }
+        let num = 5;
+        console.log(`Factorial of ${num} is: ` + factorial(num));
+        console.log("🚀==================================🚀");
+        const fibonacci = (n) => {
+            let fib = [0, 1];
+            for (let i = 2; i < n; i++) {
+                fib[i] = fib[i - 1] + fib[i - 2];
+            }
+            return fib;
+        };
+        let fibSequence = fibonacci(10);
+        console.log("Fibonacci sequence up to 10 terms: " + fibSequence.join(","));
+        
+
+
+        
         //Footer Year Update
         const year = new Date().getFullYear();
         document.querySelector('footer p').innerHTML = `&copy; ${year} Ayush Narware. All rights reserved.`;        
