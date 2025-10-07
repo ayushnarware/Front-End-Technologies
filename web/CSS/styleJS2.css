@@ -1,0 +1,256 @@
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body and General Style */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #222;
+  line-height: 1.6;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    
+}
+
+/* Header / Navbar */
+header {
+  background-color: #0d1117;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+hr {
+  border: none;
+  border-top: 1px solid #444;
+  margin: 20px 0;
+}
+
+header h1 {
+  font-size: 1.8rem;
+}
+
+header h1 span {
+  color: #00ff88;
+}
+
+nav a {
+  color: #ccc;
+  margin: 0 12px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #00ff88;
+}
+
+header button {
+  background-color: #00ff88;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+header button:hover {
+  background-color: #00cc6a;
+  transform: translateY(-2px);
+}
+
+/* Hero Section */
+section {
+  background: linear-gradient(120deg, #0d1117, #1e1e2f);
+  color: white;
+  text-align: center;
+  padding: 90px 20px;
+  animation: fadeIn 1.5s ease-in;
+}
+
+section span {
+  color: #00ff88;
+}
+
+section p {
+  font-size: 1.1rem;
+  margin: 15px 0 25px;
+}
+
+section button {
+  background-color: #00ff88;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+}
+
+section button:hover {
+  background-color: #00cc6a;
+  transform: translateY(-2px);
+}
+
+/* Main Content */
+main {
+  text-align: center;
+  padding: 60px 20px;
+width: 75%;
+    margin: 0 auto;
+    align-items: center;
+    
+}
+
+main h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Code Section (VS Code Look) */
+main div {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  animation: floatUp 1s ease-in-out;
+}
+
+main div div {
+  background-color: #2d2d2d;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px;
+}
+
+.red, .yellow, .green {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.red { background: #ff5f57; }
+.yellow { background: #ffbd2e; }
+.green { background: #28c840; }
+
+main div div p {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-left: 10px;
+}
+
+code {
+    display: block;
+    text-align: left;
+    padding: 20px;
+    color: #f8f8f2;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    overflow-x: auto;
+    line-height: 1.5;
+    background-color: #1e1e1e;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    border-radius: 10px;
+
+
+}
+pre {
+  margin: 0;
+}
+pre code {
+  padding: 15px 20px;
+}
+
+
+/* Footer */
+footer {
+  background-color: #0d1117;
+  color: #ccc;
+  text-align: center;
+  padding: 15px 20px;
+  margin-top: 40px;
+  font-size: 0.9rem;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+
+}
+footer p {
+  margin: 0;
+    font-size: 0.9rem;
+    color: #ccc;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+footer ul {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+footer li a {
+  color: #00ff88;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav {
+    margin: 10px 0;
+  }
+
+  main div {
+    width: 95%;
+  }
+}
+/* Note Component */
+note {
+  display: block;
+  background-color: #fffbcc;
+  border-left: 6px solid #ffeb3b;
+  padding: 15px 20px;
+  margin: 30px auto;
+  width: 80%;
+  text-align: left;
+  font-style: italic;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}

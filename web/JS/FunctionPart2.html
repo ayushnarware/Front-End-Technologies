@@ -2,101 +2,158 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Function Part 2</title>
-    <link href="../CSS/styleJS.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Function - Part 2 | Ayush Learning</title>
+  <link rel="stylesheet" href="../CSS/styleJS.css">
 </head>
 
 <body>
+      <header>
+    <h1>Learn<span>Code</span></h1>
+    <nav>
+      <a href="../../index.html">Home</a>
+      <a href="#">Courses</a>
+      <a href="#">Tutorials</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+    <button id="Login">Login</button>
+  </header>
 
+  <!-- Hero Section -->
+  <section>
+    <h2>Master Programming with <span>Interactive Learning</span></h2>
+    <p>Join our free courses and start coding like a pro today.</p>
+    <button class="soon">Start Learning</button>
+    </section>
+  
+    <section class="intro">
     <h1>JavaScript Function - Part 2</h1>
-    <p>Welcome to the second part of the JavaScript Function page! Here, you'll find more advanced concepts and
-        examples to further enhance your understanding of JavaScript functions.</p>
+    <p>Welcome to the second part of the JavaScript Function tutorial! 🚀<br>
+      Here, you'll explore advanced concepts like parameters, callbacks, closures, and more.
+    </p>
+  </section>
 
-    <note>Here are some examples of how these Functions work in JavaScript. And Press <strong>F12</strong> to open
-        theconsole. See the examples in action! <br></note>
+  </header>
+  <main class="content">
+    
+
+    <note>💡 Tip: Press <strong>F12</strong> to open the console and see live results of each example!</note>
 
     <h2>Function Parameters and Arguments</h2>
-    <p>Functions can accept parameters, which are placeholders for values that will be passed to the function when it is
-        called.
-        Arguments are the actual values passed to the function.</p>
+    <p>Functions can accept parameters, which act as placeholders for values. The actual values passed are called
+      arguments.</p>
+
     <pre><code>function greet(name) {
-    console.log("Hello, " + name + "!");
+  console.log("Hello, " + name + "!");
 }
 greet("Ayush"); // Output: Hello, Ayush!</code></pre>
 
     <h2>Default Parameters</h2>
-    <p>You can set default values for function parameters. If no argument is provided, the default value will be used.
-    </p>
+    <p>You can assign default values to parameters. If no argument is passed, the default will be used.</p>
+
     <pre><code>function greet(name = "Ayush") {
-    console.log("Hello, " + name + "!");
+  console.log("Hello, " + name + "!");
 }
 greet(); // Output: Hello, Ayush!</code></pre>
 
     <h2>Rest Parameters</h2>
-    <p>Rest parameters allow you to represent an indefinite number of arguments as an array.</p>
+    <p>Rest parameters allow you to handle an indefinite number of arguments as an array.</p>
+
     <pre><code>function sum(...numbers) {
-    return numbers.reduce((total, num) => total + num, 0);
+  return numbers.reduce((total, num) => total + num, 0);
 }
 console.log(sum(1, 2, 3, 4)); // Output: 10</code></pre>
 
     <h2>Callback Functions</h2>
-    <p>A callback function is a function passed into another function as an argument, which is then invoked inside the
-        outer function.</p>
+    <p>A callback is a function passed into another function to be executed later.</p>
+
     <pre><code>function fetchData(callback) {
-    setTimeout(() => {
-        const data = { name: "Ayush", age: 30 };
-        callback(data);
-    }, 1000);
+  setTimeout(() => {
+    const data = { name: "Ayush", age: 20 };
+    callback(data);
+  }, 1000);
 }
 fetchData(function(data) {
-    console.log("Data received:", data);
+  console.log("Data received:", data);
 });</code></pre>
 
-    <h2>Arrow Functions with Implicit Return</h2>
-    <p>For concise functions, you can use arrow functions with implicit return.</p>
+    <h2>Arrow Functions</h2>
+    <p>Arrow functions provide a concise syntax and can return values implicitly.</p>
+
     <pre><code>const multiply = (a, b) => a * b;
 console.log(multiply(5, 3)); // Output: 15</code></pre>
+
     <h2>Function Scope</h2>
-    <p>Functions create their own scope. Variables defined inside a function are not accessible outside
-        the function.</p>
+    <p>Variables declared inside a function are accessible only within that function.</p>
+
     <pre><code>function myFunction() {
-    let message = "Hello, World!";
-    console.log(message); // Output: Hello, World!
+  let message = "Hello, World!";
+  console.log(message); // Output: Hello, World!
 }
 myFunction();
 console.log(message); // Error: message is not defined</code></pre>
+
     <h2>Closures</h2>
-    <p>A closure is a function that retains access to its lexical scope, even when the
-        function is executed outside that scope.</p>
+    <p>Closures let a function access variables from its parent scope even after the parent function has finished.</p>
+
     <pre><code>function outerFunction(outerVariable) {
-    return function innerFunction(innerVariable) {
-        console.log("Outer Variable: " + outerVariable);
-        console.log("Inner Variable: " + innerVariable);
-    };
+  return function innerFunction(innerVariable) {
+    console.log("Outer Variable: " + outerVariable);
+    console.log("Inner Variable: " + innerVariable);
+  };
 }
 const newFunction = outerFunction("outside");
 newFunction("inside");</code></pre>
 
+    <h2>Function Overloading</h2>
+    <p>JavaScript doesn’t support function overloading natively, but similar behavior can be achieved using conditions.</p>
+
+    <pre><code>function add() {
+  let a = 5, b = 10;
+  console.log("Sum:", a + b);
+}
+function add(a, b) {
+  console.log("Sum:", a + b);
+}
+function add(a, b, c) {
+  return a + b + c;
+}
+add();
+add(15, 25);
+console.log(add(10, 20, 30));</code></pre>
+
+    <h2>Function Declaration vs Expression</h2>
+    <p>Declarations are hoisted; expressions are not.</p>
+
+    <pre><code>// Declaration
+console.log(square(5)); // ✅ Works
+function square(x) { return x * x; }
+
+// Expression
+const squareExp = function(x) { return x * x; };
+console.log(squareExp(5)); // ✅ Works only after declaration</code></pre>
 
     <hr>
+    <p>🎯 In this lesson, you learned how to use function parameters, default values, rest parameters, callbacks, arrow
+      functions, closures, and more. Keep practicing!</p>
 
-    <footer>
-        <p></p>
-        <ul>
-            <li><a href="https//:github.com/ayushnarware">GitHub</a></li>
-            <li><a href="https://www.linkedin.com/in/ayushnarware/">LinkedIn</a></li>
-            <li><a href="https://www.instagram.com/mr_ayush192/">Instagram</a></li>
-        </ul>
-        <p class="soon">More content coming soon... Stay tuned!</p>
-        <p>Happy Coding! 🚀</p>
+  </main>
 
-        <a href="../../index.html">Back to Home</a>
+  <!-- ======= Footer ======= -->
+  <footer>
+    <p>&copy; <span id="year"></span> Ayush Narware. All rights reserved.</p>
+    <ul>
+      <li><a href="https://github.com/ayushnarware">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/ayushnarware/">LinkedIn</a></li>
+      <li><a href="https://www.instagram.com/mr_ayush192/">Instagram</a></li>
+    </ul>
+    <p class="soon">More content coming soon... Stay tuned! 🚀</p>
+  </footer>
 
-
-    </footer>
-    <script>
+  <script>
+    
 
         function greet(name) {
             console.log("Hello, " + name + "!");
@@ -152,35 +209,51 @@ newFunction("inside");</code></pre>
             console.log("Adding " + a + " and " + b + " by simpal function");
             console.log("Sum is: " + sum);
         }
-        
+
         function add(a, b) {
             let sum = a + b;
             console.log("Adding " + a + " and " + b + " by function with parameters");
             console.log("Sum is: " + sum);
         }
-        
+
         function add(a, b, c) {
             return a + b + c;
         }
-        
+
 
         const multiply1 = (x, y) => x * y;
 
         add();
         add(15, 25);
-        add(20, 30 , 40);
+        add(20, 30, 40);
 
         console.log("Multiplying 5 and 4 using Arrow Function");
         console.log("Product is: " + multiply1(5, 4));
 
-
+        console.log("Function Declarations->");
+        console.log(square(5)); // Output: 25
+        function square(x) {
+            return x * x;
+        }
+        console.log("Function Expressions->");
+        const squareExp = function (x) {
+            return x * x;
+        };
+        console.log(squareExp(5)); // Output: 25
 
 
         //Footer Year Update
-        const year = new Date().getFullYear();
-        document.querySelector('footer p').innerHTML = `&copy; ${year} Ayush Narware. All rights reserved.`;        
-    </script>
+    
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("Login").onclick = function () {
+      onclick=alert("Login functionality will be added soon!");
+    };
+    document.querySelector(".soon").onclick = function () {
+      onclick=alert("More content coming soon... Stay tuned! 🚀");
+    };
+  </script>
 
 </body>
-
 </html>
+
+    <script>
