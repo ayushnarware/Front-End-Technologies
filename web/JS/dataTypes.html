@@ -10,76 +10,110 @@
 
 <body>
     <h1>JavaScript Data Types</h1>
-    <p>Understanding data types is crucial in programming. JavaScript has several built-in data types:</p>
+    <p>Data types in JavaScript define the type of data that can be stored and manipulated within a program. They are
+        essential for understanding how to work with variables and perform operations in JavaScript.</p>
+    <p>JavaScript has two main categories of data types: <strong>Primitive</strong> and <strong>Non-Primitive</strong>
+        (or Reference) data types.</p>
+    <h2>Primitive Data Types</h2>
+    <p>Primitive data types are the most basic data types in JavaScript. They include:</p>
     <ul>
-        <li><strong>String:</strong> Represents text. Example: <code>"Hello, World!"</code></li>
+        <li><strong>String:</strong> Represents a sequence of characters. Example: <code>"Hello, World!"</code></li>
         <li><strong>Number:</strong> Represents both integer and floating-point numbers. Example: <code>42</code>,
-            <code>3.14</code></li>
+            <code>3.14</code>
+        </li>
         <li><strong>Boolean:</strong> Represents logical entities. Can be either <code>true</code> or
-            <code>false</code>.</li>
-        <li><strong>Object:</strong> A collection of properties. Example: <code>{name: "Ayush", age: 25}</code></li>
-        <li><strong>Array:</strong> An ordered list of values. Example: <code>[1, 2, 3, 4, 5]</code></li>
+            <code>false</code>.
+        </li>
         <li><strong>Undefined:</strong> A variable that has been declared but not assigned a value.</li>
         <li><strong>Null:</strong> Represents the intentional absence of any object value.</li>
-        <li><strong>Symbol:</strong> A unique and immutable primitive value used as the key of an object property.</li>
-        <li><strong>BigInt:</strong> Represents integers with arbitrary precision. Example:
-            <code>9007199254740991n</code></li>
     </ul>
-
-
     <h2>Example Code</h2>
     <note>💡 Tip: Press <strong>F12</strong> to open the console and see live results of each example!</note>
     <pre><code>// String
 let name = "Ayush";
 console.log(typeof name); // Output: string
+
 // Number
 let age = 25;
 console.log(typeof age); // Output: number
+
 // Boolean
 let isStudent = false;
 console.log(typeof isStudent); // Output: boolean
-// Object
-let person = {name: "Ayush", age: 25};
-console.log(typeof person); // Output: object
-// Array
-let numbers = [1, 2, 3, 4, 5];
-console.log(typeof numbers); // Output: object
+
 // Undefined
 let x;
 console.log(typeof x); // Output: undefined
+
 // Null
 let y = null;
 console.log(typeof y); // Output: object
-// Symbol
-let sym = Symbol("id");
-console.log(typeof sym); // Output: symbol
-// BigInt
-let bigIntNum = 9007199254740991n;
-console.log(typeof bigIntNum); // Output: bigint</code></pre>
+</code></pre>
+<note>💡 Tip: In JavaScript, the <code>typeof</code> operator is used to determine the data type of a variable.</note>
 
+    <h2>Non-Primitive Data Types</h2>
+    <p>Non-Primitive data types are more complex and can store collections of data or more complex entities. They include:</p>
+    <ul>
+        <li><strong>Object:</strong> A collection of properties, where each property is a key-value pair. Example:
+            <code>{ name: "Ayush", age: 21 }</code></li>
+        <li><strong>Array:</strong> A special type of object used to store ordered collections of values. Example:
+            <code>[1, 2, 3, 4, 5]</code></li>
+        <li><strong>Function:</strong> A block of code designed to perform a particular task. Functions are also
+            objects in JavaScript.</li>
+    </ul>
+    <h2>Example Code</h2>
+    <pre><code>// Object
+let person = { name: "Ayush", age: 21 };
+console.log(typeof person); // Output: object
+
+// Array
+let numbers = [1, 2, 3, 4, 5];
+console.log(typeof numbers); // Output: object
+
+// Function
+function greet() {
+    return "Hello!";
+}
+console.log(typeof greet); // Output: function
+</code></pre>
+    <p>JavaScript is a dynamically typed language, meaning you don't have to declare the data type of a variable
+        explicitly. The type is determined automatically based on the value assigned to the variable.</p>
+    <note>💡 Tip: Use the <code>typeof</code> operator to check the data type of a variable.</note>
     <p>Understanding these data types will help you write more effective JavaScript code!</p>
     <script>
 
 
         // Example of using data types
+        console.log("----- Data Types Examples -----");
+        console.log("Primitive Data Types:");
         let name = "Ayush"; // String
         let age = 21; // Number
         let isStudent = true; // Boolean
-        let person = { name: "Ayush", age: 21 }; // Object
-        let numbers = [1, 2, 3, 4, 5]; // Array
         let x; // Undefined
         let y = null; // Null
-        let sym = Symbol("id"); // Symbol
-        let bigIntNum = 9007199254740991n; // BigInt
         console.log("Name:", name, "Data Type", typeof name);// Output: string
         console.log("Age:", age, "Data Type", typeof age);// Output: number
         console.log("Is Student:", isStudent, "Data Type", typeof isStudent);// Output: boolean
-        console.log("Person:", person, "Data Type", typeof person);// Output: object
-        console.log("Numbers:", numbers, "Data Type", typeof numbers);// Output: object
         console.log("X:", x, "Data Type", typeof x);// Output: undefined
         console.log("Y:", y, "Data Type", typeof y);// Output: object
-        console.log("Symbol:", sym, "Data Type", typeof sym);// Output: symbol
-        console.log("BigInt Number:", bigIntNum, "Data Type", typeof bigIntNum);// Output: bigint
+
+        console.log("-----");
+        console.log("Non-Primitive Data Types:");
+        let person = { name: "Ayush", age: 21 }; // Object
+        let numbers = [1, 2, 3, 4, 5]; // Array
+        function greet() { // Function
+            return "Hello!";
+        }
+        console.log("Person:", person, "Data Type", typeof person);// Output: object
+        console.log("Numbers:", numbers, "Data Type", typeof numbers);// Output: object
+        console.log("Greet Function:", greet, "Data Type", typeof greet);// Output:
+        console.log("Greet Function Call:", greet(), "Data Type", typeof greet());// Output: string
+        console.log("----- End of Examples -----");
+
+        console.log("");
+        console.log("👨‍💻 Created by Ayush Narware");
+        console.log("Thank you for visiting! 👋");
+        console.log("Happy Coding! 😊");
     </script>
 </body>
 

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Arrays</title>
+    <link rel="stylesheet" href="../CSS/styleJS.css">
+</head>
+
+<body>
+    <h1>Mastering Arrays: Unlock Powerful Data Management</h1>
+    <p>In JavaScript, arrays are a fundamental data type used to store ordered collections of items — numbers, strings,
+        objects, or even other arrays. Arrays provide a structured way to organize data and come with a powerful set of
+        built-in methods for adding, removing, modifying, and accessing elements.</p>
+
+    <h2>1. What is an Array?</h2>
+    <p>An array in JavaScript is a list-like object used to store multiple values under a single variable. Each item in
+        an array is called an <strong>element</strong>, and each element has an <strong>index</strong> (starting from 0).
+        Arrays are perfect for handling lists, collections, or sets of related data.</p>
+    <note>💡 Tip: Press <strong>F12</strong> to open the console and try out each example!</note>
+
+    <pre><code>let fruits = ["apple", "banana", "cherry"];
+console.log(fruits[0]); // Output: "apple"</code></pre>
+
+    <h2>2. Declaring Arrays</h2>
+    <p>Arrays can be declared in two main ways:</p>
+    <ul>
+        <li><strong>Using square brackets []</strong> (most common):
+            <pre><code>let numbers = [1, 2, 3, 4];</code></pre>
+        </li>
+        <li><strong>Using the Array constructor:</strong>
+            <pre><code>let colors = new Array("red", "green", "blue");</code></pre>
+        </li>
+    </ul>
+
+    <h2>3. Array Operations: Adding, Removing, and Accessing Elements</h2>
+    <h3>Adding Elements</h3>
+    <p><strong>push()</strong>: Adds elements to the end.</p>
+    <pre><code>let numbers = [1, 2, 3];
+numbers.push(4);
+console.log(numbers); // [1, 2, 3, 4]</code></pre>
+
+    <p><strong>unshift()</strong>: Adds elements to the beginning.</p>
+    <pre><code>let numbers = [1, 2, 3];
+numbers.unshift(0);
+console.log(numbers); // [0, 1, 2, 3]</code></pre>
+
+    <h3>Removing Elements</h3>
+    <p><strong>pop()</strong>: Removes the last element.</p>
+    <pre><code>let fruits = ["apple", "banana", "cherry"];
+fruits.pop();
+console.log(fruits); // ["apple", "banana"]</code></pre>
+
+    <p><strong>shift()</strong>: Removes the first element.</p>
+    <pre><code>let fruits = ["apple", "banana", "cherry"];
+fruits.shift();
+console.log(fruits); // ["banana", "cherry"]</code></pre>
+
+    <h3>Accessing and Modifying Elements</h3>
+    <pre><code>let colors = ["red", "green", "blue"];
+console.log(colors[1]); // "green"</code></pre>
+
+    <p><strong>splice()</strong>: Adds, removes, or replaces elements at specific positions.</p>
+    <pre><code>let colors = ["red", "green", "yellow", "pink"];
+colors.splice(1, 2, "Blue");
+console.log(colors); // ["red", "Blue", "pink"]</code></pre>
+
+    <p><strong>slice()</strong>: Returns a portion of an array without modifying it.</p>
+    <pre><code>let numbers = [1, 2, 3, 4, 5];
+let part = numbers.slice(1, 3);
+console.log(part); // [2, 3]</code></pre>
+
+    <h2>4. Array Searching and Sorting</h2>
+    <pre><code>let fruits = ["apple", "banana", "cherry"];
+console.log(fruits.indexOf("banana")); // 1
+console.log(fruits.includes("banana")); // true
+
+let letters = ["b", "a", "c"];
+letters.sort(); // ["a", "b", "c"]
+
+let nums = [1, 2, 3];
+nums.reverse(); // [3, 2, 1]</code></pre>
+
+    <h2>5. Array Iteration Methods</h2>
+    <p>JavaScript provides several methods to loop through arrays efficiently:</p>
+
+    <h3>forEach()</h3>
+    <pre><code>let fruits = ["apple", "banana", "cherry"];
+fruits.forEach(fruit => console.log(fruit));
+// "apple", "banana", "cherry"</code></pre>
+
+    <h3>map()</h3>
+    <pre><code>let numbers = [1, 2, 3];
+let squared = numbers.map(num => num * num);
+console.log(squared); // [1, 4, 9]</code></pre>
+
+    <h3>filter()</h3>
+    <pre><code>let numbers = [1, 2, 3, 4, 5];
+let even = numbers.filter(num => num % 2 === 0);
+console.log(even); // [2, 4]</code></pre>
+
+    <h3>reduce()</h3>
+    <pre><code>let numbers = [1, 2, 3, 4];
+let sum = numbers.reduce((acc, num) => acc + num, 0);
+console.log(sum); // 10</code></pre>
+
+    <h3>concat() and join()</h3>
+    <pre><code>let arr1 = [1, 2];
+let arr2 = [3, 4];
+let combined = arr1.concat(arr2);
+console.log(combined); // [1, 2, 3, 4]
+
+let words = ["Hello", "world"];
+let sentence = words.join(" ");
+console.log(sentence); // "Hello world"</code></pre>
+
+    <h2>7. Array Destructuring</h2>
+    <pre><code>let fruits = ["apple", "banana", "cherry"];
+let [first, second] = fruits;
+console.log(first); // "apple"
+console.log(second); // "banana"</code></pre>
+
+    <h2>📘 Summary of Array Operations</h2>
+    <table border="1" cellspacing="0" cellpadding="5">
+        <tr><th>Operation</th><th>Method</th><th>Description</th></tr>
+        <tr><td>Adding Elements</td><td>push, unshift</td><td>Adds elements to end/start</td></tr>
+        <tr><td>Removing Elements</td><td>pop, shift</td><td>Removes elements from end/start</td></tr>
+        <tr><td>Accessing</td><td>[index]</td><td>Accesses element by index</td></tr>
+        <tr><td>Modifying</td><td>splice, fill</td><td>Changes array content</td></tr>
+        <tr><td>Searching</td><td>indexOf, includes</td><td>Finds elements</td></tr>
+        <tr><td>Sorting</td><td>sort, reverse</td><td>Sorts or reverses array</td></tr>
+        <tr><td>Iteration</td><td>forEach, map, filter, reduce</td><td>Loops and processes elements</td></tr>
+        <tr><td>Combining</td><td>concat, join</td><td>Merges arrays or joins elements</td></tr>
+        <tr><td>Destructuring</td><td>[a, b] = array</td><td>Unpacks array into variables</td></tr>
+    </table>
+
+    <h2>🚀 Final Summary</h2>
+    <p>Arrays are among the most powerful tools in JavaScript. They enable you to store, organize, and manipulate large
+        amounts of data efficiently. By mastering array methods like <code>map()</code>, <code>filter()</code>, and
+        <code>reduce()</code>, you can process data dynamically and build efficient, scalable applications.</p>
+    <p>Keep experimenting — Arrays are your best friends in data manipulation! 🌟</p>
+
+
+    <script>
+// Creating an array of fruits
+let fruits1 = ["apple", "banana", "cherry"];
+console.log("Accessing first fruit from fruits1 array:", fruits1[0]); // Output: "apple"
+
+// Explaining array declaration methods
+console.log("👉 Declaring Arrays using different methods");
+
+// Using square brackets to declare an array of numbers
+let numbers1 = [1, 2, 3, 4];
+console.log("Array declared using square brackets:", numbers1);
+
+// Using Array constructor to declare an array of colors
+let colors1 = new Array("red", "green", "blue");
+console.log("Array declared using Array constructor:", colors1);
+
+// Placeholder for further array operations
+console.log("📦 Ready for Array Operations like push, pop, etc.");
+
+
+console.log("----- 🔍 JavaScript Array Operations Demonstration -----");
+
+// Initial array of fruits
+let fruits = ["apple", "banana", "cherry"];
+console.log("Original fruits array:", fruits);
+
+// Adding an element to the end using push()
+fruits.push("grape");
+console.log("After using push() to add 'grape':", fruits);
+
+// Removing the last element using pop()
+fruits.pop();
+console.log("After using pop() to remove last element:", fruits);
+
+// Array of numbers for method demonstrations
+let numbers = [1, 2, 3, 4];
+
+// Using reduce() to calculate sum of all elements
+let sum = numbers.reduce((a, b) => a + b);
+console.log("Sum of numbers using reduce():", sum);
+
+// Using map() to square each element
+let squared = numbers.map(n => n * n);
+console.log("Each number squared using map():", squared);
+
+// Using filter() to extract even numbers
+let evenNumbers = numbers.filter(n => n % 2 === 0);
+console.log("Even numbers extracted using filter():", evenNumbers);
+
+console.log("----- ✅ End of Array Examples -----");
+console.log("👨‍💻 Created by Ayush Narware | Happy Coding! 😊");
+</script>
+</body>
+
+</html>
