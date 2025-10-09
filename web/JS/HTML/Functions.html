@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+    <link href="../../CSS/styleJS.css" rel="stylesheet">
+</head>
+<body>
+     <header>
+    <h1>Learn<span>Code</span></h1>
+    <nav>
+      <a href="../../../index.html">Home</a>
+      <a href="#">Courses</a>
+      <a href="#">Tutorials</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+    <button id="Login">Login</button>
+  </header>
+
+  <!-- Hero Section -->
+  <section>
+    <h2>Master Programming with <span>Interactive Learning</span></h2>
+    <p>Join our free courses and start coding like a pro today.</p>
+    <button class="soon">Start Learning</button>
+    </section>
+    <main class="content">
+    <h1>JavaScript Function</h1>
+    <p>Welcome to the JavaScript Function page! Here, you'll find essential concepts and
+    building blocks to kickstart your journey in JavaScript programming.</p>
+
+    <h2>Types of Functions in JavaScript</h2>
+    <p>JavaScript supports several types of functions, each serving different purposes:</p>
+    <note>Here are some examples of how these Functions work in JavaScript. And Press <strong>F12</strong> to open the
+        console. See the examples in action! <br></note>
+
+    <ul>
+        <li><strong>Function Declarations:</strong> Standard way to define a function. Example:
+            <pre><code>function greet() { 
+    console.log("Hello!"); 
+}</code></pre>
+        </li>
+        <li><strong>Function Expressions:</strong> Functions assigned to variables. Example:
+            <pre><code>const greet = function() {
+    console.log("Hello!");
+};</code></pre>
+        </li>
+        <li><strong>Arrow Functions:</strong> Concise syntax for writing functions. Example:
+            <pre><code>const greet = () => {
+    console.log("Hello!");
+};</code></pre>
+        </li>
+        <li><strong>Anonymous Functions:</strong> Functions without a name, often used as arguments.
+            Example:
+            <pre><code>setTimeout(function() {
+    console.log("This runs after 1 second");
+}, 1000);</code></pre>
+        </li>
+        <li><strong>Immediately Invoked Function Expressions (IIFE):</strong> Functions that run as soon as they are defined.
+            Example:
+            <pre><code>(function() {
+    console.log("IIFE executed!");
+})();</code></pre>
+        </li>
+    </ul>
+    
+    <h2>Example Function</h2>
+    <h3>Simple Addition Function using Simple Function Declaration</h3>
+    <p>Here's a simple example of a function that adds two numbers and logs the result:</p>
+    <pre><code>function add(a, b) {
+    return a + b;
+}
+console.log(add(5, 10)); // Output: 15</code></pre>
+    
+    </main>
+
+    <!-- ======= Footer ======= -->
+  <footer>
+    <p>&copy; <span id="year"></span> Ayush Narware. All rights reserved.</p>
+    <ul>
+      <li><a href="https://github.com/ayushnarware">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/ayushnarware/">LinkedIn</a></li>
+      <li><a href="https://www.instagram.com/mr_ayush192/">Instagram</a></li>
+    </ul>
+    <p class="soon">More content coming soon... Stay tuned! 🚀</p>
+  </footer>
+    </footer>
+    <script src="../functions.js"></script>
+</body>
+</html>
