@@ -49,3 +49,46 @@ console.log("Even numbers extracted using filter():", evenNumbers);
 
 console.log("----- ✅ End of Array Examples -----");
 console.log("👨‍💻 Created by Ayush Narware | Happy Coding! 😊");
+
+//foreach loop
+let fruits2 = ["apple", "banana", "cherry"];
+fruits2.forEach(fruits2 => console.log(fruits2));
+
+//filter()
+let num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+let even = num.filter(num => num % 2 === 0);
+console.log("Simpal Array is = [" + num + "]");
+console.log("Even Number Array is = [" + even + "]");
+console.log("");
+
+//reduce()
+
+let rnum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 12, 14, 2, 5, 6, 5, 1, 40, 98, 7, 65, 43, 2, 54];
+let summ = rnum.reduce((acc, numm) => acc + numm, 0);
+console.log("Sum is = " + summ);
+
+
+//concat
+console.log("concat");
+let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+let concatarr = arr1.concat(arr2);
+console.log("1st Array is ", arr1);
+console.log("2nd Array is ", arr2);
+console.log(" Concat Array is ", concatarr);
+
+
+// Join 
+console.log("Joins");
+let woeds =  ["Hello", "word", "!"];
+console.log(woeds);
+let joi = woeds.join(" - ");
+console.log(joi);
+
+// Array Destructuring
+console.log("Array Destructuring");
+let frui = ["apple", "banana", "cherry"];
+let [first, second, third] = frui;
+console.log(first); // Output: "apple"
+console.log(second); // Output: "banana"
+console.log(third);

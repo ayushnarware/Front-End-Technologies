@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript PopUps</title>
+    <link href="../../CSS/styleJS.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>JavaScript PopUps</h1>
+    <p>In JavaScript, <strong>PopUps</strong> are small alert or message windows that appear on the screen to display
+        information, ask for user input, or confirm an action. They are often used to grab the user’s attention, display
+        warnings, or take quick responses without navigating to a new page.</p>
+
+    <h2>📘 Types of JavaScript PopUps</h2>
+    <p>There are three main types of PopUps in JavaScript:</p>
+    <ul>
+        <li><strong>alert()</strong> – Used to display a message to the user.</li>
+        <li><strong>confirm()</strong> – Used to ask for user confirmation (OK/Cancel).</li>
+        <li><strong>prompt()</strong> – Used to take input from the user.</li>
+    </ul>
+
+    <h2>1️⃣ alert() Method</h2>
+    <p>The <strong>alert()</strong> method displays a message box with an OK button. It is often used to show
+        information or warnings.</p>
+
+    <pre><code>// Example: Using alert()
+alert("Welcome to JavaScript PopUps!");
+
+// Another example
+let name = "Ayush";
+alert("Hello " + name + "! Have a great day 😊");
+</code></pre>
+
+    <p>✅ <strong>Output:</strong> A message box appears with the text inside the quotes.</p>
+    <button id="alert">Show PopUps</button>
+
+    <h2>2️⃣ confirm() Method</h2>
+    <p>The <strong>confirm()</strong> method displays a dialog box with a message and two buttons — <strong>OK</strong>
+        and <strong>Cancel</strong>.
+        It returns <code>true</code> if the user clicks OK and <code>false</code> if they click Cancel.</p>
+
+    <pre><code>// Example: Using confirm()
+let response = confirm("Do you want to continue?");
+if (response) {
+    alert("You clicked OK!");
+} else {
+    alert("You clicked Cancel!");
+}</code></pre>
+
+    <p>✅ <strong>Output:</strong> A popup asks the user to confirm, and based on their choice, a message appears.</p>
+    <button id="confirm">Show PopUps</button>
+
+
+    <h2>3️⃣ prompt() Method</h2>
+    <p>The <strong>prompt()</strong> method displays a dialog box that asks the user to input some text.
+        It returns the text entered by the user, or <code>null</code> if the user cancels.</p>
+
+    <pre><code>// Example: Using prompt()
+let userName = prompt("Enter your name:");
+if (userName) {
+    alert("Hello " + userName + "! Welcome to our site!");
+} else {
+    alert("You didn't enter your name!");
+}</code></pre>
+
+    <p>✅ <strong>Output:</strong> A popup asks for your name, and then greets you based on your response.</p>
+    <button id="prompt">Show PopUps</button>
+
+    <h2>⚙️ Real-Life Example</h2>
+    <p>Suppose you have a website where you want to confirm if a user really wants to delete a file. You can use
+        <code>confirm()</code> like this:</p>
+
+    <pre><code>// Real-life example
+function deleteFile() {
+    let confirmDelete = confirm("Are you sure you want to delete this file?");
+    if (confirmDelete) {
+        alert("File deleted successfully!");
+    } else {
+        alert("File deletion canceled.");
+    }
+}
+</code></pre>
+
+    <p>When you call <code>deleteFile()</code>, the user gets a confirmation popup before any action is performed —
+        improving user control and safety.</p>
+    <button id="Example">Show PopUps</button>
+    <h2>🧠 Summary</h2>
+    <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+            <th>Popup Type</th>
+            <th>Method</th>
+            <th>Description</th>
+            <th>Return Value</th>
+        </tr>
+        <tr>
+            <td>Alert Box</td>
+            <td>alert()</td>
+            <td>Displays a message with an OK button</td>
+            <td>Undefined</td>
+        </tr>
+        <tr>
+            <td>Confirmation Box</td>
+            <td>confirm()</td>
+            <td>Asks for confirmation (OK/Cancel)</td>
+            <td>true / false</td>
+        </tr>
+        <tr>
+            <td>Prompt Box</td>
+            <td>prompt()</td>
+            <td>Asks for user input</td>
+            <td>Entered value / null</td>
+        </tr>
+    </table>
+
+    <h2>🚀 Key Points</h2>
+    <ul>
+        <li>PopUps are synchronous — they pause code execution until the user responds.</li>
+        <li>They are simple but can interrupt user experience if overused.</li>
+        <li>Modern web apps often use custom modal dialogs (using HTML/CSS/JS) instead of native popups.</li>
+        <li>Still, understanding alert(), confirm(), and prompt() is essential for debugging and quick interactions.
+        </li>
+    </ul>
+
+    <note>💡 Tip: Press <strong>F12</strong> → Console → Paste the examples to test how popups work!</note>
+    Extera Examples-
+    <button id="popupBtn">Show PopUps</button>
+
+    <script src="../PopUps.js"></script>
+</body>
+
+</html>

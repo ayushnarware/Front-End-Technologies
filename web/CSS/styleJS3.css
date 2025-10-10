@@ -1,0 +1,217 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Code+Pro:wght@400;600&display=swap');
+
+/* --- 🎨 Color & Style Variables --- */
+:root {
+    --sidebar-bg: #111827; /* Dark Blue-Gray */
+    --content-bg: #ffffff;
+    --border-color: #e5e7eb; /* Light Gray */
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --brand-color: #4f46e5; /* Indigo */
+    --brand-color-light: #e0e7ff;
+    --code-bg: #f9fafb;
+}
+
+/* --- Global Reset & Base Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--content-bg);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- Main Page Layout --- */
+.page-wrapper {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 100vh;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    background-color: var(--sidebar-bg);
+    color: #d1d5db;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    border-right: 1px solid var(--border-color);
+}
+.sidebar-header {
+    padding: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+}
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0 1rem;
+}
+.sidebar-nav .nav-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #d1d5db;
+    font-weight: 600;
+    transition: background-color 0.2s, color 0.2s;
+}
+.sidebar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+.sidebar-nav .nav-link.active {
+    background-color: var(--brand-color);
+    color: white;
+}
+
+/* --- Main Content Area --- */
+.content-area {
+    padding: 2rem 4rem;
+    max-width: 900px;
+}
+section {
+    padding-top: 2.5rem;
+    margin-bottom: 2rem;
+    scroll-margin-top: 2rem; /* Important for scroll spy */
+}
+.content-header {
+    margin-bottom: 3rem;
+}
+.content-header h1 {
+    font-size: 2.75rem;
+    letter-spacing: -1.5px;
+    margin-bottom: 0.5rem;
+}
+.content-header .subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+h3 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+p, ul {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+ul {
+    padding-left: 1.5rem;
+}
+b, strong {
+    color: var(--text-primary);
+}
+
+/* --- Code Blocks & Tables --- */
+pre {
+    background-color: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+code {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.95em;
+    color: #dd1144; /* Token color */
+}
+pre code { color: var(--text-primary); }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+}
+th, td {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+thead {
+    background-color: var(--code-bg);
+}
+
+/* --- Interactive Demo Styles --- */
+#interactive-demo-container .interactive-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    background-color: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+.left-panel { flex: 1 1 45%; min-width: 300px; }
+.right-panel.output-log {
+    flex: 1 1 50%;
+    background: #1f2937;
+    color: #e5e7eb;
+    border-radius: 6px;
+    height: 400px;
+}
+.demo-section {
+    margin-bottom: 1rem;
+}
+.demo-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+}
+.demo-button {
+    padding: 0.75rem 1.25rem;
+    border-radius: 6px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+.demo-button:hover { opacity: 0.9; }
+
+/* --- Footer --- */
+.content-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+/* --- Responsive Design for Mobile --- */
+@media (max-width: 1024px) {
+    .page-wrapper {
+        grid-template-columns: 1fr;
+    }
+    .sidebar {
+        position: static;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .content-area {
+        padding: 1.5rem;
+    }
+}
