@@ -265,6 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 () => log("Number: 1"),
             ];
             demos.forEach((fn) => fn());
+            
             log("✅ All demos completed.");
         })
     );
