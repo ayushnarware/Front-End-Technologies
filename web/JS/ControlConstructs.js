@@ -9,44 +9,44 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("❌ Target div with id='div' not found in HTML!");
         return;
     }
-// ====== Main Layout Container ======
-const container = document.createElement("div");
-container.style.display = "flex";
-container.style.gap = "20px";
-container.style.flexWrap = "wrap";
-container.style.maxWidth = "100%";
-container.style.margin = "20px auto";
-container.style.fontFamily = "Poppins, Arial, sans-serif";
+    // ====== Main Layout Container ======
+    const container = document.createElement("div");
+    container.style.display = "flex";
+    container.style.gap = "20px";
+    container.style.flexWrap = "wrap";
+    container.style.maxWidth = "100%";
+    container.style.margin = "20px auto";
+    container.style.fontFamily = "Poppins, Arial, sans-serif";
 
-// ====== Left Panel ======
-const leftPanel = document.createElement("div");
-leftPanel.style.flex = "1 1 25%";       // takes 50% width, flexible
-leftPanel.style.padding = "20px";
-leftPanel.style.border = "1px solid #ddd";
-leftPanel.style.borderRadius = "10px";
-leftPanel.style.background = "white";
-leftPanel.style.boxShadow = "0 3px 8px rgba(0,0,0,0.08)";
+    // ====== Left Panel ======
+    const leftPanel = document.createElement("div");
+    leftPanel.style.flex = "1 1 25%";       // takes 50% width, flexible
+    leftPanel.style.padding = "20px";
+    leftPanel.style.border = "1px solid #ddd";
+    leftPanel.style.borderRadius = "10px";
+    leftPanel.style.background = "white";
+    leftPanel.style.boxShadow = "0 3px 8px rgba(0,0,0,0.08)";
 
-// ====== Right Panel ======
-const logArea = document.createElement("div");
-logArea.style.flex = "1 1 25%";         // takes 50% width, flexible
-logArea.style.background = "#0d1117";
-logArea.style.color = "#00ff9d";
-logArea.style.padding = "15px";
-logArea.style.borderRadius = "10px";
-logArea.style.fontSize = "14px";
-logArea.style.fontFamily = "Consolas, monospace";
-logArea.style.flexDirection = "column";
-logArea.style.justifyContent = "flex-start";
-logArea.style.position = "relative";
-logArea.innerHTML = "<p style='opacity:0.8'>▶ Output will appear here...</p>";
+    // ====== Right Panel ======
+    const logArea = document.createElement("div");
+    logArea.style.flex = "1 1 25%";         // takes 50% width, flexible
+    logArea.style.background = "#0d1117";
+    logArea.style.color = "#00ff9d";
+    logArea.style.padding = "15px";
+    logArea.style.borderRadius = "10px";
+    logArea.style.fontSize = "14px";
+    logArea.style.fontFamily = "Consolas, monospace";
+    logArea.style.flexDirection = "column";
+    logArea.style.justifyContent = "flex-start";
+    logArea.style.position = "relative";
+    logArea.innerHTML = "<p style='opacity:0.8'>▶ Output will appear here...</p>";
 
-// Append panels to container
-container.appendChild(leftPanel);
-container.appendChild(logArea);
+    // Append panels to container
+    container.appendChild(leftPanel);
+    container.appendChild(logArea);
 
-// Append container to body
-document.body.appendChild(container);
+    // Append container to body
+    document.body.appendChild(container);
 
 
     const title = document.createElement("h2");
@@ -107,7 +107,7 @@ document.body.appendChild(container);
     };
 
     // ===== Right Panel (Animated Output Crawler) =====
-        function log(msg) {
+    function log(msg) {
         const p = document.createElement("p");
         p.style.margin = "0";
         p.style.padding = "2px 0";
