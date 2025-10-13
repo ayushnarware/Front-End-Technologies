@@ -1,57 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control Constructs in JavaScript</title>
     <!-- <link href="../../CSS/styleJS.css" rel="stylesheet"> -->
-     <link href="../../CSS/styleJS.css" rel="stylesheet">
+    <link href="../../CSS/styleJS.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 40px auto;
+            max-width: 100%;
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+
+        }
+
+        .div {
+            max-width: 50%;
+            height: 90vh;
+            overflow: scroll;
+            scrollbar-width: none;
+
+        }
+
+        #div {
+            max-width: 50%;
+            height: 90vh;
+            scrollbar-width: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0px;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Control Constructs in JavaScript: A Deep Dive</h1>
+    <div class="div">
+        <h1>Control Constructs in JavaScript: A Deep Dive</h1>
 
-    <p>
-        In JavaScript, <b>control constructs</b> (also known as control structures) are essential tools 
-        that allow you to <b>direct the flow of execution</b> in a program. Rather than having code 
-        execute line by line in a fixed order, control constructs help you perform <b>decision-making</b>, 
-        <b>repetitive tasks</b>, and <b>conditional operations</b>.  
-        This flexibility enables developers to create <b>dynamic, logical, and interactive applications</b>.
-    </p>
+        <p>
+            In JavaScript, <b>control constructs</b> (also known as control structures) are essential tools
+            that allow you to <b>direct the flow of execution</b> in a program. Rather than having code
+            execute line by line in a fixed order, control constructs help you perform <b>decision-making</b>,
+            <b>repetitive tasks</b>, and <b>conditional operations</b>.
+            This flexibility enables developers to create <b>dynamic, logical, and interactive applications</b>.
+        </p>
 
-    <h2>💡 Why Are Control Constructs Needed?</h2>
+        <h2>💡 Why Are Control Constructs Needed?</h2>
 
-    <ul>
-        <li><b>Decision-Making:</b> Control constructs help programs decide actions based on conditions. 
-            For example, if a user logs in successfully, redirect to the dashboard; if not, show an error message.
-        </li>
-        <li><b>Repetition:</b> Tasks like processing each element in a list or executing code multiple times 
-            become easier with loops — avoiding redundant code.
-        </li>
-        <li><b>Improved Code Flow & Readability:</b> Constructs like conditionals and loops make code organized 
-            and easy to understand, enhancing maintainability and performance.
-        </li>
-    </ul>
+        <ul>
+            <li><b>Decision-Making:</b> Control constructs help programs decide actions based on conditions.
+                For example, if a user logs in successfully, redirect to the dashboard; if not, show an error message.
+            </li>
+            <li><b>Repetition:</b> Tasks like processing each element in a list or executing code multiple times
+                become easier with loops — avoiding redundant code.
+            </li>
+            <li><b>Improved Code Flow & Readability:</b> Constructs like conditionals and loops make code organized
+                and easy to understand, enhancing maintainability and performance.
+            </li>
+        </ul>
 
-    <h2>⚙️ Types of Control Constructs in JavaScript</h2>
-    <p>JavaScript provides multiple constructs to control code flow — mainly for <b>decisions</b>, 
-        <b>loops</b>, and <b>logical control</b>. Let’s explore each with practical examples.</p>
+        <h2>⚙️ Types of Control Constructs in JavaScript</h2>
+        <p>JavaScript provides multiple constructs to control code flow — mainly for <b>decisions</b>,
+            <b>loops</b>, and <b>logical control</b>. Let’s explore each with practical examples.
+        </p>
 
-    <hr>
+        <hr>
 
-    <h2>1️⃣ Conditional Constructs</h2>
-    <p>
-        Conditional constructs allow a program to execute different blocks of code 
-        depending on whether a specific condition is <b>true</b> or <b>false</b>.
-    </p>
+        <h2>1️⃣ Conditional Constructs</h2>
+        <p>
+            Conditional constructs allow a program to execute different blocks of code
+            depending on whether a specific condition is <b>true</b> or <b>false</b>.
+        </p>
 
-    <h3>👉 If, Else If, and Else Statements</h3>
-    <p>
-        - <b>if</b> executes a block when the condition is true.<br>
-        - <b>else</b> runs when the if condition is false.<br>
-        - <b>else if</b> allows multiple condition checks in sequence.
-    </p>
+        <h3>👉 If, Else If, and Else Statements</h3>
+        <p>
+            - <b>if</b> executes a block when the condition is true.<br>
+            - <b>else</b> runs when the if condition is false.<br>
+            - <b>else if</b> allows multiple condition checks in sequence.
+        </p>
 
-    <pre><code>
+        <pre><code>
 let age = 20;
 
 if (age >= 18) {
@@ -64,13 +97,13 @@ if (age >= 18) {
 // Output: You are eligible to vote.
     </code></pre>
 
-    <h3>👉 Switch Statement</h3>
-    <p>
-        The <b>switch</b> statement provides a cleaner alternative to multiple <b>else if</b> conditions.
-        It compares an expression’s value against multiple cases.
-    </p>
+        <h3>👉 Switch Statement</h3>
+        <p>
+            The <b>switch</b> statement provides a cleaner alternative to multiple <b>else if</b> conditions.
+            It compares an expression’s value against multiple cases.
+        </p>
 
-    <pre><code>
+        <pre><code>
 let day = "Tuesday";
 
 switch (day) {
@@ -89,33 +122,33 @@ switch (day) {
 // Output: It’s Tuesday!
     </code></pre>
 
-    <hr>
+        <hr>
 
-    <h2>2️⃣ Looping Constructs</h2>
-    <p>
-        Loops are used to repeat code multiple times until a condition is met. 
-        They make repetitive tasks easier and efficient.
-    </p>
+        <h2>2️⃣ Looping Constructs</h2>
+        <p>
+            Loops are used to repeat code multiple times until a condition is met.
+            They make repetitive tasks easier and efficient.
+        </p>
 
-    <h3>🔹 For Loop</h3>
-    <p>
-        The <b>for</b> loop is used when the number of iterations is known in advance.  
-        It includes initialization, condition, and increment/decrement parts.
-    </p>
+        <h3>🔹 For Loop</h3>
+        <p>
+            The <b>for</b> loop is used when the number of iterations is known in advance.
+            It includes initialization, condition, and increment/decrement parts.
+        </p>
 
-    <pre><code>
+        <pre><code>
 for (let i = 1; i <= 5; i++) {
     console.log("Iteration:", i);
 }
 // Output: Iteration: 1 ... Iteration: 5
     </code></pre>
 
-    <h3>🔹 While Loop</h3>
-    <p>
-        Executes a block as long as the given condition remains true.
-    </p>
+        <h3>🔹 While Loop</h3>
+        <p>
+            Executes a block as long as the given condition remains true.
+        </p>
 
-    <pre><code>
+        <pre><code>
 let count = 1;
 while (count <= 5) {
     console.log("Count is:", count);
@@ -124,13 +157,13 @@ while (count <= 5) {
 // Output: Count is: 1 ... Count is: 5
     </code></pre>
 
-    <h3>🔹 Do...While Loop</h3>
-    <p>
-        The <b>do...while</b> loop executes the block at least once, even if the condition is false, 
-        since the condition is checked after the first run.
-    </p>
+        <h3>🔹 Do...While Loop</h3>
+        <p>
+            The <b>do...while</b> loop executes the block at least once, even if the condition is false,
+            since the condition is checked after the first run.
+        </p>
 
-    <pre><code>
+        <pre><code>
 let number = 1;
 do {
     console.log("Number:", number);
@@ -139,12 +172,12 @@ do {
 // Output: Number: 1, Number: 2, Number: 3
     </code></pre>
 
-    <h3>🔹 For...of Loop</h3>
-    <p>
-        Used to iterate over iterable objects like arrays, returning each element.
-    </p>
+        <h3>🔹 For...of Loop</h3>
+        <p>
+            Used to iterate over iterable objects like arrays, returning each element.
+        </p>
 
-    <pre><code>
+        <pre><code>
 let fruits = ["apple", "banana", "cherry"];
 for (let fruit of fruits) {
     console.log(fruit);
@@ -152,12 +185,12 @@ for (let fruit of fruits) {
 // Output: apple, banana, cherry
     </code></pre>
 
-    <h3>🔹 For...in Loop</h3>
-    <p>
-        Used to iterate over the properties (keys) of an object.
-    </p>
+        <h3>🔹 For...in Loop</h3>
+        <p>
+            Used to iterate over the properties (keys) of an object.
+        </p>
 
-    <pre><code>
+        <pre><code>
 let person = { name: "Alice", age: 25 };
 for (let key in person) {
     console.log(key + ": " + person[key]);
@@ -165,12 +198,12 @@ for (let key in person) {
 // Output: name: Alice, age: 25
     </code></pre>
 
-    <h3>🔹 forEach Loop</h3>
-    <p>
-        Executes a provided function once for each element in an array.
-    </p>
+        <h3>🔹 forEach Loop</h3>
+        <p>
+            Executes a provided function once for each element in an array.
+        </p>
 
-    <pre><code>
+        <pre><code>
 let colors = ["red", "green", "blue"];
 colors.forEach(function(color, index) {
     console.log(`Color at index ${index} is ${color}`);
@@ -181,27 +214,27 @@ colors.forEach(function(color, index) {
 // Color at index 2 is blue
     </code></pre>
 
-    <p><b>Using Arrow Function:</b></p>
+        <p><b>Using Arrow Function:</b></p>
 
-    <pre><code>
+        <pre><code>
 colors.forEach((color, index) => {
     console.log(`Color at index ${index} is ${color}`);
 });
     </code></pre>
 
-    <hr>
+        <hr>
 
-    <h2>3️⃣ Control Flow Modifiers</h2>
-    <p>
-        These statements modify the normal flow of execution in loops or conditionals.
-    </p>
+        <h2>3️⃣ Control Flow Modifiers</h2>
+        <p>
+            These statements modify the normal flow of execution in loops or conditionals.
+        </p>
 
-    <h3>🔸 Break Statement</h3>
-    <p>
-        Immediately exits the loop when a certain condition is met.
-    </p>
+        <h3>🔸 Break Statement</h3>
+        <p>
+            Immediately exits the loop when a certain condition is met.
+        </p>
 
-    <pre><code>
+        <pre><code>
 for (let i = 1; i <= 5; i++) {
     if (i === 3) break;
     console.log(i);
@@ -209,12 +242,12 @@ for (let i = 1; i <= 5; i++) {
 // Output: 1, 2
     </code></pre>
 
-    <h3>🔸 Continue Statement</h3>
-    <p>
-        Skips the current iteration and moves to the next loop cycle.
-    </p>
+        <h3>🔸 Continue Statement</h3>
+        <p>
+            Skips the current iteration and moves to the next loop cycle.
+        </p>
 
-    <pre><code>
+        <pre><code>
 for (let i = 1; i <= 5; i++) {
     if (i === 3) continue;
     console.log(i);
@@ -222,39 +255,83 @@ for (let i = 1; i <= 5; i++) {
 // Output: 1, 2, 4, 5
     </code></pre>
 
-    <hr>
+        <hr>
 
-    <h2>📘 Summary Table</h2>
-    <table border="1" cellpadding="6">
-        <tr>
-            <th>Control Construct</th>
-            <th>Purpose</th>
-            <th>Example</th>
-        </tr>
-        <tr><td>If / Else If / Else</td><td>Conditional branching</td><td><code>if (age >= 18)</code></td></tr>
-        <tr><td>Switch</td><td>Multi-condition check</td><td><code>switch(day)</code></td></tr>
-        <tr><td>For Loop</td><td>Fixed repetition</td><td><code>for (let i = 0; i < n; i++)</code></td></tr>
-        <tr><td>While Loop</td><td>Conditional repetition</td><td><code>while (condition)</code></td></tr>
-        <tr><td>Do...While</td><td>Execute at least once</td><td><code>do {...} while(condition)</code></td></tr>
-        <tr><td>For...of</td><td>Iterate over values</td><td><code>for (item of array)</code></td></tr>
-        <tr><td>For...in</td><td>Iterate over object keys</td><td><code>for (key in object)</code></td></tr>
-        <tr><td>forEach</td><td>Array iteration</td><td><code>array.forEach()</code></td></tr>
-        <tr><td>Break</td><td>Exit loop early</td><td><code>break;</code></td></tr>
-        <tr><td>Continue</td><td>Skip iteration</td><td><code>continue;</code></td></tr>
-    </table>
+        <h2>📘 Summary Table</h2>
+        <table border="1" cellpadding="6">
+            <tr>
+                <th>Control Construct</th>
+                <th>Purpose</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td>If / Else If / Else</td>
+                <td>Conditional branching</td>
+                <td><code>if (age >= 18)</code></td>
+            </tr>
+            <tr>
+                <td>Switch</td>
+                <td>Multi-condition check</td>
+                <td><code>switch(day)</code></td>
+            </tr>
+            <tr>
+                <td>For Loop</td>
+                <td>Fixed repetition</td>
+                <td><code>for (let i = 0; i < n; i++)</code></td>
+            </tr>
+            <tr>
+                <td>While Loop</td>
+                <td>Conditional repetition</td>
+                <td><code>while (condition)</code></td>
+            </tr>
+            <tr>
+                <td>Do...While</td>
+                <td>Execute at least once</td>
+                <td><code>do {...} while(condition)</code></td>
+            </tr>
+            <tr>
+                <td>For...of</td>
+                <td>Iterate over values</td>
+                <td><code>for (item of array)</code></td>
+            </tr>
+            <tr>
+                <td>For...in</td>
+                <td>Iterate over object keys</td>
+                <td><code>for (key in object)</code></td>
+            </tr>
+            <tr>
+                <td>forEach</td>
+                <td>Array iteration</td>
+                <td><code>array.forEach()</code></td>
+            </tr>
+            <tr>
+                <td>Break</td>
+                <td>Exit loop early</td>
+                <td><code>break;</code></td>
+            </tr>
+            <tr>
+                <td>Continue</td>
+                <td>Skip iteration</td>
+                <td><code>continue;</code></td>
+            </tr>
+        </table>
 
-    <hr>
+        <hr>
 
-    <h2>🚀 Keep Going: Mastering Control Constructs!</h2>
-    <p>
-        Mastering control constructs in JavaScript gives you the power to build smarter, more efficient code.  
-        Practice combining conditionals and loops to solve real-world problems efficiently.  
-        Each concept you master strengthens your logical thinking and programming foundation.  
-        <br><br>
-        <b>Remember:</b> Control constructs are like a map and compass for your code — they guide the program 
-        exactly where it needs to go. Happy Coding! 🌟
-    </p>
+        <h2>🚀 Keep Going: Mastering Control Constructs!</h2>
+        <p>
+            Mastering control constructs in JavaScript gives you the power to build smarter, more efficient code.
+            Practice combining conditionals and loops to solve real-world problems efficiently.
+            Each concept you master strengthens your logical thinking and programming foundation.
+            <br><br>
+            <b>Remember:</b> Control constructs are like a map and compass for your code — they guide the program
+            exactly where it needs to go. Happy Coding! 🌟
+        </p>
+    </div>
+    <div id="div">
 
+    </div>
     <script src="../ControlConstructs.js"></script>
 </body>
+
 </html>
