@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Execution and Hoisting in JavaScript</title>
+    <link href="../../CSS/styleJS.css" rel="stylesheet">
+    
+</head>
+<body>
+    <h1>Deep Dive into Function Execution and Hoisting in JavaScript</h1>
+
+    <p>we're exploring how functions execute in JavaScript and the fascinating concept of <b>hoisting</b>, which allows functions to be accessible throughout your code even before they’re defined. We’ll also discuss a critical concept called the <b>Temporal Dead Zone (TDZ)</b>, which can affect variables declared with <code>let</code> and <code>const</code>.</p>
+
+    <note><b>Note: 📝</b> Don’t worry if the term “Temporal Dead Zone (TDZ)” is new — we’ll explain it in simple terms below.</note>
+
+    <h2>📜 Hoisting in JavaScript</h2>
+    <p>Hoisting is the behavior where function and variable declarations are moved to the top of their scope during the memory allocation phase.</p>
+
+    <ul>
+        <li><b>Functions:</b> Entire function is hoisted and available throughout the scope.</li>
+        <li><b>var Variables:</b> Hoisted but initialized as <code>undefined</code>.</li>
+        <li><b>let / const:</b> Placed in the TDZ until the line where they are declared.</li>
+    </ul>
+
+    <h2>🧠 How Hoisting Works in JavaScript</h2>
+    <p>JavaScript executes code in two main phases:</p>
+    <ol>
+        <li><b>Memory Allocation Phase</b> — Memory is allocated for variables and functions.</li>
+        <li><b>Code Execution Phase</b> — Code runs line-by-line.</li>
+    </ol>
+
+    <h3>⏳ Memory Allocation Phase</h3>
+    <p>In this phase, JavaScript prepares memory for variables and functions.</p>
+    <pre>
+    <code>
+    let sum = add(5, 10); // sum is assigned the result of add(5, 10)
+
+    function add(a, b) {
+        return a + b;
+    }
+    </code>
+    </pre>
+
+    <p>🔍 Memory after Allocation Phase:</p>
+    <table border="1" cellpadding="5">
+        <tr><th>Variable / Function</th><th>Value</th><th>State</th></tr>
+        <tr><td>add</td><td>Function (a, b) => a + b</td><td>Available for use</td></tr>
+        <tr><td>sum</td><td>TDZ (not initialized)</td><td>Inaccessible in TDZ</td></tr>
+    </table>
+
+    <h3>⚡ Temporal Dead Zone (TDZ)</h3>
+    <p>The TDZ is the period between a variable’s hoisting and its initialization. Accessing a variable in the TDZ causes a <b>ReferenceError</b>.</p>
+
+    <pre>
+    <code>
+    console.log(value); // ❌ ReferenceError
+    let value = 10;
+    </code>
+    </pre>
+
+    <h3>🕰️ Code Execution Phase</h3>
+    <p>Once memory allocation is complete, JavaScript executes the code line-by-line.</p>
+
+    <ul>
+        <li><b>Function Calls:</b> A new execution context is created for each function call.</li>
+        <li><b>var variables:</b> Updated from undefined to assigned values.</li>
+        <li><b>let / const:</b> Exit the TDZ and receive their values.</li>
+    </ul>
+
+    <p>Example of function execution:</p>
+    <pre>
+    <code>
+    let sum = add(5, 10); // function call
+    function add(a, b) {
+        return a + b;
+    }
+    console.log(sum); // ✅ Output: 15
+    </code>
+    </pre>
+
+    <p>🧩 Final State in Memory After Execution:</p>
+    <table border="1" cellpadding="5">
+        <tr><th>Variable / Function</th><th>Value</th></tr>
+        <tr><td>add</td><td>(a, b) => a + b</td></tr>
+        <tr><td>sum</td><td>15</td></tr>
+    </table>
+
+    <h2>🏆 Key Takeaways</h2>
+    <ul>
+        <li><b>Memory Allocation Phase:</b> Functions stored, <code>var</code> = undefined, <code>let/const</code> in TDZ.</li>
+        <li><b>Code Execution Phase:</b> Code runs line-by-line; variables initialized.</li>
+        <li><b>Hoisting:</b> Moves declarations to the top of their scope.</li>
+        <li><a href="../../HTML/media/image.png">View in Images</a></li>
+    </ul>
+
+    <h2>🚀 Next Steps</h2>
+    <p>Now that you understand <b>function declarations</b>, it’s time to explore:</p>
+    <ul>
+        <li>Higher-Order Functions</li>
+        <li>Arrow Functions</li>
+        <li>Anonymous Functions</li>
+    </ul>
+
+    <p>Each brings unique behaviors and power to JavaScript. Keep learning and practice writing different types of functions to master this concept! 💪</p>
+
+    <script src="../Hoisting.js"></script>
+</body>
+</html>
