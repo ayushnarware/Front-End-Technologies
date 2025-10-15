@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexical Environment in JavaScript 🧩</title>
+    <link rel="stylesheet" href="../../CSS/styleJS.css">
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #f8f9fa;
+            color: #222;
+            line-height: 1.7;
+
+        }
+
+        h1 {
+            text-align: center;
+            color: #0077ff;
+        }
+
+        h2 {
+            color: #333;
+            border-left: 4px solid #0077ff;
+            padding-left: 10px;
+            margin-top: 30px;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        ul {
+            margin: 10px 0 20px 25px;
+        }
+
+        pre {
+            background: #212529;
+            color: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            overflow-x: auto;
+        }
+
+        code {
+            padding: 4px 6px;
+            border-radius: 5px;
+            font-family: "Courier New", monospace;
+        }
+
+        .highlight {
+            background: #d1ecf1;
+            border-left: 5px solid #0dcaf0;
+            padding: 10px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Lexical Environment 🧩</h1>
+
+    <p>Hello, future JavaScript wizards! ✨ Today, we’re diving into an essential yet fascinating concept in JavaScript —
+        <strong>Scope</strong> and the <strong>Lexical Environment</strong>.
+        At first, these may sound complicated (like trying to untangle your earphones 😅), but trust me, by the end of
+        this lesson, it’ll all make sense.
+        Let’s explore how JavaScript manages variables and functions behind the scenes. Ready? Let’s go! 🚀
+    </p>
+
+    <h2>What is Scope? 🤔</h2>
+    <p>Think of <strong>Scope</strong> as a magical boundary that defines where you can access variables or functions in
+        your code.
+        It’s like knowing which room in a house contains the cookie jar 🍪.
+        If you’re inside the room, you can grab cookies (variables); if not, sorry, no cookies for you.</p>
+
+    <h3>Types of Scope in JavaScript:</h3>
+    <ul>
+        <li><strong>Global Scope:</strong> Variables declared outside any function live here. They’re like celebrities —
+            everyone knows them!</li>
+        <li><strong>Local Scope:</strong> Variables declared inside a function live here. They’re shy and can only be
+            accessed inside their own function.</li>
+        <li><strong>Block Scope:</strong> Variables declared with <code>let</code> or <code>const</code> inside a block
+            <code>{}</code> live here. They’re introverts and don’t like stepping out.
+        </li>
+    </ul>
+
+    <h2>Lexical Environment 🧩</h2>
+    <p>The <strong>Lexical Environment</strong> is a structure that JavaScript uses to keep track of all variables and
+        functions available at any given point in your code.</p>
+
+    <div class="highlight">
+        <strong>Breaking It Down:</strong><br>
+        • <strong>Local Memory (Variable Environment):</strong> Stores variables and functions for a specific block or
+        function.<br>
+        • <strong>Reference to Parent Environment:</strong> If a variable isn’t found locally, JavaScript looks for it
+        in the parent environment (like asking your elder sibling when you can’t find something at home).
+    </div>
+
+    <p>It’s like a family tree where every child (function or block) has a parent.
+        When you need something, you ask your family members in a chain-like manner.
+        This chain is called the <strong>Scope Chain</strong>.</p>
+
+    <h3>Formal Definition:</h3>
+    <p>A <strong>Lexical Environment</strong> consists of:</p>
+    <ul>
+        <li><strong>The environment record:</strong> Where variables and function declarations are stored.</li>
+        <li><strong>A reference to its outer lexical environment</strong> (the parent scope).</li>
+    </ul>
+
+    <p><strong>Key Properties:</strong></p>
+    <ul>
+        <li>Created when functions or blocks are executed.</li>
+        <li>Determines how variable lookups are resolved based on where functions are <em>defined</em> in the code, not
+            where they are called.</li>
+        <li>Works like a "chain of scopes" that the engine navigates to find variables.</li>
+    </ul>
+
+    <h2>Scope Chain in Action 🔗</h2>
+    <pre><code>
+let globalVar = "I’m global!";
+
+function outerFunction() {
+    let outerVar = "I’m in the outer function!";
+    
+    function innerFunction() {
+        let innerVar = "I’m in the inner function!";
+        console.log(globalVar); // Accessible: "I’m global!"
+        console.log(outerVar);  // Accessible: "I’m in the outer function!"
+        console.log(innerVar);  // Accessible: "I’m in the inner function!"
+    }
+    
+    innerFunction();
+}
+
+outerFunction();
+    </code></pre>
+    <note>Here are some examples of how these operators work in JavaScript. And Press <strong>F12</strong> to open the
+        console. See the examples in action! <br></note>
+
+    <p><strong>How JavaScript Finds Variables:</strong></p>
+    <ul>
+        <li>First, it looks in the local memory of <code>innerFunction</code>.</li>
+        <li>If not found, it checks the parent (<code>outerFunction</code>).</li>
+        <li>If still not found, it goes to the global scope.</li>
+        <li>If not found anywhere, you get a <code>ReferenceError</code> (JavaScript saying, “Sorry, I couldn’t find
+            it!”).</li>
+    </ul>
+
+    <h2>Visualizing Lexical Environment 🖼️</h2>
+    <p>Think of the Lexical Environment as a tree:</p>
+    <ul>
+        <li>Each function creates its own environment (a branch).</li>
+        <li>Variables and functions live on their respective branches.</li>
+        <li>If something isn’t found on the current branch, JavaScript climbs up to the parent branch.</li>
+    </ul>
+
+    <h2>Summary 📚</h2>
+    <p>The <strong>Lexical Environment</strong> is a structure that JavaScript uses to keep track of variables and their
+        relationships in the code.</p>
+
+    <div class="highlight">
+        <strong>It consists of:</strong><br>
+        • <strong>Local Memory:</strong> Stores variables and functions defined in the current execution context.<br>
+        • <strong>Reference to Parent Environment:</strong> Enables a function to access variables in its parent scope,
+        forming a Scope Chain.
+    </div>
+
+    <h2>What’s Next? 🚀</h2>
+
+    <p>And hey, if you’re feeling a little overwhelmed, don’t worry.
+        Learning JavaScript is like learning a new language — practice makes perfect.
+        Keep going, and soon you’ll be creating magic with your code! 🪄</p>
+
+    <div class="footer">
+        Stay curious, keep coding, and see you in the next lesson! 😄
+    </div>
+    <script src="../LexicalEnvironment.js"></script>
+</body>
+
+</html>
