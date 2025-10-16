@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OOPs Interactive — Real World Shopping Cart</title>
+  <link rel="stylesheet" href="../../CSS/styleJS.css">
+  
+</head>
+<body>
+  
+  <h2>📘 Learn Object-Oriented Programming (OOP)</h2>
+  <p>Hello, future developers! 😊 Ever wondered how websites like Amazon manage your shopping cart or how a game like Tic-Tac-Toe keeps track of moves? It’s all made possible through <b>Object-Oriented Programming (OOP)</b>. Don’t worry if you’re new — let’s build up step by step! 🚀</p>
+
+  <h3>📦 What is Object-Oriented Programming (OOP)?</h3>
+  <p>OOP groups data and behavior together into <b>objects</b>, making code reusable, organized, and realistic. Example — your pen, notebook, and laptop each have:</p>
+  <ul>
+    <li>Properties → color, size, brand</li>
+    <li>Actions → write, open, start</li>
+  </ul>
+  <p>Objects combine these in one unit, just like real-world entities.</p>
+
+  <h3>🧩 Why is OOP Important in JavaScript?</h3>
+  <p>JavaScript handles dynamic web elements like buttons, menus, and forms. Each element has:</p>
+  <ul>
+    <li>Properties (color, size)</li>
+    <li>Actions (click, hover)</li>
+  </ul>
+  <p>OOP helps represent them as objects in code for easy control and reusability.</p>
+
+  <h3>🗝️ Class and Object</h3>
+  <p>A <b>class</b> is a blueprint. An <b>object</b> is a real item built from that blueprint.</p>
+  <pre> <code>
+// Class: Recipe (Blueprint)
+// Object: The actual cake baked from it
+class Car {
+  constructor(brand, color) {
+    this.brand = brand;
+    this.color = color;
+  }
+  start() {
+    console.log(this.brand + " is starting...");
+  }
+}
+
+const car1 = new Car("Tesla", "Red");
+car1.start(); // Tesla is starting...
+  </code></pre>
+
+  <h3>🏗️ Constructors</h3>
+  <p>Constructors initialize object properties. They set up initial values when an object is created.</p>
+  <pre> <code>
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+}
+const person1 = new Person("Ayush", 25);
+console.log(person1.name); // Ayush
+  </code></pre>
+
+  <h3>🛠️ Parameterized Constructors</h3>
+  <p>Constructors can accept arguments to customize objects.</p>
+  <pre> <code>
+class Car {
+  constructor(brand, color) {
+    this.brand = brand;
+    this.color = color;
+  }
+}
+const car1 = new Car("Toyota", "White");
+console.log(car1.color); // White
+  </code></pre>
+
+  <h3>💡 Key Concepts in OOP</h3>
+  <ul>
+    <li><b>Class:</b> Template for creating objects</li>
+    <li><b>Object:</b> Instance of a class</li>
+    <li><b>Properties:</b> Data describing the object</li>
+    <li><b>Methods:</b> Actions the object can perform</li>
+  </ul>
+
+  <h3>🛒 Real-World Example: Shopping Cart</h3>
+  <p>Just like in Amazon or Flipkart — you add, remove, or clear items from your cart. Here, a <b>ShoppingCart class</b> manages all actions.</p>
+  <pre> <code>
+const cart = new ShoppingCart();
+cart.addItem("Laptop");
+cart.addItem("Phone");
+cart.viewCart();
+  </code></pre>
+
+  <p>Objects • Classes • Constructors • Shopping Cart Demo (Real-World Use Case)</p>
+
+  <div class="section">
+    <h3>🛒 Shopping Cart — Real World Example</h3>
+    <pre id="codeCart"> <code>
+class ShoppingCart {
+  constructor() {
+    this.items = new Map();
+  }
+
+  addItem(itemName, quantity = 1) {
+    const currentQty = this.items.get(itemName) || 0;
+    this.items.set(itemName, currentQty + quantity);
+    return `✅ ${itemName} (x${quantity}) added. Total: ${this.items.get(itemName)}`;
+  }
+
+  removeItem(itemName) {
+    if (this.items.has(itemName)) {
+      this.items.delete(itemName);
+      return `🗑️ ${itemName} removed from the cart.`;
+    }
+    return `⚠️ ${itemName} not found in cart.`;
+  }
+
+  viewCart() {
+    if (this.items.size === 0) return "🛒 Cart is empty.";
+    return "🛍️ Items in Cart:\n" + Array.from(this.items.entries())
+      .map(([name, qty]) => `• ${name} (x${qty})`).join("\n");
+  }
+
+  clearCart() {
+    this.items.clear();
+    return "🧹 Cart cleared successfully.";
+  }
+}
+    </code></pre>
+
+    <button onclick="startCart()">🟢 Run Demo</button>
+    <button onclick="addItem()">➕ Add Item</button>
+    <button onclick="removeItem()">➖ Remove Item</button>
+    <button onclick="viewCart()">👀 View Cart</button>
+    <button onclick="clearCart()">🧹 Clear Cart</button>
+    <pre id="out4">Output will appear here...</code></pre> <code>
+  </div>
+
+  <h3>✅ Summary</h3>
+  <ul>
+    <li>OOP models real-world systems.</li>
+    <li>Objects group related data + methods.</li>
+    <li>Classes are blueprints for objects.</li>
+    <li>OOP improves reusability, clarity, and maintainability.</li>
+  </ul>
+
+  <script>
+    let cartInstance = null;
+
+    function startCart() {
+      try {
+        cartInstance = new ShoppingCart();
+        document.getElementById("out4").textContent = "🛒 Shopping Cart Demo started. Ready to use!";
+      } catch (err) {
+        document.getElementById("out4").textContent = "Error: " + err.message;
+      }
+    }
+
+    function addItem() {
+      if (!cartInstance) return alert("Run demo first!");
+      const item = prompt("Enter item name to add:");
+      if (!item) return;
+      const log = cartInstance.addItem(item, 1);
+      document.getElementById("out4").textContent += "\n" + log;
+    }
+
+    function removeItem() {
+      if (!cartInstance) return alert("Run demo first!");
+      const item = prompt("Enter item name to remove:");
+      if (!item) return;
+      const log = cartInstance.removeItem(item);
+      document.getElementById("out4").textContent += "\n" + log;
+    }
+
+    function viewCart() {
+      if (!cartInstance) return alert("Run demo first!");
+      const log = cartInstance.viewCart();
+      document.getElementById("out4").textContent += "\n" + log;
+    }
+
+    function clearCart() {
+      if (!cartInstance) return alert("Run demo first!");
+      const log = cartInstance.clearCart();
+      document.getElementById("out4").textContent += "\n" + log;
+    }
+
+    // Main class
+    class ShoppingCart {
+      constructor() {
+        this.items = new Map();
+      }
+      addItem(itemName, quantity = 1) {
+        const currentQty = this.items.get(itemName) || 0;
+        this.items.set(itemName, currentQty + quantity);
+        return `✅ ${itemName} (x${quantity}) added. Total: ${this.items.get(itemName)}`;
+      }
+      removeItem(itemName) {
+        if (this.items.has(itemName)) {
+          this.items.delete(itemName);
+          return `🗑️ ${itemName} removed from the cart.`;
+        }
+        return `⚠️ ${itemName} not found in cart.`;
+      }
+      viewCart() {
+        if (this.items.size === 0) return "🛒 Cart is empty.";
+        return "🛍️ Items in Cart:\n" + Array.from(this.items.entries())
+          .map(([name, qty]) => `• ${name} (x${qty})`).join("\n");
+      }
+      clearCart() {
+        this.items.clear();
+        return "🧹 Cart cleared successfully.";
+      }
+    }
+  </script>
+</body>
+</html>
