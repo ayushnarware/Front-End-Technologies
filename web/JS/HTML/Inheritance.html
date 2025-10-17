@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introduction to Inheritance in JavaScript</title>
+  <link rel="stylesheet" href="../../CSS/styleJS.css">
+</head>
+<body>
+
+
+<h1>Introduction to Inheritance In JavaScript</h1>
+
+<p>Today, we’re diving into <b>Inheritance in JavaScript</b>, but with a twist — we’ll focus entirely on using classes. No confusion, no distractions, just the magic of inheritance made simple! Ready? Let’s begin! 🚀</p>
+
+<h3>What is Inheritance in JavaScript? 🧩</h3>
+<p>Inheritance is when a class (child) takes on the properties and methods of another class (parent). Think of it like this:</p>
+<ul>
+  <li>A parent shares traits like eye color or skills with their child.</li>
+  <li>Similarly, in JavaScript, a parent class can share its properties and methods with a child class.</li>
+</ul>
+<p>It’s all about reusing code instead of rewriting it. Why do the same work twice when you can inherit it? 😉</p>
+
+<h3>Why Use Classes for Inheritance?</h3>
+<p>Classes make inheritance in JavaScript:</p>
+<ul>
+  <li><b>Clean:</b> The syntax is easier to understand.</li>
+  <li><b>Efficient:</b> You can define shared behaviors once in the parent and reuse them across multiple child classes.</li>
+  <li><b>Organized:</b> It helps you manage code in a structured way, especially in large projects.</li>
+</ul>
+
+<h3>How Does Class-Based Inheritance Work?</h3>
+<p>To understand class inheritance, let’s break it into three simple steps:</p>
+<ol>
+  <li>Create a <b>Parent Class</b>: This class contains the shared properties and methods.</li>
+  <li><b>Extend</b> the Parent Class: Use the <b>extends</b> keyword to create a child class that inherits from the parent.</li>
+  <li>Customize the <b>Child Class</b>: Add or override properties and methods to suit the child’s needs.</li>
+</ol>
+
+<h3>Example: Parent and Child Classes</h3>
+
+<pre>
+// Parent class
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+
+    eat() {
+        console.log(`${this.name} is eating.`);
+    }
+}
+
+// Child class
+class Dog extends Animal {
+    bark() {
+        console.log(`${this.name} is barking.`);
+    }
+}
+
+// Create objects
+const animal = new Animal("Generic Animal");
+animal.eat(); // Output: Generic Animal is eating.
+
+const dog = new Dog("Buddy");
+dog.eat(); // Output: Buddy is eating. (inherited from Animal)
+dog.bark(); // Output: Buddy is barking.
+</pre>
+
+<p><b>Explanation:</b><br>
+Animal is the parent class with a property <i>name</i> and a method <i>eat</i>.<br>
+Dog extends Animal, meaning it inherits the eat method.<br>
+Dog adds its own method, <i>bark</i>, making it unique.</p>
+
+<h3>Using the constructor and super:</h3>
+
+<pre>
+// Parent class
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+
+    eat() {
+        console.log(`${this.name} is eating.`);
+    }
+}
+
+// Child class
+class Cat extends Animal {
+    constructor(name, color) {
+        super(name); // Calls the parent class's constructor
+        this.color = color; // Adds a new property
+    }
+
+    purr() {
+        console.log(`${this.name}, the ${this.color} cat, is purring.`);
+    }
+}
+
+// Create an object
+const kitty = new Cat("Whiskers", "black");
+kitty.eat(); // Output: Whiskers is eating.
+kitty.purr(); // Output: Whiskers, the black cat, is purring.
+</pre>
+
+<p><b>Explanation:</b><br>
+The <b>super(name)</b> in Cat calls the constructor of the parent Animal to initialize name.<br>
+The child class Cat adds its own property, color, and method, purr.
+</p>
+
+<h3>Method Overriding</h3>
+
+<pre>
+// Parent class
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+
+    sound() {
+        console.log(`${this.name} makes a sound.`);
+    }
+}
+
+// Child class
+class Dog extends Animal {
+    sound() {
+        console.log(`${this.name} barks.`);
+    }
+}
+
+// Create objects
+const genericAnimal = new Animal("Generic Animal");
+genericAnimal.sound(); // Output: Generic Animal makes a sound.
+
+const dog = new Dog("Buddy");
+dog.sound(); // Output: Buddy barks.
+</pre>
+
+<p><b>Explanation:</b><br>
+The <i>sound</i> method in Animal provides a general behavior.<br>
+The Dog class overrides it with a more specific behavior (barks).
+</p>
+
+<h3>Real-Life Example: Shopping System 🛒</h3>
+
+<pre>
+// Parent class
+class Product {
+    constructor(name, price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    display() {
+        console.log(`${this.name} costs $${this.price}.`);
+    }
+}
+
+// Child class
+class Book extends Product {
+    constructor(name, price, author) {
+        super(name, price); // Call the parent class's constructor
+        this.author = author; // Add a new property
+    }
+
+    display() {
+        super.display(); // Call the parent method
+        console.log(`Written by ${this.author}.`);
+    }
+}
+
+// Create objects
+const product = new Product("Laptop", 1200);
+product.display(); // Output: Laptop costs $1200.
+
+const book = new Book("JavaScript Basics", 25, "John Doe");
+book.display();
+// Output:
+// JavaScript Basics costs $25.
+// Written by John Doe.
+</pre>
+
+<h3>Key Concepts to Remember 🧠</h3>
+<ul>
+  <li><b>extends:</b> Used to inherit from a parent class.</li>
+  <li><b>constructor:</b> Initializes properties when an object is created.</li>
+  <li><b>super:</b> Calls the parent class’s constructor or methods.</li>
+  <li><b>Method Overriding:</b> Allows child classes to provide specific behavior.</li>
+</ul>
+
+<h3>Why Use Inheritance?</h3>
+<ul>
+  <li><b>Code Reusability:</b> Write once, use multiple times.</li>
+  <li><b>Better Organization:</b> Divide responsibilities among classes.</li>
+  <li><b>Flexibility:</b> Override methods for specific behavior.</li>
+</ul>
+
+<h3>A Quick Motivational Thought 💭</h3>
+<p>“Good code is not written; it’s refined.” Keep practicing, and soon, you’ll master how to organize your code using inheritance like a pro. Just like building a solid foundation for a house, inheritance makes your code sturdy and future-proof! 💪</p>
+
+<h3>What’s Next?</h3>
+<p>In the next lesson, we’ll explore <b>Polymorphism</b>, a superpower of inheritance that allows you to use the same method in different ways. It’s going to be fun and enlightening, so stay tuned! 🌟</p>
+
+<p><b>Keep coding, stay curious, and never stop learning. See you in the next class! 😊</b></p>
+<script src="../Inheritance.js"></script>
+</body>
+</html>
