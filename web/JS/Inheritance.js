@@ -230,6 +230,8 @@ const dog1 = new Dog("Buddy", "Golden Retriever");
 
 dog1.showDetails(); // Name: Buddy, Breed: Golden Retriever
 dog1.speak();
+
+
 // Output:
 // Buddy makes a sound
 // Buddy barks
