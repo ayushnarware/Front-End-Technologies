@@ -141,7 +141,7 @@ class Employee {
   }
 }
 class Developer extends Employee {
-    //Overriden method
+  //Overriden method
   project() {
     console.log(`${this.empName} is coding as Developer.`);
   }
@@ -152,7 +152,7 @@ class Developer extends Employee {
   }
 }
 class Tester extends Employee {
-    //overridden
+  //overridden
   project() {
     console.log(`${this.empName} is testing the application.`);
   }
@@ -164,19 +164,19 @@ class Tester extends Employee {
 }
 
 const emp1 = new Developer(101, "Ram", 70000);
-emp1.work();      
-emp1.project();   
-emp1.infoDeveloper();     
+emp1.work();
+emp1.project();
+emp1.infoDeveloper();
 const emp2 = new Tester(102, "Sita", 45000);
-emp2.work();     
-emp2.project();   
+emp2.work();
+emp2.project();
 emp2.infoTester();
 
 
 
 
 class Tester extends Employee {
-    //overridden
+  //overridden
   project() {
     console.log(`${this.empName} is testing the application.`);
   }
@@ -188,12 +188,12 @@ class Tester extends Employee {
 }
 
 const emp11 = new Developer(101, "Ram", 70000);
-emp11.work();      
-emp11.project();   
-emp11.infoDeveloper();     
+emp11.work();
+emp11.project();
+emp11.infoDeveloper();
 const emp22 = new Tester(102, "Sita", 45000);
-emp22.work();     
-emp22.project();   
+emp22.work();
+emp22.project();
 emp22.infoTester();
 
 
