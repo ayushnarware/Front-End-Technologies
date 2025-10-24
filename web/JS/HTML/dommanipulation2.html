@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>classList Example</title>
+  <link href="../../CSS/styleJS.css" rel="stylesheet">
+  <style>
+    .highlight {
+      background-color: yellow;
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2 id="text">DOM Manipulation using classes</h2>
+  <h3>How are you?</h3>
+  <button onclick="addHighlight()">Add Highlight</button>
+  <button onclick="removeHighlight()">Remove Highlight</button>
+  <button onclick="toggleHighlight()">Toggle Highlight</button>
+  <button onclick="checkHighlight()">Check Highlight</button>
+
+  <script>
+    let text = document.querySelector("h3");
+
+    function addHighlight() {
+      text.classList.add("highlight");   // add class
+    }
+
+    function removeHighlight() {
+      text.classList.remove("highlight"); // remove class
+    }
+
+    function toggleHighlight() {
+      text.classList.toggle("highlight"); // add if missing, remove if present
+    }
+function checkHighlight() {
+      if (text.classList.contains("highlight")) { //returns true or false
+        alert(" Highlight class is applied!");
+      } else {
+        alert(" Highlight class is NOT applied.");
+      }
+    }
+  </script>
+</body>
+</html>

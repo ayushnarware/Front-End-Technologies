@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulating the DOM</title>
+    <link href="../../CSS/styleJS.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Manipulating the DOM: Taking Control of Your Webpage ✨</h1>
+
+    <p>
+        Previously, we learned how to select elements in the DOM using various methods.
+        But selecting elements is just the start. The real magic begins when you manipulate the DOM,
+        transforming static content into dynamic and interactive experiences. 🛠️
+        Whether you're updating text, modifying styles, or adding new elements, DOM manipulation gives life to your
+        webpages.
+    </p>
+
+    <p>
+        Let’s explore the different ways to manipulate DOM elements step by step! 🚀
+    </p>
+
+    <!-- 1️⃣ Changing Content -->
+    <h2>1️⃣ Changing Content 📝</h2>
+    <p>
+        One of the most common tasks in DOM manipulation is updating the text or HTML content of elements.
+        This is how you dynamically change the information displayed on a webpage.
+    </p>
+
+    <p><strong>Methods:</strong> <br>
+        <code>textContent</code>: Updates only the text inside an element.<br>
+        <code>innerHTML</code>: Updates the text and HTML structure inside an element.
+    </p>
+<center>
+    <h3 id="heading">Original Heading - DOM Manipulation</h3>
+    <button id="changeTextBtn">Change Heading</button> 
+    <button id="rechange">Change Heading with HTML</button>
+</center>
+    <pre><code>
+// Example:
+const heading = document.querySelector('h1');
+heading.textContent = "Welcome to Dynamic Webpages!";
+heading.innerHTML = "Welcome to <span style='color: blue;'>JavaScript</span>";
+    </code></pre>
+
+    <!-- 2️⃣ Changing Styles -->
+    <h2>2️⃣ Changing Styles 🎨</h2>
+    <p>
+        Modify the appearance of elements directly with JavaScript by updating their style properties.
+        This is great for creating dynamic effects like highlighting an element or changing colors.
+    </p>
+<center>
+    <button class="btn">Click to Change Color</button>
+</center>
+    <pre class="pre" x><code>
+// Example:
+document.body.style.backgroundColor = "#0b1220";
+document.body.style.color = "#e6eef6";
+// buttons
+document.querySelectorAll("button").forEach(b=>{
+    b.style.backgroundColor = "#4da3ff";
+    b.style.color = "#0b1220";
+    b.style.border = "none";
+});
+// headings and pre blocks
+document.querySelectorAll("h1,h2,h3").forEach(h => h.style.color = "#bfe4ff");
+document.querySelectorAll("pre").forEach(p=>{
+    p.style.background = "#08121a";
+    p.style.color = "#d7eefc";
+});
+// card highlight (if exists)
+document.querySelectorAll(".card").forEach(c=>{
+    c.style.background = "#0f1724";
+    c.style.border = "1px solid rgba(255,255,255,0.04)";
+    c.style.boxShadow = "0 6px 18px rgba(0,0,0,0.6)";
+});
+// images border (optional)
+document.querySelectorAll("img").forEach(img=>{
+img.style.border = "1px solid rgba(255,255,255,0.06)";
+});
+    </code></pre>
+
+    <!-- 3️⃣ Adding and Removing Elements -->
+    <h2>3️⃣ Adding and Removing Elements ➕➖</h2>
+    <p>
+        JavaScript allows you to create new elements, add them to the DOM, and remove existing ones.
+        This is especially useful for creating dynamic lists, forms, or other interactive features.
+    </p>
+<center>
+      
+ <div>
+    <input type="text" id="newItemInput" placeholder="New item text" >
+    <button id="addItemBtn">Add Item</button>
+    <button id="removeItemBtn">Remove Last Item</button>
+  </div>
+  
+  <ul id="itemList">
+    <li>Milk</li>
+    <li>Bread</li>
+  </ul>
+</center>
+    <pre><code>
+// Example:
+const list = document.querySelector('ul');
+const newItem = document.createElement('li');
+newItem.textContent = "New Item";
+list.appendChild(newItem);
+list.removeChild(list.querySelector('li'));
+    </code></pre>
+
+    <!-- 4️⃣ Adding and Removing Classes -->
+    <h2>4️⃣ Adding and Removing Classes 🏷️</h2>
+    <p>
+        Classes are the best way to apply styles consistently.
+        JavaScript provides the classList property, which has methods to add, remove, and toggle classes.
+    </p>
+<center>
+    <div class="card">I am a card element</div>
+    <button id="toggleClassBtn">Toggle Highlight</button>
+</center>
+    <pre><code>
+// Example:
+const card = document.querySelector('.card');
+card.classList.add('highlight');
+card.classList.remove('highlight');
+card.classList.toggle('highlight');
+    </code></pre>
+
+    <!-- 5️⃣ Manipulating Attributes -->
+    <h2>5️⃣ Manipulating Attributes 🏗️</h2>
+    <p>
+        Attributes provide additional information about elements, like src for images or href for links.
+        With JavaScript, you can dynamically set, get, or remove these attributes.
+    </p>
+    <center>
+
+    <img id="image" alt="Sample Image" width="150" height="150" src="https://wallpaper.dog/large/20673129.jpg">
+    <br>
+    <button id="changeImageBtn">Change Image</button>
+</center>
+    <pre><code>
+// Example:
+const image = document.querySelector('img');
+image.setAttribute('src', 'https://Examplea.com/th/id/OIP');
+console.log(image.getAttribute('src'));
+image.removeAttribute('alt');
+    </code></pre>
+
+    <h2>Conclusion: Building Dynamic Webpages 🌟</h2>
+    <p>
+        By combining these manipulation techniques, you can create highly dynamic and responsive websites.
+        Here’s what you’ve learned so far:
+    </p>
+    <ul>
+        <li>Change the text or structure of elements.</li>
+        <li>Modify the appearance of elements dynamically.</li>
+        <li>Add and remove elements for interactivity.</li>
+        <li>Use classes for consistent and maintainable styling.</li>
+        <li>Handle attributes to control element behavior.</li>
+    </ul>
+
+    <p>
+        The DOM is like your playground, and these tools are your building blocks to craft amazing user experiences!
+        In the next session, we’ll explore event handling — making elements respond to user interactions like clicks or
+        keystrokes.
+    </p>
+
+    <p><strong>Keep coding, stay curious, and never stop learning. 😊</strong></p>
+
+    <script src="../ManipulatingDOM.js"></script>
+</body>
+
+</html>
