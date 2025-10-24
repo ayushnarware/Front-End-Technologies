@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manipulating the DOM</title>
     <link href="../../CSS/styleJS.css" rel="stylesheet">
+    <style>
+        .highlight {
+            background-color: yellow;
+            color: black;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -34,16 +43,15 @@
         <code>textContent</code>: Updates only the text inside an element.<br>
         <code>innerHTML</code>: Updates the text and HTML structure inside an element.
     </p>
-<center>
-    <h3 id="heading">Original Heading - DOM Manipulation</h3>
-    <button id="changeTextBtn">Change Heading</button> 
-    <button id="rechange">Change Heading with HTML</button>
-</center>
+    <center>
+        <h3 id="heading">Mastering the DOM: Your Web Superpower 💪</h3>
+        <button id="changeTextBtn">Transform Heading</button>
+    </center>
     <pre><code>
 // Example:
 const heading = document.querySelector('h1');
 heading.textContent = "Welcome to Dynamic Webpages!";
-heading.innerHTML = "Welcome to <span style='color: blue;'>JavaScript</span>";
+heading.innerHTML = "Welcome to <span>JavaScript</span>";
     </code></pre>
 
     <!-- 2️⃣ Changing Styles -->
@@ -52,9 +60,9 @@ heading.innerHTML = "Welcome to <span style='color: blue;'>JavaScript</span>";
         Modify the appearance of elements directly with JavaScript by updating their style properties.
         This is great for creating dynamic effects like highlighting an element or changing colors.
     </p>
-<center>
-    <button class="btn">Click to Change Color</button>
-</center>
+    <center>
+        <button class="btn">Click to Change Color</button>
+    </center>
     <pre class="pre" x><code>
 // Example:
 document.body.style.backgroundColor = "#0b1220";
@@ -89,19 +97,20 @@ img.style.border = "1px solid rgba(255,255,255,0.06)";
         JavaScript allows you to create new elements, add them to the DOM, and remove existing ones.
         This is especially useful for creating dynamic lists, forms, or other interactive features.
     </p>
-<center>
-      
- <div>
-    <input type="text" id="newItemInput" placeholder="New item text" >
-    <button id="addItemBtn">Add Item</button>
-    <button id="removeItemBtn">Remove Last Item</button>
-  </div>
-  
-  <ul id="itemList">
-    <li>Milk</li>
-    <li>Bread</li>
-  </ul>
-</center>
+    <center>
+
+        <div>
+            <input type="text" id="newItemInput" placeholder="New item text"
+                style="margin: 0 10px;padding: 10px 15px; background: #0072ff;color: #fff;border-radius: 5px; transition: background-color 0.3s, color 0.3s;cursor: pointer;">
+            <button id="addItemBtn">Add Item</button>
+            <button id="removeItemBtn">Remove Last Item</button>
+        </div>
+
+        <ul id="itemList">
+            <li>Milk</li>
+            <li>Bread</li>
+        </ul>
+    </center>
     <pre><code>
 // Example:
 const list = document.querySelector('ul');
@@ -117,10 +126,10 @@ list.removeChild(list.querySelector('li'));
         Classes are the best way to apply styles consistently.
         JavaScript provides the classList property, which has methods to add, remove, and toggle classes.
     </p>
-<center>
-    <div class="card">I am a card element</div>
-    <button id="toggleClassBtn">Toggle Highlight</button>
-</center>
+    <center>
+        <div class="card">I am a card element</div>
+        <button id="toggleClassBtn">Toggle Highlight</button>
+    </center>
     <pre><code>
 // Example:
 const card = document.querySelector('.card');
@@ -137,10 +146,10 @@ card.classList.toggle('highlight');
     </p>
     <center>
 
-    <img id="image" alt="Sample Image" width="150" height="150" src="https://wallpaper.dog/large/20673129.jpg">
-    <br>
-    <button id="changeImageBtn">Change Image</button>
-</center>
+        <img id="image" alt="Sample Image" width="150" height="150" src="https://wallpaper.dog/large/20673129.jpg">
+        <br>
+        <button id="changeImageBtn">Change Image</button>
+    </center>
     <pre><code>
 // Example:
 const image = document.querySelector('img');

@@ -1,21 +1,21 @@
 // ✅ 1. Changing Content
-const heading = document.querySelector("#heading");
-const changeTextBtn = document.querySelector("#changeTextBtn");
-const  rechangeBtn = document.querySelector("#rechange");
+const heading = document.getElementById("heading");
+const changeTextBtn = document.getElementById("changeTextBtn");
 
+let isChanged = false;
 
 changeTextBtn.addEventListener("click", () => {
-    heading.textContent = "Welcome to Dynamic Webpages!";
-    console.log("Heading changed using textContent ✅");
-
-    heading.innerHTML = "Welcome to <span style='color: blue;'>JavaScript</span>";
-    console.log("Heading updated with HTML structure ✅");
+    if (!isChanged) {
+        heading.innerHTML = "🚀 Welcome to <span>Interactive JavaScript</span>!";
+        changeTextBtn.innerHTML = "🔄 Reset Heading";
+        console.log("Heading transformed to dynamic version ✅");
+    } else {
+        heading.innerHTML = "Mastering the DOM: Your Web Superpower 💪";
+        changeTextBtn.innerHTML = "✨ Transform Heading";
+        console.log("Heading reverted to original ✅");
+    }
+    isChanged = !isChanged;
 });
-rechangeBtn.addEventListener("click", () => {
-    heading.innerHTML = "Explore the <em style='color: green;'> Original Heading - DOM Manipulation</em>!";
-    console.log("Heading updated with HTML structure ✅");
-});
-
 
 
 // ✅ 2. Modifying Styles
@@ -151,24 +151,31 @@ removeItemBtn.addEventListener("click", () => {
     }
 });
 
-// ✅ 4. Adding and Removing Classes
 const card = document.querySelector(".card");
-const toggleClassBtn = document.querySelector("#toggleClassBtn");
+const toggleClassBtn = document.getElementById("toggleClassBtn");
 
 toggleClassBtn.addEventListener("click", () => {
-    card.classList.toggle("highlight");
-    console.log("Card highlight toggled:", card.classList.contains("highlight"));
+  card.classList.toggle("highlight");
+  console.log("Highlight toggled 🎯");
+  toggleClassBtn.innerHTML = card.classList.contains("highlight") ? "Remove Highlight" : "Add Highlight";
 });
 
 // ✅ 5. Manipulating Attributes
-const image = document.querySelector("#image");
-const changeImageBtn = document.querySelector("#changeImageBtn");
+const image = document.getElementById("image");
+const changeImageBtn = document.getElementById("changeImageBtn");
+
+// Image URLs
+const img1 = "https://tse2.mm.bing.net/th/id/OIP.1Se7tgAnRox2K9H5L77QOAHaEx?pid=ImgDet&w=474&h=305&rs=1&o=7&rm=3";
+const img2 = "https://wallpaper.dog/large/20673129.jpg";
+
+// Track current image
+let isImage1 = true;
 
 changeImageBtn.addEventListener("click", () => {
-    image.setAttribute("src", "https://tse2.mm.bing.net/th/id/OIP.1Se7tgAnRox2K9H5L77QOAHaEx?pid=ImgDet&w=474&h=305&rs=1&o=7&rm=3");
-    console.log("Image src set to:", image.getAttribute("src"));
+    image.setAttribute("src", isImage1 ? img2 : img1);
     image.removeAttribute("alt");
-    console.log("Removed alt attribute from image.");
+    console.log("Image toggled 🎯");
+    isImage1 = !isImage1;
 });
 
 console.log("✅ DOM Manipulation Script Loaded Successfully!");
