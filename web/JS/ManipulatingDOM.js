@@ -17,6 +17,17 @@ changeTextBtn.addEventListener("click", () => {
   isChanged = !isChanged;
 });
 
+// more efficient toggle using template literals
+/*
+changeTextBtn.addEventListener("click", () => { 
+  isChanged = !isChanged;
+  heading.innerHTML = isChanged ? "🚀 Welcome to <span>Interactive JavaScript</span>!" : "Mastering the DOM: Your Web Superpower 💪";
+  changeTextBtn.innerHTML = isChanged ? "🔄 Reset Heading" : "✨ Transform Heading";
+  console.log("Heading toggled ✅");
+}
+);
+*/
+
 
 // ✅ 2. Modifying Styles
 // ===== Theme toggle via the .btn button =====
