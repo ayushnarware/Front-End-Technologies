@@ -1,6 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comprehensive Guide to JavaScript Events</title>
+<style>
+  :root {
+    --bg: #1e1e1e;
+    --card: #252526;
+    --accent: #007acc;
+    --text: #d4d4d4;
+    --code-bg: #1e1e1e;
+    --border: #333;
+  }
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Consolas', 'Courier New', monospace;
+    margin: auto;
+    padding: 20px;
+    max-width: 900px;
+  }
+  h1, h2 {
+    color: var(--accent);
+  }
+  .card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  }
+  pre {
+    background-color: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px;
+    overflow-x: auto;
+    color: #9cdcfe;
+  }
+  button {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    margin: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  button:hover {
+    background-color: #0b7dda;
+  }
+  input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    background-color: #2d2d2d;
+    color: var(--text);
+  }
+  form {
+    margin-top: 10px;
+  }
+  #myDiv {
+    background-color: #2a2a2a;
+    padding: 30px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<h1>🧠 Comprehensive Guide to JavaScript Events</h1>
+<p>Explore how <code>addEventListener()</code> empowers interactive web experiences with mouse, keyboard, form, and window events.</p>
+
+<div class="card">
+  <h2>1️⃣ Mouse Events</h2>
+  <button id="myButton">Click or Double Click Me</button>
+  <div id="myDiv">Hover or Move Mouse Here</div>
+
+  <pre><code>// Example: Click
+document.querySelector('#myButton').addEventListener('click', () => {
+  console.log('Button clicked!');
+});</code></pre>
+</div>
+
+<div class="card">
+  <h2>2️⃣ Keyboard Events</h2>
+  <p>Press any key on your keyboard!</p>
+  <pre><code>document.addEventListener('keydown', (event) => {
+  console.log(`Key pressed: ${event.key}`);
+});</code></pre>
+</div>
+
+<div class="card">
+  <h2>3️⃣ Form Events</h2>
+  <form id="myForm">
+    <input id="myInput" type="text" placeholder="Type something..." />
+    <button type="submit">Submit</button>
+  </form>
+  <pre><code>document.querySelector('#myInput').addEventListener('input', (event) => {
+  console.log(`Current value: ${event.target.value}`);
+});</code></pre>
+</div>
+
+<div class="card">
+  <h2>4️⃣ Window Events</h2>
+  <p>Try resizing or scrolling the page!</p>
+  <pre><code>window.addEventListener('resize', () => {
+  console.log('Window resized');
+});</code></pre>
+</div>
+<footer>
+    <p>© 2025 Ayush Narware. All rights reserved.</p>
+    <p>Created with ❤️ for learning and sharing knowledge.</p>
+</footer>
+
+<script>
+const btn = document.querySelector('#myButton');
+const div = document.querySelector('#myDiv');
+const input = document.querySelector('#myInput');
+const form = document.querySelector('#myForm');
+
+// Mouse Events
+btn.addEventListener('click', () => console.log('Button clicked!'));
+btn.addEventListener('dblclick', () => console.log('Button double-clicked!'));
+div.addEventListener('mouseover', () => console.log('Mouse over the element!'));
+div.addEventListener('mouseout', () => console.log('Mouse left the element!'));
+div.addEventListener('mousemove', (event) => {
+  console.log(`Mouse position: (${event.clientX}, ${event.clientY})`);
+});
+
+// Keyboard Events
+document.addEventListener('keydown', (event) => console.log(`Key pressed: ${event.key}`));
+document.addEventListener('keyup', (event) => console.log(`Key released: ${event.key}`));
+
+// Form Events
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  console.log('Form submitted!');
+});
+input.addEventListener('change', (event) => console.log(`Input changed to: ${event.target.value}`));
+input.addEventListener('focus', () => console.log('Input field focused!'));
+input.addEventListener('blur', () => console.log('Input field lost focus!'));
+input.addEventListener('input', (event) => console.log(`Current value: ${event.target.value}`));
+
+// Window Events
+document.addEventListener('DOMContentLoaded', () => console.log('DOM fully loaded and parsed'));
+window.addEventListener('resize', () => console.log('Window resized'));
+window.addEventListener('scroll', () => console.log('User is scrolling!'));
+</script>
+
+
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events in JS</title>
@@ -14,6 +177,7 @@
     </style>
 </head>
 <body>
+    <h1> Simple Exampal hear</h1>
     <div id="box"></div>
     <p id="text">Output displayed here</p>
     <input type="text" id="ip">
