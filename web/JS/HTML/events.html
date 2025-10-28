@@ -115,8 +115,10 @@ document.querySelector('#myButton').addEventListener('click', () => {
 });</code></pre>
 </div>
 <footer>
+  <div class="card" style="align-items: center; text-align: center;">
     <p>© 2025 Ayush Narware. All rights reserved.</p>
     <p>Created with ❤️ for learning and sharing knowledge.</p>
+    </div>
 </footer>
 
 <script>
@@ -170,9 +172,9 @@ window.addEventListener('scroll', () => console.log('User is scrolling!'));
     <style>
         #box {
             height: 100px;
-            width: 100px;
-            background-color: white;
-            border: 6px solid blue;
+            max-width: 900px;
+            background-color: #1e1e1e;
+            border: 6px solid #333;
         }
     </style>
 </head>
@@ -203,12 +205,11 @@ window.addEventListener('scroll', () => console.log('User is scrolling!'));
         });
 
         box.addEventListener("mouseover", () => {
-            alert("You hovered on box");
-            box.style.backgroundColor = "cyan";
+            box.style.backgroundColor = "#007acc";
         });
 
         box.addEventListener("mouseout", () => {
-            box.style.backgroundColor = "white";
+            box.style.backgroundColor = "#333";
         });
 
         box.addEventListener("mousemove", (event) => {
