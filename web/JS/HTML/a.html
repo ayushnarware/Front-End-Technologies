@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript Closures — Interactive Learning Module</title>
+  <style>
+    :root{
+      --bg: #f4f6f8; --card:#ffffff; --text:#0f1724; --muted:#64748b; --primary:#2563eb; --accent:#06b6d4; --radius:12px; --shadow:0 6px 24px rgba(12,38,63,0.08);
+    }
+    [data-theme="dark"]{ --bg:#0b1220; --card:#071026; --text:#e6eef6; --muted:#94a3b8; --primary:#60a5fa; --accent:#06b6d4; }
+    *{box-sizing:border-box; font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+    body{margin:0; background:var(--bg); color:var(--text); padding:24px}
+    .container{max-width:1000px; margin:0 auto}
+    header{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px}
+    .title{display:flex; flex-direction:column}
+    h1{margin:0; color:var(--primary); font-size:22px}
+    p.lead{margin:4px 0 0; color:var(--muted)}
+    .controls{display:flex; gap:8px; align-items:center}
+    .btn{background:var(--primary); color:white; border:none; padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:600}
+    .ghost{background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--text)}
+
+    .grid{display:grid; grid-template-columns: 2fr 360px; gap:18px; align-items:start}
+    .card{background:var(--card); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); border:1px solid rgba(0,0,0,0.03)}
+    .card h2{margin-top:0}
+    pre{background:rgba(12,18,26,0.9); color:var(--text); padding:12px; border-radius:10px; overflow:auto; font-family:monospace; color:var(--text)}
+
+    .example-controls{display:flex; gap:8px; margin-top:10px}
+    .console{background:#031022; color:#e6eef6; padding:10px; border-radius:8px; min-height:90px; font-family:monospace; overflow:auto}
+    label.small{font-size:13px; color:var(--muted)}
+
+    .collapsible{cursor:pointer; padding:8px 10px; border-radius:8px; border:1px dashed rgba(0,0,0,0.04); display:flex; justify-content:space-between; align-items:center}
+    .hidden{display:none}
+
+    .try-editor textarea{width:100%; min-height:120px; border-radius:10px; padding:12px; border:1px solid rgba(0,0,0,0.06); font-family:monospace}
+    .footer{margin-top:16px; text-align:center; color:var(--muted); font-size:13px}
+
+    .meta{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+    .pill{background:rgba(37,99,235,0.08); color:var(--primary); padding:6px 8px; border-radius:999px; font-weight:600; font-size:13px}
+
+    @media (max-width:980px){.grid{grid-template-columns:1fr}.controls{flex-direction:column; align-items:flex-end}}
+
+    /* small helpers */
+    .code-header{display:flex; justify-content:space-between; gap:8px; align-items:center}
+    .small{font-size:13px; color:var(--muted)}
+    .toggle{display:inline-flex; align-items:center; gap:6px}
+    .copy{background:transparent; border:1px solid var(--border); padding:6px 8px; border-radius:8px; cursor:pointer}
+
+  </style>
+</head>
+<body>
+  <div class="container" id="app">
+    <header>
+      <div class="title">
+        <h1>JavaScript Closures — Interactive Module</h1>
+        <p class="lead">Simple, professional learning page — live demos, code runner, and Hinglish explanations.</p>
+      </div>
+      <div class="controls">
+        <div class="toggle">
+          <label class="small">Hinglish</label>
+          <input type="checkbox" id="hinglishToggle" title="Toggle Hinglish explanations" />
+        </div>
+        <div class="toggle">
+          <label class="small">Dark</label>
+          <input type="checkbox" id="themeToggle" title="Dark / Light" />
+        </div>
+        <button class="btn" id="prevBtn">◀ Previous</button>
+        <button class="btn" id="nextBtn">Next ▶</button>
+      </div>
+    </header>
+
+    <div class="grid">
+      <main>
+        <section class="card" id="what">
+          <div style="display:flex; justify-content:space-between; align-items:center">
+            <h2>💡 What is a Closure?</h2>
+            <div class="pill">Lexical Scope</div>
+          </div>
+
+          <p id="explainShort">A <strong>closure</strong> lets an inner function remember variables from its outer function even after the outer has finished.</p>
+          <p id="explainHinglish" class="small hidden">Hinglish: Jab ek function dusre function ke andar banta hai, to inner function apne outer function ke variables yaad rakh leta hai — chahe outer function run ho ke khatam ho chuka ho.</p>
+
+          <div style="margin-top:12px" class="card">
+            <div class="code-header"><strong>Basic example</strong>
+              <div>
+                <button class="copy" data-target="code1">Copy</button>
+                <button class="btn" data-run="code1">Run Example</button>
+              </div>
+            </div>
+            <pre id="code1">function outerFunction() {
+  let count = 0; // outer variable
+  return function innerFunction() {
+    count++;
+    console.log(`Count is: ${count}`);
+  };
+}
+
+const counter = outerFunction();
+counter();
+counter();</pre>
+            <div class="small" style="margin-top:8px">Click <em>Run Example</em> to execute in the demo console below.</div>
+          </div>
+
+        </section>
+
+        <section class="card" style="margin-top:14px" id="examples">
+          <h2>⚙️ Interactive Demos</h2>
+
+          <!-- Counter demo (from earlier) -->
+          <div class="card" style="margin-bottom:10px">
+            <strong>1) Counter (State via Closure)</strong>
+            <p class="small">Create a counter and use Increment to see the preserved state.</p>
+            <div class="example-controls">
+              <button class="btn" id="createCounter">Create counter</button>
+              <button class="btn hidden" id="incCounter">Increment</button>
+              <button class="btn hidden" id="decCounter">Decrement</button>
+              <button class="btn hidden" id="resetCounter">Reset</button>
+            </div>
+            <label class="small">Console:</label>
+            <div id="consoleCounter" class="console"></div>
+          </div>
+
+          <!-- Bank account demo -->
+          <div class="card">
+            <strong>2) Bank Account (Encapsulation)</strong>
+            <p class="small">Balance is private — use deposit & withdraw to modify it.</p>
+            <div style="display:flex; gap:8px; margin-top:8px; flex-wrap:wrap">
+              <input id="initialBal" placeholder="Initial balance (e.g. 1000)" style="padding:8px; border-radius:8px; border:1px solid var(--border)" />
+              <button class="btn" id="createAccount">Create Account</button>
+            </div>
+
+            <div id="accountControls" class="hidden" style="margin-top:10px">
+              <input id="amt" placeholder="Amount" style="padding:8px; border-radius:8px; border:1px solid var(--border)" />
+              <button class="btn" id="depositBtn">Deposit</button>
+              <button class="btn" id="withdrawBtn">Withdraw</button>
+            </div>
+            <label class="small" style="margin-top:10px">Console:</label>
+            <div id="consoleBank" class="console"></div>
+          </div>
+
+        </section>
+
+        <section class="card" style="margin-top:14px">
+          <h2>🔁 Try It Yourself — Live Editor</h2>
+          <div class="small">Type JS code and press <strong>Run</strong>. The editor runs the code safely in a try/catch and prints the return value or error.</div>
+          <div style="margin-top:10px" class="try-editor">
+            <textarea id="userCode">// Example: createCounter from earlier
+function outer(){ let x=0; return ()=>++x }
+const c=outer(); c(); c();</textarea>
+            <div style="margin-top:8px; display:flex; gap:8px">
+              <button class="btn" id="runUserCode">Run Code ▶</button>
+              <button class="copy" data-target="userCode">Copy</button>
+              <button class="btn" id="clearUserCode">Clear</button>
+            </div>
+            <label class="small">Output:</label>
+            <div id="userOutput" class="console"></div>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:14px">
+          <h2>📚 Summary & Tips</h2>
+          <ul>
+            <li>Closures provide private state and encapsulation.</li>
+            <li>Use for module patterns, factories, and callbacks.</li>
+            <li>Watch for memory — closures keep references alive.</li>
+          </ul>
+          <div style="margin-top:8px" class="collapsible" id="readMoreBtn">Read more — advanced notes <span class="small">▼</span></div>
+          <div id="readMore" class="hidden" style="margin-top:8px">
+            <p class="small">Advanced: closures capture the lexical environment — not just primitive values but references to objects. They are created at function definition time.</p>
+          </div>
+        </section>
+
+      </main>
+
+      <aside>
+        <div class="card">
+          <h3>Quick Reference</h3>
+          <p class="small">Hinglish toggle will show short Hinglish translations for key explanations.</p>
+          <div style="margin-top:8px">
+            <strong>Use-cases</strong>
+            <ul class="small">
+              <li>Data hiding (private vars)</li>
+              <li>Factory functions</li>
+              <li>Memoization & callbacks</li>
+            </ul>
+          </div>
+          <div style="margin-top:10px">
+            <strong>Example Snippets</strong>
+            <div style="margin-top:8px">
+              <div class="small">Counter: contains state across calls.</div>
+              <pre id="mini1">function createCounter(){let c=0; return ()=>++c}</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h3>Navigation</h3>
+          <div style="display:flex; gap:8px; margin-top:8px">
+            <button class="btn" id="copyAll">Copy Full Code</button>
+            <a class="btn" href="#what">Jump to top</a>
+          </div>
+          <div class="small" style="margin-top:10px">Designed for single-file usage — copy/paste into an .html file and open locally.</div>
+        </div>
+
+      </aside>
+    </div>
+
+    <div class="footer">Made with ♥ — Closures module • Try editing examples & run them. </div>
+  </div>
+
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('change', (e)=>{
+      if(e.target.checked) document.documentElement.setAttribute('data-theme','dark');
+      else document.documentElement.removeAttribute('data-theme');
+    })
+
+    // Hinglish toggle
+    const hinglish = document.getElementById('hinglishToggle');
+    hinglish.addEventListener('change', (e)=>{
+      document.getElementById('explainHinglish').classList.toggle('hidden', !e.target.checked);
+    })
+
+    // Read more collapse
+    document.getElementById('readMoreBtn').addEventListener('click', ()=>{
+      const r = document.getElementById('readMore'); r.classList.toggle('hidden');
+    })
+
+    // Copy buttons
+    document.querySelectorAll('.copy').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const target = btn.getAttribute('data-target');
+        const el = target ? document.getElementById(target) : btn.closest('.card').querySelector('pre');
+        if(!el) return;
+        navigator.clipboard.writeText(el.textContent).then(()=>{ btn.textContent='Copied'; setTimeout(()=>btn.textContent='Copy',900) })
+      })
+    })
+
+    // Run example for code blocks
+    document.querySelectorAll('[data-run]').forEach(b=>{
+      b.addEventListener('click', ()=>{
+        const id = b.getAttribute('data-run');
+        const code = document.getElementById(id).textContent;
+        runCodeInConsole(code, document.getElementById('consoleCounter'));
+      })
+    })
+
+    // small helper console runner (isolated eval)
+    function runCodeInConsole(code, consoleEl){
+      consoleEl.innerHTML='';
+      try{
+        // capture console.log
+        const logs = [];
+        const fakeConsole = { log: (...a)=> logs.push(a.map(x=>typeof x==='object'?JSON.stringify(x):String(x)).join(' ')) };
+        const fn = new Function('console', code);
+        fn(fakeConsole);
+        if(logs.length) logs.forEach(l=>{ const d=document.createElement('div'); d.textContent=l; consoleEl.appendChild(d) });
+        else { const d=document.createElement('div'); d.textContent='✅ Ran (no console.log output)'; consoleEl.appendChild(d) }
+      }catch(err){ const d=document.createElement('div'); d.textContent='❌ '+err.message; consoleEl.appendChild(d) }
+    }
+
+    // Counter demo wiring
+    const createBtn = document.getElementById('createCounter');
+    const incBtn = document.getElementById('incCounter');
+    const decBtn = document.getElementById('decCounter');
+    const resetBtn = document.getElementById('resetCounter');
+    const cConsole = document.getElementById('consoleCounter');
+    let counterFn = null;
+
+    createBtn.addEventListener('click', ()=>{
+      cConsole.innerHTML='';
+      function outerFunction(){ let count=0; return function(){ count++; cConsole.appendChild(Object.assign(document.createElement('div'),{textContent:`Count is: ${count}`})); } }
+      counterFn = outerFunction();
+      incBtn.classList.remove('hidden'); decBtn.classList.remove('hidden'); resetBtn.classList.remove('hidden');
+      cConsole.appendChild(Object.assign(document.createElement('div'),{textContent:'Counter created. Click Increment.'}));
+    })
+    incBtn.addEventListener('click', ()=>{ if(counterFn) counterFn(); })
+    decBtn.addEventListener('click', ()=>{ if(counterFn){ /* we didn't implement decrement in this closure — for demo, show message */ cConsole.appendChild(Object.assign(document.createElement('div'),{textContent:'Decrement not implemented for this demo.'})) } })
+    resetBtn.addEventListener('click', ()=>{ /* recreate */ createBtn.click(); cConsole.appendChild(Object.assign(document.createElement('div'),{textContent:'Reset — new counter created.'})) })
+
+    // Bank account wiring
+    const createAccountBtn = document.getElementById('createAccount');
+    const depositBtn = document.getElementById('depositBtn');
+    const withdrawBtn = document.getElementById('withdrawBtn');
+    const accountControls = document.getElementById('accountControls');
+    const bConsole = document.getElementById('consoleBank');
+    let account = null;
+
+    createAccountBtn.addEventListener('click', ()=>{
+      bConsole.innerHTML='';
+      const init = Number(document.getElementById('initialBal').value) || 0;
+      function createBankAccount(initialBalance){ let balance = initialBalance; return { deposit(amount){ balance += amount; bConsole.appendChild(Object.assign(document.createElement('div'),{textContent:`Deposited: ${amount}, Balance: ${balance}`})) }, withdraw(amount){ if(amount>balance) bConsole.appendChild(Object.assign(document.createElement('div'),{textContent:'Insufficient funds!'})); else { balance -= amount; bConsole.appendChild(Object.assign(document.createElement('div'),{textContent:`Withdrew: ${amount}, Balance: ${balance}`})) } } } }
+      account = createBankAccount(init);
+      accountControls.classList.remove('hidden');
+      bConsole.appendChild(Object.assign(document.createElement('div'),{textContent:`Account created with balance: ${init}`}));
+    })
+    depositBtn.addEventListener('click', ()=>{ const a = Number(document.getElementById('amt').value) || 0; if(account) account.deposit(a) })
+    withdrawBtn.addEventListener('click', ()=>{ const a = Number(document.getElementById('amt').value) || 0; if(account) account.withdraw(a) })
+
+    // User editor
+    document.getElementById('runUserCode').addEventListener('click', ()=>{
+      const code = document.getElementById('userCode').value; const out = document.getElementById('userOutput'); out.innerHTML='';
+      try{
+        const logs = [];
+        const fakeConsole = { log: (...a)=> logs.push(a.map(x=>typeof x==='object'?JSON.stringify(x):String(x)).join(' ')) };
+        const fn = new Function('console', code);
+        const res = fn(fakeConsole);
+        if(logs.length) logs.forEach(l=>{ out.appendChild(Object.assign(document.createElement('div'),{textContent:l})) })
+        else out.appendChild(Object.assign(document.createElement('div'),{textContent: (res===undefined? '✅ Ran (no console.log output)': String(res))}))
+      }catch(err){ out.appendChild(Object.assign(document.createElement('div'),{textContent:'❌ '+err.message})) }
+    })
+    document.getElementById('clearUserCode').addEventListener('click', ()=>{ document.getElementById('userCode').value=''; document.getElementById('userOutput').innerHTML=''; })
+
+    // Copy full code
+    document.getElementById('copyAll').addEventListener('click', ()=>{
+      navigator.clipboard.writeText(document.documentElement.outerHTML).then(()=>{ alert('Full HTML copied to clipboard — paste into a file and save as .html') })
+    })
+
+    // Prev / Next (dummy links)
+    document.getElementById('prevBtn').addEventListener('click', ()=> alert('Previous lesson (demo)'))
+    document.getElementById('nextBtn').addEventListener('click', ()=> alert('Next lesson (demo)'))
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events in JS</title>
+    <style>
+        #box {
+            height: 100px;
+            width: 100px;
+            background-color: white;
+            border: 6px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <p id="text">Output displayed here</p>
+    <input type="text" id="ip">
+    <h1 id="Output">:)</h1>
+    <script>
+        //Keyboard Events
+        const ip = document.getElementById("ip");
+        ip.addEventListener("keydown", (e) => {
+            console.log(`Key pressed (keydown): ${e.key}`);
+        });
+
+        ip.addEventListener("keyup", (e) => {
+            console.log(`Key released (keyup): ${e.key}`);
+        })
+//Mouse Events
+        const box = document.getElementById("box");
+        box.addEventListener("click", () => {
+            box.style.backgroundColor = "red";
+        });
+
+        box.addEventListener("dblclick", function() {
+            box.style.backgroundColor = "yellow";
+        });
+
+        box.addEventListener("mouseover", () => {
+            alert("You hovered on box");
+            box.style.backgroundColor = "cyan";
+        });
+
+        box.addEventListener("mouseout", () => {
+            box.style.backgroundColor = "white";
+        });
+
+        box.addEventListener("mousemove", (event) => {
+            //box.innerText = `X : ${event.offsetX} and Y : ${event.offsetY}`;
+            document.getElementById("text").textContent = 
+            `X : ${event.offsetX} and Y : ${event.offsetY}`;
+        });
+
+        
+    </script>
+    
+</body>
+</html>
