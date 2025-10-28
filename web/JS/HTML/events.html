@@ -70,13 +70,21 @@
     border-radius: 8px;
     border: 1px solid var(--border);
   }
+    note {
+        display: block;
+        background-color: #333;
+        padding: 10px;
+        border-left: 4px solid var(--accent);
+        margin-bottom: 20px;
+    }
 </style>
 </head>
 <body>
 
 <h1>🧠 Comprehensive Guide to JavaScript Events</h1>
 <p>Explore how <code>addEventListener()</code> empowers interactive web experiences with mouse, keyboard, form, and window events.</p>
-
+<p>Below are examples of different types of events in JavaScript along with code snippets to demonstrate their usage.</p>
+<note>Press <strong>F12</strong> to open dev tools to see the console outputs.</note>
 <div class="card">
   <h2>1️⃣ Mouse Events</h2>
   <button id="myButton">Click or Double Click Me</button>
@@ -114,12 +122,7 @@ document.querySelector('#myButton').addEventListener('click', () => {
   console.log('Window resized');
 });</code></pre>
 </div>
-<footer>
-  <div class="card" style="align-items: center; text-align: center;">
-    <p>© 2025 Ayush Narware. All rights reserved.</p>
-    <p>Created with ❤️ for learning and sharing knowledge.</p>
-    </div>
-</footer>
+
 
 <script>
 const btn = document.querySelector('#myButton');
@@ -156,19 +159,6 @@ window.addEventListener('resize', () => console.log('Window resized'));
 window.addEventListener('scroll', () => console.log('User is scrolling!'));
 </script>
 
-
-</body>
-</html>
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events in JS</title>
     <style>
         #box {
             height: 100px;
@@ -177,8 +167,7 @@ window.addEventListener('scroll', () => console.log('User is scrolling!'));
             border: 6px solid #333;
         }
     </style>
-</head>
-<body>
+
     <h1> Simple Exampal hear</h1>
     <div id="box"></div>
     <p id="text">Output displayed here</p>
@@ -220,6 +209,12 @@ window.addEventListener('scroll', () => console.log('User is scrolling!'));
 
         
     </script>
+    <footer>
+  <div class="card" style="align-items: center; text-align: center;">
+    <p>© 2025 Ayush Narware. All rights reserved.</p>
+    <p>Created with ❤️ for learning and sharing knowledge.</p>
+    </div>
+</footer>
     
 </body>
 </html>
