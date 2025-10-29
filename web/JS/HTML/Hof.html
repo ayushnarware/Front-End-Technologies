@@ -4,131 +4,22 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Higher-Order Functions & Callbacks — Interactive</title>
-<style>
-  :root{
-    --bg: #f7f9fc;
-    --card: #ffffff;
-    --text: #0f1724;
-    --muted:#556070;
-    --accent:#0066ff;
-    --accent-2:#0dcaf0;
-    --success:#0f9d58;
-    --danger:#d9534f;
-    --panel:#eef5ff;
-    --code-bg:#f3f6fb;
-    --code-text: #062339;
-    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
-  }
-  .theme-dark{
-    --bg:#0b1220;
-    --card:#0f1724;
-    --text:#e6eef6;
-    --muted:#99a1ac;
-    --accent:#4da3ff;
-    --accent-2:#20d6e6;
-    --success:#36d07b;
-    --danger:#ff6b6b;
-    --panel:#08121a;
-    --code-bg:#08121a;
-    --code-text: #d7eefc;
+<link rel="stylesheet" href="../../CSS/styleJS3.css">
+</head><style>
+  h1, h2, h3, h4 {
+    color: #007acc;
   }
 
-  html,body{height:100%}
-  body{
-    margin:0;font-family:Inter, "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    background:linear-gradient(180deg, var(--bg), #e9f2ff10);
-    color:var(--text);padding:24px;
-  }
-
-  .container{max-width:1100px;margin:0 auto}
-  header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-  .brand{display:flex;gap:12px;align-items:center}
-  .logo{width:56px;height:56px;border-radius:10px;display:grid;place-items:center;
-        background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;font-weight:700}
-  h1{font-size:20px;margin:0}
-  p.lead{margin:0;color:var(--muted)}
-
-  .controls{display:flex;gap:8px;align-items:center}
-  .btn{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:700;color:var(--text)}
-  .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:white;border:none}
-  .toggle{display:inline-flex;align-items:center;gap:8px}
-
-  main{margin-top:18px;display:grid;gap:18px}
-  article{background:var(--card);border-radius:12px;padding:16px;box-shadow:0 6px 20px rgba(13,40,70,0.06);border:1px solid rgba(0,0,0,0.04)}
-  h2.section{margin:0 0 8px 0;color:var(--accent)}
-  .muted{color:var(--muted);font-size:14px;margin-bottom:12px}
-
-  pre.code {
-    background:var(--code-bg);
-    color:var(--code-text);
-    padding:12px;border-radius:8px;overflow:auto;font-family:var(--mono);font-size:13px;border:1px solid rgba(0,0,0,0.04);
-    white-space:pre-wrap;
-  }
-
-  .example {
-    margin-top:12px;padding:12px;border-radius:8px;background:linear-gradient(180deg, rgba(0,0,0,0.02), transparent);
-    border:1px dashed rgba(0,0,0,0.03)
-  }
-
-  .example .actions{display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
-  .run-btn{background:var(--accent);color:white;border:none;padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:700}
-  .copy-btn{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:6px 10px;border-radius:8px;cursor:pointer}
-  .reset-btn{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:6px 10px;border-radius:8px;cursor:pointer;color:var(--danger)}
-
-  textarea.code-edit {
-    width:100%;
-    min-height:120px;
-    max-height:500px;
-    scrollbar-width: none;
-    border-radius:8px;
-    border:1px solid rgba(0,0,0,0.06);
-    padding:12px;
-    font-family:var(--mono);
-    font-size:13px;
-    background:var(--code-bg);
-    color:var(--code-text);
-    resize:vertical;
-  }
-
-  .output{
-    margin-top:8px;padding:12px;border-radius:8px;background:var(--panel);border:1px solid rgba(0,0,0,0.04);
-    color:var(--text);font-family:var(--mono);font-size:14px;min-height:56px;white-space:pre-wrap;
-  }
-  .out-line{padding:8px 10px;margin:8px 0;border-radius:6px;background:rgba(255,255,255,0.02)}
-  .out-success{border-left:4px solid var(--success);background:linear-gradient(90deg, rgba(15,157,88,0.06), transparent)}
-  .out-info{border-left:4px solid var(--accent);background:linear-gradient(90deg, rgba(0,102,255,0.06), transparent)}
-  .out-error{border-left:4px solid var(--danger);background:linear-gradient(90deg, rgba(217,83,79,0.06), transparent)}
-  .label{font-weight:700;color:var(--muted);font-size:13px;display:block;margin-bottom:6px}
-
-  .flex-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-  footer{margin-top:18px;color:var(--muted);text-align:center}
-  @media (max-width:720px){
-    body{padding:12px} .logo{width:48px;height:48px}
-  }
 </style>
 </head>
 <body>
 <div class="container" id="app">
   <header>
     <div class="brand">
-      <div class="logo">HOF</div>
+      
       <div>
-        <h1>Higher-Order Functions & Callbacks — Interactive</h1>
-        <p class="lead">Theory + editable examples. Use Run / Reset / Copy per example. Theme toggle included.</p>
-      </div>
-    </div>
-
-    <div class="controls">
-      <div style="font-size:13px;color:var(--muted);">Theme:</div>
-      <button id="toggleTheme" class="btn toggle">Toggle Dark/Light</button>
-    </div>
-  </header>
-
-  <main>
-    <article>
-      <h2 class="section">Learn — Theory</h2>
-      <p class="muted">Higher-Order Functions (HOFs) and Callback Functions — theory and examples. Each example below is editable; change code and press <strong>Run</strong>.</p>
-
+      <h1 class="muted">Higher-Order Functions (HOFs)</h1>
+<div class="card">
       <h3>What is a Higher-Order Function (HOF)?</h3>
       <p>A Higher-Order Function is a function that does one or both of the following:</p>
       <ul>
@@ -143,308 +34,151 @@
         <li>Flexibility: Change the behavior of functions dynamically.</li>
         <li>Readability: Clearer and more concise code.</li>
       </ul>
-    
+</div>
+      </div>
+    </div>
+  </header>
 
-    <!-- Example 1 -->
-    
+  <main>
+    <div class="card">
+      <p class="muted">Higher-Order Functions (HOFs) and Callback Functions — theory and examples.</p>
+</div>
+<div class="card">
+      <!-- Example 1 -->
       <h2 class="section">Example 1 — Function as Argument (Callback)</h2>
-      <p class="muted">Passing a function as an argument and executing it inside another function.</p>
-
+       <p class="muted">Passing a function as an argument and executing it inside another function.</p>
       <div class="example">
-        <label class="label">Editable Code</label>
         <textarea id="edit1" class="code-edit">// greet callback
 function greet(name) {
   return `Hello, ${name}!`;
 }
-
 function processUser(name, callback) {
-  // call the callback and return the result
   return callback(name);
 }
-
-// return the result (the runner will show this)
 processUser('Alice', greet);</textarea>
-
-        <div class="actions flex-row">
-          <button class="run-btn" data-run="example1">Run Example</button>
-          <button class="reset-btn" data-reset="example1">Reset</button>
-          <button class="copy-btn" data-copy="#edit1">Copy Code</button>
+        <div class="actions">
+          <button class="run-btn" data-run="1">Run Example</button>
+          <button class="reset-btn" data-reset="1">Reset</button>
+          <button class="copy-btn" data-copy="#edit1">Copy</button>
         </div>
-
-        <div id="out1" class="output" aria-live="polite"></div>
-      </div>
-    
-
-    <!-- Example 2 -->
-    
-      <h2 class="section">Example 2 — Function Returning Another Function</h2>
+        <div id="out1" class="output"></div>
+      </div></div>
+<div class="card">
+      <!-- Example 2 -->
+       <h2 class="section">Example 2 — Function Returning Another Function</h2>
       <p class="muted">createMultiplier returns a new function customized by multiplier.</p>
-
       <div class="example">
-        <label class="label">Editable Code</label>
         <textarea id="edit2" class="code-edit">function createMultiplier(multiplier) {
   return function(number) {
     return number * multiplier;
   };
 }
-
 const double = createMultiplier(2);
 const triple = createMultiplier(3);
-
-// show results
 `double(5) → ${double(5)}; triple(5) → ${triple(5)}`;</textarea>
-
-        <div class="actions flex-row">
-          <button class="run-btn" data-run="example2">Run Example</button>
-          <button class="reset-btn" data-reset="example2">Reset</button>
-          <button class="copy-btn" data-copy="#edit2">Copy Code</button>
+        <div class="actions">
+          <button class="run-btn" data-run="2">Run Example</button>
+          <button class="reset-btn" data-reset="2">Reset</button>
+          <button class="copy-btn" data-copy="#edit2">Copy</button>
         </div>
-
         <div id="out2" class="output"></div>
-      </div>
-    
-
-    <!-- Example 3 -->
-    
+      </div></div>
+<div class="card">
+      <!-- Example 3 -->
       <h2 class="section">Example 3 — map(), filter(), reduce()</h2>
       <p class="muted">Common HOFs for array transformations & aggregation.</p>
-
       <div class="example">
-        <label class="label">Editable Code</label>
         <textarea id="edit3" class="code-edit">const cart = [100, 200, 300];
-
-// Apply a discount of 10%
-const discountedCart = cart.map(price => +(price * 0.9).toFixed(2));
-
-// Filter items priced under 150
-const affordable = discountedCart.filter(price => price < 150);
-
-// Sum total
-const total = discountedCart.reduce((t, p) => t + p, 0);
-
-// return an object for clearer display
-({cart, discountedCart, affordable, total});</textarea>
-
-        <div class="actions flex-row">
-          <button class="run-btn" data-run="example3">Run Example</button>
-          <button class="reset-btn" data-reset="example3">Reset</button>
-          <button class="copy-btn" data-copy="#edit3">Copy Code</button>
+const discounted = cart.map(p => p * 0.9);
+const total = discounted.reduce((a,b)=>a+b,0);
+({cart, discounted, total});</textarea>
+        <div class="actions">
+          <button class="run-btn" data-run="3">Run Example</button>
+          <button class="reset-btn" data-reset="3">Reset</button>
+          <button class="copy-btn" data-copy="#edit3">Copy</button>
         </div>
-
         <div id="out3" class="output"></div>
-      </div>
-    
-
-    <!-- Example 4 -->
-    
+      </div></div>
+<div class="card">
+      <!-- Example 4 -->
       <h2 class="section">Example 4 — forEach()</h2>
       <p class="muted">Perform action for each array element (no return value).</p>
-
       <div class="example">
-        <label class="label">Editable Code</label>
-        <textarea id="edit4" class="code-edit">const fruits = ["apple", "banana", "cherry"];
-
-// We'll collect logs into an array to show them
-const logs = [];
-fruits.forEach((f, i) => logs.push(`${i+1}. ${f}`));
-logs.join('\n');</textarea>
-
-        <div class="actions flex-row">
-          <button class="run-btn" data-run="example4">Run Example</button>
-          <button class="reset-btn" data-reset="example4">Reset</button>
-          <button class="copy-btn" data-copy="#edit4">Copy Code</button>
+        <textarea id="edit4" class="code-edit">const fruits = ["apple","banana","cherry"];
+let logs = "";
+fruits.forEach((f,i)=> logs += `${i+1}. ${f}\n`);
+logs;</textarea>
+        <div class="actions">
+          <button class="run-btn" data-run="4">Run Example</button>
+          <button class="reset-btn" data-reset="4">Reset</button>
+          <button class="copy-btn" data-copy="#edit4">Copy</button>
         </div>
-
         <div id="out4" class="output"></div>
       </div>
-    
-
-    <!-- Example 5 -->
-    
-      <h2 class="section">Example 5 — Callback Demo (processUser)</h2>
-      <p class="muted">Passing greet to processUser and logging result.</p>
-
-      <div class="example">
-        <label class="label">Editable Code</label>
-        <textarea id="edit5" class="code-edit">function greetLog(name) {
-  return `Hello, ${name}!`;
-}
-
-function processUserReturn(name, callback) {
-  return callback(name);
-}
-
-processUserReturn('Ayush', greetLog);</textarea>
-
-        <div class="actions flex-row">
-          <button class="run-btn" data-run="example5">Run Example</button>
-          <button class="reset-btn" data-reset="example5">Reset</button>
-          <button class="copy-btn" data-copy="#edit5">Copy Code</button>
-        </div>
-
-        <div id="out5" class="output"></div>
       </div>
-    <footer>Made for Ayush Narware • Edit the examples and practice — happy coding! 🚀</footer>
-    </article>
+<div class="card">
+      <!-- Example 5 -->
+      <h2 class="section">Example 5 — Callback Demo</h2>
+       <p class="muted">Passing greet to processUser and logging result.</p>
+      <div class="example">
+        <textarea id="edit5" class="code-edit">function greetLog(name){ return `Hello, ${name}!`; }
+function processUserReturn(name,callback){ return callback(name); }
+processUserReturn('Ayush',greetLog);</textarea>
+        <div class="actions">
+          <button class="run-btn" data-run="5">Run Example</button>
+          <button class="reset-btn" data-reset="5">Reset</button>
+          <button class="copy-btn" data-copy="#edit5">Copy</button>
+        </div>
+        <div id="out5" class="output"></div>
+      </div></div>
+      <footer>Made for Ayush Narware • Edit the examples and practice — happy coding! 🚀</footer>
+    
   </main>
 </div>
 
 <script>
-  // store original code for reset
-  const originals = {
-    example1: document.getElementById('edit1').value,
-    example2: document.getElementById('edit2').value,
-    example3: document.getElementById('edit3').value,
-    example4: document.getElementById('edit4').value,
-    example5: document.getElementById('edit5').value
-  };
+  const originals = {};
+  for(let i=1;i<=5;i++) originals[i]=document.getElementById('edit'+i).value;
 
-  // Theme toggle with persistence
-  (function(){
-    const root = document.documentElement;
-    const toggle = document.getElementById('toggleTheme');
-    const saved = localStorage.getItem('hof_theme') || 'light';
-    if(saved === 'dark') root.classList.add('theme-dark');
-    toggle.addEventListener('click', () => {
-      const dark = root.classList.toggle('theme-dark');
-      localStorage.setItem('hof_theme', dark ? 'dark' : 'light');
-      toggle.animate([{transform:'scale(.98)'},{transform:'scale(1)'}],{duration:140});
-    });
-  })();
-
-  // write outputs (formatted)
-  function writeOutput(containerId, entries){
-    const container = document.getElementById(containerId);
-    container.innerHTML = '';
-    if(!entries || (Array.isArray(entries) && entries.length===0)){
-      container.innerHTML = '<div class="out-line out-info">No output</div>';
-      return;
-    }
-    // entries may be a single value or array of objects
-    if(!Array.isArray(entries)){
-      entries = [entries];
-    }
-    entries.forEach(entry => {
-      const div = document.createElement('div');
-      div.className = 'out-line';
-      if(entry && entry.type === 'error') div.classList.add('out-error');
-      else if(entry && entry.type === 'success') div.classList.add('out-success');
-      else div.classList.add('out-info');
-
-      if(typeof entry === 'string' || typeof entry === 'number' || entry === null || entry === undefined){
-        div.textContent = String(entry);
-      } else if(typeof entry === 'object' && !entry.type){
-        // pretty print object
-        div.textContent = JSON.stringify(entry, null, 2);
-      } else if(typeof entry === 'object' && entry.text){
-        div.textContent = entry.text;
-      } else {
-        div.textContent = String(entry);
-      }
-      container.appendChild(div);
-    });
-  }
-
-  // sandboxed runner: runs user code and captures returned value and console.log outputs
-  function runUserCode(code) {
-    const logs = [];
-    // create a function with captured console
-    const wrapped = `(function(){
-      const __logs = [];
-      const console = {
-        log: function(...args){ __logs.push(args.map(a => {
-          try { return JSON.stringify(a); } catch(e){ return String(a); }
-        }).join(' ')); },
-        warn: function(...args){ __logs.push('[WARN] ' + args.join(' ')); },
-        error: function(...args){ __logs.push('[ERROR] ' + args.join(' ')); }
-      };
-      try {
-        const result = (function(){
-          ${code}
-        })();
-        return { result, logs: __logs };
-      } catch(e){
-        return { error: e.message, logs: __logs };
-      }
-    })()`;
-    try {
-      // eslint-disable-next-line no-new-func
-      const fn = new Function(wrapped);
-      return fn();
-    } catch(e){
-      return { error: e.message, logs: [] };
+  function runUserCode(code){
+    const logs=[];
+    const console={log:(...a)=>logs.push(a.join(' '))};
+    try{
+      const result = eval(code);
+      return {result,logs};
+    }catch(e){
+      return {error:e.message,logs};
     }
   }
 
-  // runner per example
-  function runExample(key){
-    const textarea = document.getElementById('edit' + key.slice(-1));
-    const outputId = 'out' + key.slice(-1);
-    const code = textarea.value;
-    const res = runUserCode(code);
-    const outEntries = [];
-    if(res.logs && res.logs.length){
-      // show logs first
-      res.logs.forEach(l => outEntries.push({text: 'log: ' + l, type:'info'}));
+  function writeOutput(id,data){
+    const el=document.getElementById('out'+id);
+    el.innerHTML="";
+    if(data.error){
+      el.innerHTML=`<div class="out-line out-error">❌ Error: ${data.error}</div>`;
+    }else{
+      data.logs.forEach(l=>el.innerHTML+=`<div class="out-line out-info">${l}</div>`);
+      el.innerHTML+=`<div class="out-line out-success">✅ Result: ${typeof data.result==='object'?JSON.stringify(data.result,null,2):data.result}</div>`;
     }
-    if(res.error){
-      outEntries.push({text: 'Error: ' + res.error, type:'error'});
-    } else {
-      // show result
-      const r = res.result;
-      if(r === undefined){
-        outEntries.push({text: 'Result: undefined', type:'info'});
-      } else {
-        outEntries.push({text: typeof r === 'object' ? JSON.stringify(r, null, 2) : String(r), type:'success'});
-      }
-    }
-    writeOutput(outputId, outEntries);
   }
 
-  // attach run buttons
-  document.querySelectorAll('.run-btn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const key = btn.getAttribute('data-run'); // e.g., example1
-      runExample(key);
-    });
+  document.querySelectorAll('.run-btn').forEach(b=>b.onclick=()=>{
+    const i=b.dataset.run;
+    writeOutput(i,runUserCode(document.getElementById('edit'+i).value));
   });
 
-  // attach reset buttons
-  document.querySelectorAll('.reset-btn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const key = btn.getAttribute('data-reset');
-      const idx = key.slice(-1);
-      const ta = document.getElementById('edit' + idx);
-      if(confirm('Reset example '+idx+' to original code?')){
-        ta.value = originals[key];
-        // clear output
-        writeOutput('out' + idx, [{text:'Reset to default code — run to see output', type:'info'}]);
-      }
-    });
+  document.querySelectorAll('.reset-btn').forEach(b=>b.onclick=()=>{
+    const i=b.dataset.reset;
+    document.getElementById('edit'+i).value=originals[i];
+    document.getElementById('out'+i).innerHTML='<div class="out-line out-info">Reset to default code — click Run</div>';
   });
 
-  // copy code
-  document.querySelectorAll('.copy-btn').forEach(btn=>{
-    btn.addEventListener('click', async ()=>{
-      const sel = btn.getAttribute('data-copy');
-      const el = document.querySelector(sel);
-      if(!el) return;
-      try{
-        await navigator.clipboard.writeText(el.value);
-        btn.textContent = 'Copied';
-        setTimeout(()=> btn.textContent = 'Copy Code', 1000);
-      } catch(e){
-        alert('Unable to copy. Select code and copy manually.');
-      }
-    });
+  document.querySelectorAll('.copy-btn').forEach(b=>b.onclick=()=>{
+    const id=b.dataset.copy;
+    navigator.clipboard.writeText(document.querySelector(id).value);
+    b.textContent='Copied!';
+    setTimeout(()=>b.textContent='Copy',1000);
   });
-
-  // initialize outputs
-  writeOutput('out1', [{text:'Click Run to see greet & processUser result.', type:'info'}]);
-  writeOutput('out2', [{text:'Click Run to see multiplier examples.', type:'info'}]);
-  writeOutput('out3', [{text:'Click Run to see map/filter/reduce outputs.', type:'info'}]);
-  writeOutput('out4', [{text:'Click Run to list fruits via forEach.', type:'info'}]);
-  writeOutput('out5', [{text:'Click Run to see callback demo.', type:'info'}]);
 </script>
 </body>
 </html>
