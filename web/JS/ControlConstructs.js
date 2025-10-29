@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }));
     others.appendChild(makeBtn("for...in", "#0dcaf0", () => {
         log("👤 for...in Loop:");
-        const person = { name: "Alice", age: 25 };
+        const person = { name: "Ayush", age: 21, city: "Betul" };
         for (let key in person) log(key + ": " + person[key]);
     }));
     others.appendChild(makeBtn("forEach", "#6610f2", () => {

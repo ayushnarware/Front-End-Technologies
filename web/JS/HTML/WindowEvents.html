@@ -1,11 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: auto;
+        background-color: #f4f4f4;
+        color: #333;
+        text-align: center;
+        justify-content: center;
+        padding: 20px;
+
+    }
+
+    #box {
+        width: 90%;
+        height: 500px;
+        background-color: #007acc;
+        margin: auto;
+        margin-top: 50px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+        transition: width 0.3s, height 0.3s;
+        overflow: hidden;
+        display: flex;
+        grid-template-columns: min-content;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+    }
+</style>
+
 <body>
+<<<<<<< HEAD
     
+=======
+    <!-- Window Events -->
+    <h1>Window Events in JavaScript</h1>
+    <div id="box">Resize or Scroll the Window and .<br> <note> Press <strong>F12</strong> to open dev tools to see the console outputs.</note></div>
+    <script>
+        //DOM Content Loaded Event
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM fully loaded and parsed');
+        });
+
+
+        // Resize Event
+        window.addEventListener('resize', () => {
+            console.log(`Window resized to ${window.innerWidth} x ${window.innerHeight}`);
+        });
+
+        // Scroll Event
+        window.addEventListener('scroll', () => {
+            console.log(`Scrolled to position: ${window.scrollY}`);
+        });
+
+
+    </script>
+>>>>>>> 61562c161ae5d110c9072da195242ac332e34923
 </body>
+
 </html>

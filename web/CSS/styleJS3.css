@@ -71,7 +71,7 @@ textarea.code-edit {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   width: 100%;
-  ma
+  height:200px;
   padding: 10px;
   font-size: 15px;
   resize: vertical;
