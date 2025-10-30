@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises in JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f4f8;
+            color: #333;
+            margin-top: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            background-color: #0078d7;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+
+        #output {
+            margin-top: 30px;
+            font-size: 20px;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <h1>Promises Example 💡</h1>
+    <p>Click the button to simulate a data fetch using Promise!</p>
+    <button id="fetchBtn">Fetch Data</button>
+    <div id="output"></div>
+
+    <script>
+        const button = document.getElementById('fetchBtn');
+        const output = document.getElementById('output');
+
+        button.addEventListener('click', () => {
+            output.innerText = "Fetching data... Please wait ⏳";
+
+            // Promise start
+            let fetchData = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    let success = true; // change to false to test reject
+                    if (success) {
+                        resolve("Data fetched successfully! ✅");
+                    } else {
+                        reject("Failed to fetch data ❌");
+                    }
+                }, 2000); // 2 seconds ka delay
+            });
+
+            // Handling Promise
+            fetchData
+                .then(message => {
+                    output.innerText = message;
+                })
+                .catch(error => {
+                    output.innerText = error;
+                });
+        });
+    </script>
+    <script src="../Promises.js"></script>
+</body>
+</html>
