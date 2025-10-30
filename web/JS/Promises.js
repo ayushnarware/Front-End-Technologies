@@ -1,12 +1,34 @@
-let fetchData = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        let success = true; // change to false to test reject
-        if (success) {
-            resolve("Data fetched successfully! ✅");
-        } else {
-            reject("Failed to fetch data ❌");
-        }
-    }, 2000); // 2 seconds ka delay
-});
+promise = new Promise((resolve, reject) => {
+    app = "BMS";
+    if (app === "BMS") {
+        resolve("1. open BMS app");
+    } else {
+        reject("Please onsider BMS not found");
+    }
+})
+promise.then((msg) => {
+    console.log(msg);
+    console.log("2. Login with username and password");
+})
 
-console.log(fetchData);
+.then((msg) => {
+    console.log(msg);
+    console.log("3. Serach movie" );
+})
+
+.then((msg) => {
+    console.log(msg);
+    console.log("4. Select movie and book ticket");
+})
+
+.then((msg) => {
+    console.log(msg);
+    console.log("5. ticket booked successfully");
+})
+
+.catch((err) => {
+    console.log(err);
+})
+.finally(() => {
+    console.log("Close BMS app");
+});
