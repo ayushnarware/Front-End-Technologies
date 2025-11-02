@@ -29,6 +29,7 @@ promise.then((msg) => {
 .catch((err) => {
     console.log(err);
 })
+
 .finally(() => {
     console.log("Close BMS app");
 });
