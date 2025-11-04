@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,14 @@
     <style>
         /* CSS is embedded here for easy single-file usage */
         :root {
-            --primary-color: #007bff; /* Sequential */
-            --parallel-color: #28a745; /* Parallel */
-            --race-color: #ffc107; /* Race */
-            --cancel-color: #dc3545; /* Cancel */
+            --primary-color: #007bff;
+            /* Sequential */
+            --parallel-color: #28a745;
+            /* Parallel */
+            --race-color: #ffc107;
+            /* Race */
+            --cancel-color: #dc3545;
+            /* Cancel */
             --bg-light: #f8f9fa;
             --card-bg: #ffffff;
             --info-color: #17a2b8;
@@ -34,9 +39,11 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
-        
-        h1 { color: var(--primary-color); }
-        
+
+        h1 {
+            color: var(--primary-color);
+        }
+
         /* Tabbed Interface */
         .tab-menu {
             display: flex;
@@ -44,6 +51,7 @@
             margin-bottom: 20px;
             border-bottom: 2px solid #ddd;
         }
+
         .tab-button {
             padding: 10px 15px;
             cursor: pointer;
@@ -55,6 +63,7 @@
             border-bottom: 3px solid transparent;
             transition: all 0.3s;
         }
+
         .tab-button.active {
             color: var(--primary-color);
             border-bottom-color: var(--primary-color);
@@ -67,6 +76,7 @@
             margin-bottom: 25px;
             align-items: center;
         }
+
         .action-group button {
             padding: 12px 20px;
             font-size: 15px;
@@ -77,18 +87,41 @@
             border-radius: 8px;
             transition: background-color 0.3s;
         }
-        
-        /* Run Button Specific Styling and Visibility */
-        #runSequentialButton { background-color: var(--primary-color); }
-        #runParallelButton { background-color: var(--parallel-color); }
-        #runRaceButton { background-color: var(--race-color); }
-        #cancelButton { background-color: var(--cancel-color); }
 
-        .run-buttons button { display: none; } /* Hide all run buttons by default */
-        .run-buttons.sequential-active #runSequentialButton { display: block; }
-        .run-buttons.parallel-active #runParallelButton { display: block; }
-        .run-buttons.race-active #runRaceButton { display: block; }
-        
+        /* Run Button Specific Styling and Visibility */
+        #runSequentialButton {
+            background-color: var(--primary-color);
+        }
+
+        #runParallelButton {
+            background-color: var(--parallel-color);
+        }
+
+        #runRaceButton {
+            background-color: var(--race-color);
+        }
+
+        #cancelButton {
+            background-color: var(--cancel-color);
+        }
+
+        .run-buttons button {
+            display: none;
+        }
+
+        /* Hide all run buttons by default */
+        .run-buttons.sequential-active #runSequentialButton {
+            display: block;
+        }
+
+        .run-buttons.parallel-active #runParallelButton {
+            display: block;
+        }
+
+        .run-buttons.race-active #runRaceButton {
+            display: block;
+        }
+
         /* Progress Bar */
         #progressBarContainer {
             height: 8px;
@@ -96,6 +129,7 @@
             border-radius: 4px;
             margin-bottom: 15px;
         }
+
         #progressBar {
             width: 0%;
             height: 100%;
@@ -116,6 +150,7 @@
             font-weight: 500;
             margin-bottom: 20px;
         }
+
         .spinner {
             border: 4px solid rgba(0, 0, 0, 0.1);
             border-top: 4px solid var(--primary-color);
@@ -124,12 +159,20 @@
             height: 20px;
             animation: spin 1s linear infinite;
         }
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
-        .hidden { display: none !important; }
+        .hidden {
+            display: none !important;
+        }
 
         /* Data Card and Info Paragraph Styling */
         .data-card {
@@ -141,21 +184,51 @@
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
-        .data-card h3 { margin-top: 0; font-size: 18px; display: flex; justify-content: space-between; align-items: center; }
-        .data-card pre { white-space: pre-wrap; word-wrap: break-word; background-color: #f4f4f4; padding: 10px; border-radius: 4px; max-height: 100px; overflow: auto; }
-        .data-card.parallel-style { border-left-color: var(--parallel-color); }
-        .data-card.race-style { border-left-color: var(--race-color); }
-        .data-card.error-style { border-left-color: var(--cancel-color); }
-        
+
+        .data-card h3 {
+            margin-top: 0;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .data-card pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            max-height: 100px;
+            overflow: auto;
+        }
+
+        .data-card.parallel-style {
+            border-left-color: var(--parallel-color);
+        }
+
+        .data-card.race-style {
+            border-left-color: var(--race-color);
+        }
+
+        .data-card.error-style {
+            border-left-color: var(--cancel-color);
+        }
+
         #infoParagraph {
             margin-bottom: 20px;
             padding: 10px;
             border-left: 4px solid var(--primary-color);
             background-color: #f0f8ff;
         }
-        #infoParagraph .highlight { font-weight: bold; color: var(--primary-color); }
+
+        #infoParagraph .highlight {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>✨ Async/Await</h1>
@@ -166,7 +239,7 @@
             <button class="tab-button" data-mode="parallel">Parallel (`Promise.all`)</button>
             <button class="tab-button" data-mode="race">Race (`Promise.race`)</button>
         </div>
-        
+
         <p id="infoParagraph"></p>
 
         <div class="action-group">
@@ -175,12 +248,14 @@
                 <button id="runParallelButton">Run Parallel Demo</button>
                 <button id="runRaceButton">Run Race Demo</button>
             </div>
-            
+
             <button id="cancelButton" class="hidden">Cancel Operation</button>
         </div>
 
-        <div id="progressBarContainer" class="hidden"><div id="progressBar"></div></div>
-        
+        <div id="progressBarContainer" class="hidden">
+            <div id="progressBar"></div>
+        </div>
+
         <div id="loadingIndicator" class="hidden"></div>
 
         <div id="outputContainer">
@@ -198,7 +273,7 @@
         const loadingIndicator = document.getElementById('loadingIndicator');
         const errorMessage = document.getElementById('errorMessage');
         const errorLog = document.getElementById('errorLog');
-        
+
         const runSequentialButton = document.getElementById('runSequentialButton');
         const runParallelButton = document.getElementById('runParallelButton');
         const runRaceButton = document.getElementById('runRaceButton');
@@ -213,27 +288,65 @@
         let state = {
             currentMode: 'sequential',
             isLoading: false,
-            controller: null 
+            controller: null
         };
 
-        // --- UI & HELPER FUNCTIONS ---
+        // --- Local Mock Data (8 datasets) ---
+        const localData = {
+            user: { id: 1, name: "Ayush Narware", role: "Developer", email: "ayush@example.com" },
+            posts: [
+                { id: 1, title: "Async JS", body: "Understanding async/await and promises." },
+                { id: 2, title: "Frontend Mastery", body: "Learning React and Redux deeply." }
+            ],
+            comments: [
+                { id: 1, name: "John", body: "Excellent explanation!" },
+                { id: 2, name: "Maya", body: "Very helpful, thank you!" }
+            ],
+            todos: [
+                { id: 1, task: "Complete Project", status: "Pending" },
+                { id: 2, task: "Prepare Resume", status: "Completed" }
+            ],
+            products: [
+                { id: 1, name: "Laptop", price: 55000 },
+                { id: 2, name: "Smartphone", price: 25000 }
+            ],
+            weather: { city: "Indore", temperature: "27°C", condition: "Sunny" },
+            events: [
+                { id: 1, title: "Hackathon", date: "2025-11-10" },
+                { id: 2, title: "Tech Talk", date: "2025-11-15" }
+            ],
+            stats: { visitorsToday: 245, activeUsers: 68, conversions: 12 }
+        };
 
+        // --- Local Data Fetch Simulation ---
+        async function fetchDataLocal(type, delayMs = 1000, controller = null) {
+            const start = performance.now();
+            return new Promise((resolve, reject) => {
+                const timeout = setTimeout(() => {
+                    if (!localData[type]) return reject(new Error(`No data found for type: ${type}`));
+                    const end = performance.now();
+                    resolve({ data: localData[type], timeTaken: end - start });
+                }, delayMs);
+
+                if (controller) {
+                    controller.signal.addEventListener("abort", () => {
+                        clearTimeout(timeout);
+                        reject(new Error("Operation cancelled by user."));
+                    });
+                }
+            });
+        }
+
+        // --- UI Helpers ---
         function displayData(title, data, color, timeTaken = null, isParallel = false, isRace = false) {
             const card = document.createElement('div');
             card.className = 'data-card';
             if (isParallel) card.classList.add('parallel-style');
             if (isRace) card.classList.add('race-style');
-            
             card.style.borderLeftColor = color;
 
-            const timeInfo = timeTaken !== null 
-                ? `<span class="time-info">Time: ${timeTaken.toFixed(2)} ms</span>`
-                : '';
-
-            card.innerHTML = `
-                <h3>${title} ${timeInfo}</h3>
-                <pre>${JSON.stringify(data, null, 2).substring(0, 200)}...</pre>
-            `;
+            const timeInfo = timeTaken ? `<span class="time-info">Time: ${timeTaken.toFixed(2)} ms</span>` : '';
+            card.innerHTML = `<h3>${title} ${timeInfo}</h3><pre>${JSON.stringify(data, null, 2).substring(0, 200)}...</pre>`;
             outputContainer.appendChild(card);
         }
 
@@ -242,15 +355,11 @@
             errorLog.textContent = new Date().toLocaleTimeString() + " | " + message + "\n" + errorLog.textContent;
         }
 
-        // Feature: Unified Loading/State Control
         function setLoadingState(isLoading, message = '') {
             state.isLoading = isLoading;
-            
-            // Disable all run buttons while loading
             runSequentialButton.disabled = isLoading;
             runParallelButton.disabled = isLoading;
             runRaceButton.disabled = isLoading;
-
             cancelButton.classList.toggle('hidden', !isLoading);
             progressBarContainer.classList.toggle('hidden', !isLoading);
 
@@ -263,7 +372,7 @@
                 progressBar.style.width = '0%';
             }
         }
-        
+
         function updateProgressBar(percentage) {
             progressBar.style.width = `${percentage}%`;
             const modeColors = {
@@ -271,77 +380,30 @@
                 parallel: 'var(--parallel-color)',
                 race: 'var(--race-color)'
             };
-            document.querySelector('.spinner').style.borderTopColor = modeColors[state.currentMode];
             progressBar.style.backgroundColor = modeColors[state.currentMode];
+            const spinner = document.querySelector('.spinner');
+            if (spinner) spinner.style.borderTopColor = modeColors[state.currentMode];
         }
 
-        // --- ASYNC DATA FETCHING (Enhanced for Cancellation) ---
-        async function fetchData(url, delayMs = 1500, controller = null, errorSim = false) {
-            const start = performance.now();
-            let timer;
-
-            const delayPromise = new Promise((resolve, reject) => {
-                timer = setTimeout(() => {
-                    if (errorSim) {
-                        reject(new Error("Simulated Server Timeout/Error!"));
-                    } else {
-                        resolve();
-                    }
-                }, delayMs);
-
-                // Feature: Cancellation Logic (AbortController)
-                if (controller) {
-                    controller.signal.addEventListener('abort', () => {
-                        clearTimeout(timer);
-                        reject(new Error("Operation cancelled by user."));
-                    });
-                }
-            });
-
-            await delayPromise;
-
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            
-            const data = await response.json();
-            const end = performance.now();
-            return { data, timeTaken: end - start };
-        }
-
-        // --- ASYNC/AWAIT MODES IMPLEMENTATION ---
-
+        // --- SEQUENTIAL MODE ---
         async function runSequentialLoad() {
             const controller = new AbortController();
             state.controller = controller;
-            setLoadingState(true, '1/3: Fetching User (1.5s)... Total: ~4.5s');
+            setLoadingState(true, 'Sequentially Loading 8 Datasets...');
             const startTime = performance.now();
 
             try {
-                // Step 1: User Data
-                const userResult = await fetchData('https://jsonplaceholder.typicode.com/users/1', 1500, controller);
-                updateProgressBar(33);
-                displayData('1. User Profile', userResult.data, 'var(--primary-color)', userResult.timeTaken);
-
-                // Step 2: Posts Data
-                setLoadingState(true, '2/3: Fetching Posts (2s)...'); 
-                const postsResult = await fetchData('https://jsonplaceholder.typicode.com/posts?userId=1', 2000, controller);
-                updateProgressBar(66);
-                displayData('2. User Posts (Top 2)', postsResult.data.slice(0, 2), 'var(--primary-color)', postsResult.timeTaken);
-
-                // Step 3: Comments Data
-                setLoadingState(true, '3/3: Fetching Comments (1s)...'); 
-                const commentsResult = await fetchData('https://jsonplaceholder.typicode.com/comments?postId=1', 1000, controller, false);
-                updateProgressBar(100);
-                displayData('3. Comments (Top 2)', commentsResult.data.slice(0, 2), 'var(--primary-color)', commentsResult.timeTaken);
-                
+                const keys = Object.keys(localData);
+                for (let i = 0; i < keys.length; i++) {
+                    const result = await fetchDataLocal(keys[i], 700 + i * 100, controller);
+                    updateProgressBar(((i + 1) / keys.length) * 100);
+                    displayData(`${i + 1}. ${keys[i].toUpperCase()}`, result.data, 'var(--primary-color)', result.timeTaken);
+                }
                 const endTime = performance.now();
-                displayData('✅ Sequential Load Complete!', 
-                    { TotalTime: `${(endTime - startTime).toFixed(2)} ms` }, 
+                displayData('✅ Sequential Load Complete!',
+                    { TotalTime: `${(endTime - startTime).toFixed(2)} ms` },
                     'var(--info-color)'
                 );
-
             } catch (error) {
                 logError(error.message);
             } finally {
@@ -350,38 +412,28 @@
             }
         }
 
+        // --- PARALLEL MODE ---
         async function runParallelLoad() {
             const controller = new AbortController();
             state.controller = controller;
-            setLoadingState(true, 'Fetching 3 Tasks in PARALLEL (Max time: 2s)...');
+            setLoadingState(true, 'Running 8 Tasks in Parallel...');
             const startTime = performance.now();
-            
+
             try {
-                const userPromise = fetchData('https://jsonplaceholder.typicode.com/users/1', 1500, controller);
-                const postsPromise = fetchData('https://jsonplaceholder.typicode.com/posts?userId=1', 2000, controller); 
-                const commentsPromise = fetchData('https://jsonplaceholder.typicode.com/comments?postId=1', 1000, controller);
-
-                const interval = setInterval(() => {
-                    const elapsed = performance.now() - startTime;
-                    updateProgressBar(Math.min(100, (elapsed / 2000) * 100));
-                }, 100);
-
-                const [userResult, postsResult, commentsResult] = await Promise.all([userPromise, postsPromise, commentsPromise]);
-                clearInterval(interval);
+                const promises = Object.keys(localData).map((key, i) => fetchDataLocal(key, 700 + i * 100, controller));
+                const results = await Promise.all(promises);
                 updateProgressBar(100);
 
-                displayData('1. User Profile', userResult.data, 'var(--parallel-color)', userResult.timeTaken, true);
-                displayData('2. User Posts (Slowest)', postsResult.data.slice(0, 2), 'var(--parallel-color)', postsResult.timeTaken, true);
-                displayData('3. Comments', commentsResult.data.slice(0, 2), 'var(--parallel-color)', commentsResult.timeTaken, true);
+                results.forEach((res, i) => {
+                    displayData(`${i + 1}. ${Object.keys(localData)[i].toUpperCase()}`, res.data, 'var(--parallel-color)', res.timeTaken, true);
+                });
 
                 const endTime = performance.now();
-                displayData('✅ Parallel Load Complete!', 
-                    { TotalTime: `${(endTime - startTime).toFixed(2)} ms` }, 
+                displayData('✅ Parallel Load Complete!',
+                    { TotalTime: `${(endTime - startTime).toFixed(2)} ms` },
                     'var(--info-color)'
                 );
-
             } catch (error) {
-                clearInterval(interval);
                 logError(error.message);
             } finally {
                 setLoadingState(false);
@@ -389,48 +441,43 @@
             }
         }
 
+        // --- RACE MODE ---
         async function runRaceLoad() {
-            setLoadingState(true, 'Waiting for the FASTEST of 3 Tasks to finish (Max 3s)...');
+            setLoadingState(true, 'Finding the Fastest Dataset (Race Mode)...');
             const startTime = performance.now();
-            
+
             try {
-                const taskA = fetchData('https://jsonplaceholder.typicode.com/users/1', 3000); 
-                const taskB = fetchData('https://jsonplaceholder.typicode.com/posts?userId=1', 1000); 
-                const taskC = fetchData('https://jsonplaceholder.typicode.com/comments?postId=1', 2000); 
-
-                const interval = setInterval(() => {
-                    const elapsed = performance.now() - startTime;
-                    updateProgressBar(Math.min(100, (elapsed / 1000) * 100));
-                }, 50);
-
-                const fastestResult = await Promise.race([taskA, taskB, taskC]);
-                clearInterval(interval);
+                const keys = Object.keys(localData);
+                const tasks = keys.map((key, i) => fetchDataLocal(key, 500 + i * 200));
+                const fastestResult = await Promise.race(tasks);
                 updateProgressBar(100);
 
-                displayData('🏆 Race Winner Found!', fastestResult.data, 'var(--race-color)', fastestResult.timeTaken, false, true);
-                displayData('ℹ️ Result', {
-                    Winner: 'Task B (Posts) was fastest and returned data.',
-                    TimeSaved: 'Tasks A and C were automatically discarded.'
-                }, 'var(--info-color)');
-
+                displayData('🏆 Fastest Result', fastestResult.data, 'var(--race-color)', fastestResult.timeTaken, false, true);
                 const endTime = performance.now();
-                displayData('✅ Race Load Complete!', 
-                    { TotalTime: `${(endTime - startTime).toFixed(2)} ms` }, 
+
+                displayData('✅ Race Load Complete!',
+                    { TotalTime: `${(endTime - startTime).toFixed(2)} ms` },
                     'var(--info-color)'
                 );
-
             } catch (error) {
                 logError(error.message);
             } finally {
                 setLoadingState(false);
             }
         }
-        
-        // --- EVENT LISTENERS & UI UPDATES ---
-        
+
+        // --- Event Listeners ---
         runSequentialButton.addEventListener('click', runSequentialLoad);
         runParallelButton.addEventListener('click', runParallelLoad);
         runRaceButton.addEventListener('click', runRaceLoad);
+
+        cancelButton.addEventListener('click', () => {
+            if (state.controller) {
+                state.controller.abort();
+                logError("User cancelled operation!");
+                setLoadingState(false);
+            }
+        });
 
         tabMenu.addEventListener('click', (e) => {
             if (e.target.classList.contains('tab-button') && !state.isLoading) {
@@ -441,56 +488,36 @@
             }
         });
 
-        cancelButton.addEventListener('click', () => {
-            if (state.controller) {
-                state.controller.abort();
-                logError("User actively cancelled the operation!");
-                setLoadingState(false);
-            }
-        });
-        
-        // Function to manage paragraph and button visibility
+        // --- UI Update ---
         function updateUIForMode() {
             const mode = state.currentMode;
             let paragraphText = '';
-            let highlightColor = 'var(--primary-color)';
+            let color = 'var(--primary-color)';
 
-            // 1. Update Info Paragraph
             switch (mode) {
                 case 'sequential':
-                    paragraphText = 'In <span class="highlight">Sequential Mode</span>, tasks run one after the other. The next task <span class="highlight">awaits</span> the completion of the previous one. Total time = SUM of all task durations.';
-                    highlightColor = 'var(--primary-color)';
+                    paragraphText = 'In <span class="highlight">Sequential Mode</span>, tasks run one after another.';
+                    color = 'var(--primary-color)';
                     break;
                 case 'parallel':
-                    paragraphText = 'In <span class="highlight">Parallel Mode</span>, we use <span class="highlight">await Promise.all()</span> to run independent tasks concurrently. Total time = Duration of the <span class="highlight">Slowest Task</span>.';
-                    highlightColor = 'var(--parallel-color)';
+                    paragraphText = 'In <span class="highlight">Parallel Mode</span>, tasks run together using <b>Promise.all()</b>.';
+                    color = 'var(--parallel-color)';
                     break;
                 case 'race':
-                    paragraphText = 'In <span class="highlight">Race Mode</span>, we use <span class="highlight">await Promise.race()</span>. The function returns the result of the <span class="highlight">FASTEST</span> task to complete. All other tasks are ignored.';
-                    highlightColor = 'var(--race-color)';
+                    paragraphText = 'In <span class="highlight">Race Mode</span>, we use <b>Promise.race()</b> and get the fastest one.';
+                    color = 'var(--race-color)';
                     break;
             }
             infoParagraph.innerHTML = paragraphText;
-            infoParagraph.style.borderLeftColor = highlightColor;
-            
-            // Safety check for dynamic highlight color
-            const highlightElement = infoParagraph.querySelector('.highlight');
-            if (highlightElement) {
-                highlightElement.style.color = highlightColor;
-            }
-
-            // 2. Update Run Button Visibility
-            runButtonsContainer.className = 'run-buttons';
-            runButtonsContainer.classList.add(`${mode}-active`);
-
-            // 3. Update Spinner Color
-            document.querySelector('.spinner').style.borderTopColor = highlightColor;
-            
-            outputContainer.innerHTML = `<p style="text-align:center; color:#6c757d;">Mode is **${mode.toUpperCase()}**. Click the run button to begin.</p>`;
+            infoParagraph.style.borderLeftColor = color;
+            const highlight = infoParagraph.querySelector('.highlight');
+            if (highlight) highlight.style.color = color;
         }
-        
+
         document.addEventListener('DOMContentLoaded', updateUIForMode);
     </script>
+
     <script src="../AsyncAwait.js"></script>
 </body>
+
 </html>
