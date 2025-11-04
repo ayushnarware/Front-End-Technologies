@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From validation</title>
+</head>
+<body>
+    <form>
+        <!-- empty, letter < 2 , > 30, letters -->
+        <label for="usr">Username :</label>
+        <input type="text" id="usr" name="username">
+        <br>
+        <p style="color: red;" id="error"></p>
+        <br>
+        <label for="pwd">Password :</label>
+        <input type="text" id="pwd" name="username">
+        <br>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        f = document.querySelector("form");
+        f.addEventListener("submit",(event)=>{
+            event.preventDefault(); //data reset
+
+           let password = document.getElementById("pwd").value.trim();
+           let pwdregex = /^$/
+if(!pwdregex.test(password)){
+            alert("Invalid password");
+           }
+           else{
+            alert("validpassword");
+           }
+
+            let un = document.getElementById("usr").value.trim();
+            let unregex = /^[A-Za-z]+$/
+             if(un === ""){
+                //alert("Username cannot be empty");
+                document.getElementById("error").innerText = "User name cannot be empty";
+            } else if(un.length < 2){
+                alert("Name cannot be less than 2 characters");
+            } else if(un.length > 30) {
+                alert("Name cannot be more than 30 characters");
+            } else if(!unregex.test(un)){
+                alert("write only letters");
+            }
+            else {
+                alert("Valid name");
+            }   
+        });
+    </script>
+</body>
+</html>

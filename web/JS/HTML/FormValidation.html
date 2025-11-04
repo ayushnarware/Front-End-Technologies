@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Form Validation Playground • Dark/Light • 20+ Features</title>
+  <style>
+    :root {
+      --bg: #0b1220;           /* dark default */
+      --card: #121a2b;
+      --text: #e8eefc;
+      --muted: #93a4c2;
+      --danger: #ff647c;
+      --warn: #ffbf69;
+      --success: #3bd671;
+      --primary: #7c9cff;
+      --ring: rgba(124,156,255,.45);
+      --input: #0f1626;
+      --border: #22304d;
+    }
+    :root.light {
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --text: #0b1220;
+      --muted: #5b6b86;
+      --danger: #d7263d;
+      --warn: #b7791f;
+      --success: #16803d;
+      --primary: #1e4bff;
+      --ring: rgba(30,75,255,.2);
+      --input: #f3f6fb;
+      --border: #d9e2f1;
+    }
+    * { box-sizing: border-box }
+    html, body { height: 100% }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 10% -10%, rgba(124,156,255,.15), transparent 60%), var(--bg);
+      color: var(--text);
+      display: grid; place-items: start center;
+      padding: 24px;
+    }
+
+    .app { width: 100%; max-width: 1050px }
+
+    .header {
+      display: grid; gap: 8px; margin-bottom: 16px;
+    }
+    .title { font-weight: 800; letter-spacing: .2px; font-size: clamp(22px, 3vw, 30px) }
+    .subtitle { color: var(--muted); font-size: 14px }
+
+    .toolbar {
+      display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 22px;
+    }
+    .btn {
+      appearance: none; border: 1px solid var(--border); background: var(--card);
+      color: var(--text); padding: 10px 14px; border-radius: 12px; font-weight: 600; cursor: pointer;
+      transition: transform .06s ease, box-shadow .2s ease, border-color .2s ease;
+      box-shadow: 0 8px 20px -12px var(--ring);
+    }
+    .btn:focus { outline: none; box-shadow: 0 0 0 3px var(--ring) }
+    .btn:hover { transform: translateY(-1px) }
+    .btn.primary { background: linear-gradient(180deg, var(--primary), color-mix(in oklab, var(--primary) 75%, black)); border-color: transparent }
+    .btn.ghost { background: var(--input) }
+    .btn.warn { background: var(--warn); color: #081018; border-color: transparent }
+    .btn.success { background: var(--success); color: #081018; border-color: transparent }
+
+    .layout { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px }
+    @media (max-width: 980px) { .layout { grid-template-columns: 1fr } }
+
+    .card {
+      background: linear-gradient(180deg, color-mix(in oklab, var(--card) 92%, var(--primary) 8%), var(--card));
+      border: 1px solid var(--border); border-radius: 16px; padding: 18px;
+      box-shadow: 0 16px 40px -24px var(--ring);
+    }
+    .card h3 { margin: 0 0 10px; font-size: 18px }
+
+    .progress { height: 8px; background: var(--input); border-radius: 999px; overflow: hidden; outline: 1px solid var(--border) }
+    .progress > i { display: block; height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary), #6ee7b7); transition: width .25s ease }
+
+    .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; margin: 10px 0 18px }
+    .steps .step { text-align: center; padding: 8px; border-radius: 10px; background: var(--input); border: 1px dashed var(--border); font-size: 13px }
+    .steps .step.active { background: color-mix(in oklab, var(--primary) 20%, var(--input)); border-style: solid }
+
+    form { display: grid; gap: 14px }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px }
+    @media (max-width: 720px) { .grid { grid-template-columns: 1fr } }
+
+    .field { display: grid; gap: 6px }
+    .label { font-size: 13px; color: var(--muted); font-weight: 700; letter-spacing: .2px }
+    .input, .select, .textarea, .file {
+      width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border);
+      background: var(--input); color: var(--text); outline: none; transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .input:focus, .select:focus, .textarea:focus, .file:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--ring) }
+
+    .hint { font-size: 12px; color: var(--muted) }
+    .error { font-size: 12px; color: var(--danger) }
+    .good { font-size: 12px; color: var(--success) }
+
+    .row { display: flex; gap: 10px; align-items: center }
+    .grow { flex: 1 }
+
+    .password-meter { height: 8px; background: var(--input); border-radius: 999px; overflow: hidden; border: 1px solid var(--border) }
+    .password-meter > i { display: block; height: 100%; width: 0%; background: var(--danger); transition: width .25s ease, background .25s ease }
+
+    .char-counter { font-size: 12px; color: var(--muted) }
+
+    .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 999px; background: var(--input); border: 1px solid var(--border); font-size: 12px }
+
+    .code-view { max-height: 360px; overflow: auto; background: #0a0e17; color: #dbe8ff; border-radius: 12px; padding: 14px; border: 1px solid #17203a; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace }
+    :root.light .code-view { background: #0e1322; color: #dbe8ff; border-color: #1a2542 }
+
+    details { border: 1px solid var(--border); background: var(--card); border-radius: 12px; padding: 10px 12px }
+    summary { cursor: pointer; font-weight: 700 }
+
+    .toast { position: fixed; right: 16px; bottom: 16px; background: var(--card); border: 1px solid var(--border); padding: 12px 14px; border-radius: 12px; box-shadow: 0 12px 24px -12px var(--ring); display: none }
+
+    .badge { font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border); background: var(--input); color: var(--muted) }
+
+    .hidden { display: none !important }
+    /* ===== Responsive & Alignment Fixes ===== */
+    .app{ width:min(1200px,95vw); margin-inline:auto }
+    .header{ align-items:start }
+    @media (max-width:720px){ .header{ text-align:center } }
+
+    .toolbar{ align-items:center; justify-content:flex-start }
+    @media (max-width:860px){ .toolbar{ justify-content:center } }
+
+    .layout{ grid-template-columns: 2fr 1fr }
+    @media (max-width:980px){ .layout{ grid-template-columns: 1fr } }
+
+    /* Make all grids auto-fit nicely on smaller screens */
+    .grid{ grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)) }
+
+    /* Rows must wrap on mobile */
+    .row{ flex-wrap: wrap }
+
+    /* Inputs should not overflow flex containers */
+    .input,.select,.textarea,.file{ min-width:0 }
+
+    /* Code views behave better on small screens */
+    .code-view{ max-width:100%; overflow:auto; word-wrap:normal; white-space:pre; }
+
+    /* Steps become more compact and even */
+    .steps{ grid-template-columns: repeat(auto-fit, minmax(120px,1fr)) }
+
+    /* Action buttons row: center on small screens */
+    form > .row:last-child{ gap:8px }
+    @media (max-width:640px){
+      form > .row:last-child{ justify-content:center }
+      form > .row:last-child > .row{ width:100%; justify-content:center }
+    }
+
+    /* Better spacing for summary sidebar on mobile */
+    @media (max-width:980px){
+      aside.card{ order: 2 }
+    }
+  </style>
+</head>
+<body>
+  <div class="app" id="app">
+    <header class="header">
+      <div class="title">✨ Ultimate Form Validation Playground</div>
+      <div class="subtitle">Dark/Light themes • 20+ validations • Real‑time hints • Local draft • Code viewer • Style Refresh</div>
+      <div class="toolbar">
+        <button id="themeToggle" class="btn ghost" aria-pressed="false" title="Toggle Dark/Light">🌗 Theme</button>
+        <button id="styleRefresh" class="btn" title="Refresh primary color">🎨 Style Refresh</button>
+        <button id="saveDraft" class="btn success" title="Save to this device">💾 Save draft</button>
+        <button id="loadDraft" class="btn ghost" title="Restore from this device">↩️ Load draft</button>
+        <button id="resetAll" class="btn warn" title="Clear form">🧹 Reset</button>
+        <span class="pill" id="a11yLive" aria-live="polite">Ready</span>
+        <span class="badge" id="systemThemeBadge">Auto</span>
+      </div>
+    </header>
+
+    <div class="layout">
+      <!-- Left: Form -->
+      <section class="card">
+        <h3>Registration (Multi‑Step)</h3>
+        <div class="steps" id="steps"><div class="step active">1 • Profile</div><div class="step">2 • Details</div><div class="step">3 • Confirm</div></div>
+        <div class="progress"><i id="progressBar"></i></div>
+
+        <form id="form" novalidate>
+          <!-- STEP 1 -->
+          <div class="step-pane" data-step="1">
+            <div class="grid">
+              <div class="field">
+                <label class="label" for="username">Username</label>
+                <input id="username" class="input" name="username" required minlength="3" maxlength="18" placeholder="e.g. ayush_dev" />
+                <div class="hint">3–18 chars, letters/digits/_</div>
+                <div class="error" id="usernameErr"></div>
+              </div>
+              <div class="field">
+                <label class="label" for="email">Email</label>
+                <input id="email" class="input" name="email" type="email" required placeholder="you@example.com" />
+                <div class="error" id="emailErr"></div>
+              </div>
+              <div class="field">
+                <label class="label" for="password">Password</label>
+                <div class="row">
+                  <input id="password" class="input grow" type="password" name="password" required minlength="8" placeholder="Min 8 chars, Aa1!" />
+                  <button type="button" class="btn ghost" id="togglePwd" aria-pressed="false" title="Show/Hide">👁️</button>
+                </div>
+                <div class="password-meter" aria-hidden="true"><i id="pwdMeter"></i></div>
+                <div class="hint" id="pwdHint">Use upper, lower, number, symbol</div>
+              </div>
+              <div class="field">
+                <label class="label" for="confirm">Confirm Password</label>
+                <input id="confirm" class="input" type="password" required />
+                <div class="error" id="confirmErr"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="step-pane hidden" data-step="2">
+            <div class="grid">
+              <div class="field">
+                <label class="label" for="phone">Phone</label>
+                <div class="row">
+                  <select id="cc" class="select" aria-label="Country code">
+                    <option value="+91">+91 IN</option>
+                    <option value="+1">+1 US</option>
+                    <option value="+44">+44 UK</option>
+                  </select>
+                  <input id="phone" class="input grow" inputmode="numeric" maxlength="10" placeholder="10-digit mobile" />
+                </div>
+                <div class="error" id="phoneErr"></div>
+              </div>
+              <div class="field">
+                <label class="label" for="dob">Date of Birth</label>
+                <input id="dob" class="input" type="date" required />
+                <div class="hint">Must be 18+ years</div>
+                <div class="error" id="dobErr"></div>
+              </div>
+              <div class="field">
+                <label class="label" for="url">Website (optional)</label>
+                <input id="url" class="input" type="url" placeholder="https://example.com" />
+                <div class="error" id="urlErr"></div>
+              </div>
+              <div class="field">
+                <label class="label" for="pin">PIN Code (India)</label>
+                <input id="pin" class="input" inputmode="numeric" maxlength="6" placeholder="6-digit" />
+                <div class="hint" id="pinHint">City/State will auto-fill (mock)</div>
+                <div class="error" id="pinErr"></div>
+              </div>
+              <div class="field">
+                <label class="label" for="city">City</label>
+                <input id="city" class="input" placeholder="Auto from PIN or type" />
+              </div>
+              <div class="field">
+                <label class="label" for="state">State</label>
+                <input id="state" class="input" placeholder="Auto from PIN or type" />
+              </div>
+              <div class="field">
+                <label class="label" for="card">Card Number</label>
+                <input id="card" class="input" inputmode="numeric" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" />
+                <div class="hint" id="cardType">Type: —</div>
+                <div class="error" id="cardErr"></div>
+              </div>
+              <div class="field">
+                <label class="label" for="resume">Upload (PDF/JPG/PNG, ≤ 2MB)</label>
+                <input id="resume" class="file" type="file" accept=".pdf,.jpg,.jpeg,.png" />
+                <div class="error" id="fileErr"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="step-pane hidden" data-step="3">
+            <div class="grid">
+              <div class="field">
+                <label class="label" for="about">About You</label>
+                <textarea id="about" class="textarea" rows="5" maxlength="250" placeholder="Tell us something nice… (max 250)"></textarea>
+                <div class="row"><span class="char-counter" id="aboutCount">0/250</span></div>
+              </div>
+              <div class="field">
+                <label class="label">Interests</label>
+                <div class="row" role="group" aria-label="Interests">
+                  <label class="pill"><input type="checkbox" id="int1"/> Web</label>
+                  <label class="pill"><input type="checkbox" id="int2"/> Mobile</label>
+                  <label class="pill"><input type="checkbox" id="int3"/> AI</label>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label" for="captcha">Captcha</label>
+                <div class="row">
+                  <span id="capQ" class="pill">7 + 5 = ?</span>
+                  <input id="captcha" class="input" inputmode="numeric" placeholder="Answer" />
+                </div>
+                <div class="error" id="capErr"></div>
+              </div>
+              <div class="field row">
+                <input id="terms" type="checkbox" />
+                <label for="terms">I agree to the <a href="#" onclick="alert('Sample T&C')">Terms</a></label>
+              </div>
+              <div class="error" id="termsErr"></div>
+            </div>
+          </div>
+
+          <div class="row" style="justify-content: space-between; margin-top: 6px">
+            <button class="btn ghost" type="button" id="prev">◀ Prev</button>
+            <div class="row" style="gap:8px">
+              <button class="btn" type="button" id="viewCode">👨‍💻 View Code</button>
+              <button class="btn primary" type="submit" id="submit">Submit</button>
+            </div>
+            <button class="btn ghost" type="button" id="next">Next ▶</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Right: Live Summary / Code -->
+      <aside class="card">
+        <h3>Live Summary</h3>
+        <details open>
+          <summary>Validation Status</summary>
+          <div id="summary" class="code-view" aria-live="polite">Fill the form to see live status…</div>
+        </details>
+        <div style="height:12px"></div>
+        <details>
+          <summary>Form Data (JSON)</summary>
+          <pre class="code-view" id="jsonView">{}</pre>
+        </details>
+      </aside>
+    </div>
+
+    <div class="card" style="margin-top: 16px">
+      <h3>What’s included (20 features)</h3>
+      <ol style="margin:0; padding-left: 18px; line-height: 1.6">
+        <li>Dark/Light theme + system auto</li>
+        <li><b>Style Refresh</b> (random brand color)</li>
+        <li>Multi‑step form with progress</li>
+        <li>Username pattern + async availability check</li>
+        <li>Email format validation</li>
+        <li>Password strength meter + show/hide</li>
+        <li>Confirm password match</li>
+        <li>Phone validation by country</li>
+        <li>Date of birth → 18+ check</li>
+        <li>URL validation</li>
+        <li>PIN code (India) → mock city/state autofill</li>
+        <li>Credit card type + Luhn check</li>
+        <li>File validation (type/size)</li>
+        <li>Textarea live character counter</li>
+        <li>Captcha (simple math)</li>
+        <li>Terms & conditions required</li>
+        <li>Real‑time, debounced field validation</li>
+        <li>ARIA live error announcements</li>
+        <li>Save/Load draft (localStorage)</li>
+        <li>Inline code viewer (user can see code)</li>
+      </ol>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <!-- Code templates for inline viewer -->
+    <template id="htmlTemplate"></template>
+    <template id="cssTemplate"></template>
+    <template id="jsTemplate"></template>
+  </div>
+
+  <script>
+    // --- Theme setup with Auto detection ---
+    const root = document.documentElement;
+    const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)');
+    const themeBadge = document.getElementById('systemThemeBadge');
+    const applyTheme = (mode) => {
+      if (mode === 'light') root.classList.add('light'); else root.classList.remove('light');
+      themeBadge.textContent = mode === 'auto' ? 'Auto' : (mode === 'light' ? 'Light' : 'Dark');
+      localStorage.setItem('fv-theme', mode);
+    };
+    const initTheme = () => {
+      const saved = localStorage.getItem('fv-theme') || 'auto';
+      const wantLight = saved === 'light' || (saved === 'auto' && systemPrefersLight.matches);
+      applyTheme(saved);
+      if (wantLight) root.classList.add('light'); else root.classList.remove('light');
+    };
+    initTheme();
+    systemPrefersLight.addEventListener('change', () => { if ((localStorage.getItem('fv-theme')||'auto')==='auto') initTheme(); });
+
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const current = localStorage.getItem('fv-theme') || 'auto';
+      const next = current === 'auto' ? 'light' : current === 'light' ? 'dark' : 'auto';
+      applyTheme(next); initTheme(); toast(`Theme: ${next}`);
+    });
+
+    // --- Style Refresh (Randomize primary) ---
+    function randomHue() { return Math.floor(Math.random()*360) }
+    function styleRefresh() {
+      const h = randomHue();
+      const primary = `oklch(0.72 0.15 ${h})`;
+      root.style.setProperty('--primary', primary);
+      root.style.setProperty('--ring', `color-mix(in oklab, ${primary} 35%, transparent)`);
+      toast('Style refreshed ✨');
+    }
+    document.getElementById('styleRefresh').addEventListener('click', styleRefresh);
+
+    // --- Elements ---
+    const f = document.getElementById('form');
+    const username = document.getElementById('username');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const confirmPwd = document.getElementById('confirm');
+    const phone = document.getElementById('phone');
+    const cc = document.getElementById('cc');
+    const dob = document.getElementById('dob');
+    const url = document.getElementById('url');
+    const pin = document.getElementById('pin');
+    const city = document.getElementById('city');
+    const state = document.getElementById('state');
+    const card = document.getElementById('card');
+    const resume = document.getElementById('resume');
+    const about = document.getElementById('about');
+    const aboutCount = document.getElementById('aboutCount');
+    const terms = document.getElementById('terms');
+    const capQ = document.getElementById('capQ');
+    const capAns = document.getElementById('captcha');
+
+    const usernameErr = document.getElementById('usernameErr');
+    const emailErr = document.getElementById('emailErr');
+    const confirmErr = document.getElementById('confirmErr');
+    const phoneErr = document.getElementById('phoneErr');
+    const dobErr = document.getElementById('dobErr');
+    const urlErr = document.getElementById('urlErr');
+    const pinErr = document.getElementById('pinErr');
+    const cardErr = document.getElementById('cardErr');
+    const fileErr = document.getElementById('fileErr');
+    const capErr = document.getElementById('capErr');
+
+    const pwdMeter = document.getElementById('pwdMeter');
+    const pwdHint = document.getElementById('pwdHint');
+    const a11yLive = document.getElementById('a11yLive');
+    const jsonView = document.getElementById('jsonView');
+    const summary = document.getElementById('summary');
+    const progressBar = document.getElementById('progressBar');
+
+    const steps = Array.from(document.querySelectorAll('.step'));
+    const panes = Array.from(document.querySelectorAll('.step-pane'));
+    let stepIndex = 0;
+
+    function setStep(idx) {
+      stepIndex = Math.max(0, Math.min(2, idx));
+      panes.forEach((p,i)=>p.classList.toggle('hidden', i!==stepIndex));
+      steps.forEach((s,i)=>s.classList.toggle('active', i<=stepIndex));
+      progressBar.style.width = ((stepIndex+1)/3*100)+'%';
+    }
+    setStep(0);
+
+    document.getElementById('next').addEventListener('click', ()=>{ if (validateCurrentStep()) setStep(stepIndex+1) });
+    document.getElementById('prev').addEventListener('click', ()=> setStep(stepIndex-1));
+
+    // --- Debounce helper ---
+    const debounce = (fn, d=300) => { let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a), d) } };
+
+    // --- Username pattern + async availability ---
+    const unameRe = /^[a-zA-Z0-9_]{3,18}$/;
+    async function checkUsername(value) {
+      if (!unameRe.test(value)) return { ok:false, msg:'Only letters, digits, _ (3–18)' };
+      // Mock async: pretend some names are taken
+      await new Promise(r=>setTimeout(r, 350));
+      const taken = ['admin','root','test','ayush','demo'];
+      if (taken.includes(value.toLowerCase())) return { ok:false, msg:'Username not available' };
+      return { ok:true };
+    }
+    username.addEventListener('input', debounce(async (e)=>{
+      const { ok, msg } = await checkUsername(e.target.value.trim());
+      usernameErr.textContent = ok ? '' : msg;
+      announce(ok? 'Username looks good' : msg);
+      reflect();
+    }));
+
+    // --- Email
+    email.addEventListener('input', debounce(()=>{
+      emailErr.textContent = email.validity.valid ? '' : 'Invalid email format';
+      reflect();
+    }));
+
+    // --- Password strength + show/hide + match
+    function scorePassword(p) {
+      let s = 0; if (!p) return 0;
+      const sets = [/[^\w\s]/, /[0-9]/, /[a-z]/, /[A-Z]/];
+      sets.forEach(re => { if (re.test(p)) s += 1 });
+      s += Math.min(4, Math.floor(p.length/3)); // length bonus
+      return Math.min(8, s); // 0..8
+    }
+    function updatePwd() {
+      const s = scorePassword(password.value);
+      const pct = s*12.5; // 0..100
+      pwdMeter.style.width = pct+'%';
+      let color = getComputedStyle(root).getPropertyValue('--danger');
+      if (s>=6) color = getComputedStyle(root).getPropertyValue('--success');
+      else if (s>=4) color = getComputedStyle(root).getPropertyValue('--warn');
+      pwdMeter.style.background = color;
+      pwdHint.textContent = s>=6? 'Strong password' : s>=4? 'Medium – add more variety' : 'Weak – use Aa1! and longer';
+      confirmCheck(); reflect();
+    }
+    password.addEventListener('input', debounce(updatePwd, 120));
+    document.getElementById('togglePwd').addEventListener('click', (e)=>{
+      const is = password.type==='password'; password.type = is? 'text':'password'; e.currentTarget.setAttribute('aria-pressed', String(is));
+    });
+    function confirmCheck(){
+      const ok = password.value && confirmPwd.value && password.value===confirmPwd.value;
+      confirmErr.textContent = ok? '' : (confirmPwd.value? 'Passwords do not match' : '');
+    }
+    confirmPwd.addEventListener('input', debounce(confirmCheck, 100));
+
+    // --- Phone by country
+    const reByCC = {
+      '+91': /^[6-9][0-9]{9}$/,
+      '+1': /^[2-9][0-9]{9}$/,
+      '+44': /^7[0-9]{9}$/
+    };
+    function phoneCheck(){
+      const re = reByCC[cc.value] || /\d{10}/;
+      phoneErr.textContent = re.test(phone.value)? '' : 'Invalid phone for '+cc.value;
+    }
+    phone.addEventListener('input', debounce(()=>{ phone.value = phone.value.replace(/\D+/g,'').slice(0,10); phoneCheck(); reflect(); }, 80));
+    cc.addEventListener('change', ()=>{ phoneCheck(); reflect(); });
+
+    // --- DOB ≥ 18
+    function dobCheck(){
+      if (!dob.value) { dobErr.textContent=''; return }
+      const d = new Date(dob.value); const today = new Date();
+      let age = today.getFullYear()-d.getFullYear();
+      const m = today.getMonth()-d.getMonth();
+      if (m<0 || (m===0 && today.getDate()<d.getDate())) age--;
+      dobErr.textContent = age>=18? '' : 'Must be 18+';
+    }
+    dob.addEventListener('change', ()=>{ dobCheck(); reflect(); });
+
+    // --- URL
+    url.addEventListener('input', debounce(()=>{
+      try { if (url.value.trim()==='') { urlErr.textContent=''; return }
+        const u = new URL(url.value); urlErr.textContent = u.protocol.startsWith('http')? '': 'Use http/https';
+      } catch(e){ urlErr.textContent = 'Invalid URL' }
+      reflect();
+    }));
+
+    // --- PIN → mock city/state
+    const pinMap = { '110001':['New Delhi','Delhi'], '400001':['Mumbai','Maharashtra'], '560001':['Bengaluru','Karnataka'], '700001':['Kolkata','West Bengal'], '452001':['Indore','Madhya Pradesh'] };
+    function pinCheck(){
+      const v = pin.value.replace(/\D+/g,'').slice(0,6); pin.value = v;
+      const ok = /^\d{6}$/.test(v); pinErr.textContent = ok? '' : (v? 'PIN must be 6 digits' : '');
+      if (ok && pinMap[v]) { [city.value, state.value] = pinMap[v]; announce(`Auto-filled ${city.value}, ${state.value}`) }
+      document.getElementById('pinHint').textContent = pinMap[v]? `Detected: ${pinMap[v][0]}, ${pinMap[v][1]}` : 'City/State will auto-fill (mock)';
+      reflect();
+    }
+    pin.addEventListener('input', debounce(pinCheck, 100));
+
+    // --- Card type + Luhn
+    function detectCardType(v){
+      if (/^4/.test(v)) return 'VISA';
+      if (/^(5[1-5])/.test(v)) return 'MasterCard';
+      if (/^3[47]/.test(v)) return 'AMEX';
+      if (/^6(?:011|5)/.test(v)) return 'Discover';
+      return '—';
+    }
+    function luhn(v){
+      let sum=0, dbl=false; for(let i=v.length-1;i>=0;i--){ let d=parseInt(v[i]); if(dbl){ d*=2; if(d>9) d-=9 } sum+=d; dbl=!dbl }
+      return sum%10===0;
+    }
+    function cardFormat(){
+      const digits = card.value.replace(/\D+/g,'').slice(0,19);
+      const spaced = digits.replace(/(.{4})/g,'$1 ').trim();
+      card.value = spaced;
+      const type = detectCardType(digits); document.getElementById('cardType').textContent = 'Type: '+type;
+      if (digits.length>=12) { cardErr.textContent = luhn(digits)? '' : 'Failed Luhn check'; } else { cardErr.textContent=''; }
+      reflect();
+    }
+    card.addEventListener('input', debounce(cardFormat, 80));
+
+    // --- File
+    resume.addEventListener('change', ()=>{
+      fileErr.textContent = '';
+      const f = resume.files?.[0]; if (!f) return;
+      const okType = ['application/pdf','image/jpeg','image/png'].includes(f.type);
+      const okSize = f.size <= 2*1024*1024;
+      if (!okType) fileErr.textContent = 'Only PDF/JPG/PNG allowed';
+      else if (!okSize) fileErr.textContent = 'Max size is 2 MB';
+      reflect();
+    });
+
+    // --- Textarea counter
+    about.addEventListener('input', ()=>{ aboutCount.textContent = `${about.value.length}/250`; reflect(); });
+
+    // --- Captcha (simple math)
+    function newCaptcha(){
+      const a = 5+Math.floor(Math.random()*10), b = 1+Math.floor(Math.random()*9);
+      capQ.textContent = `${a} + ${b} = ?`;
+      capQ.dataset.ans = a+b;
+    }
+    newCaptcha();
+
+    // --- Save/Load draft
+    document.getElementById('saveDraft').addEventListener('click', ()=>{
+      const data = collect(); localStorage.setItem('fv-draft', JSON.stringify(data)); toast('Draft saved');
+    });
+    document.getElementById('loadDraft').addEventListener('click', ()=>{
+      try { const data = JSON.parse(localStorage.getItem('fv-draft')||'null'); if(!data) return toast('No draft found');
+        applyData(data); toast('Draft loaded'); reflect(); } catch(e){ toast('Failed to load draft') }
+    });
+
+    document.getElementById('resetAll').addEventListener('click', ()=>{ f.reset(); aboutCount.textContent='0/250'; [city.value,state.value] = ['', ''];
+      usernameErr.textContent=emailErr.textContent=confirmErr.textContent=phoneErr.textContent=dobErr.textContent=urlErr.textContent=pinErr.textContent=cardErr.textContent=fileErr.textContent=capErr.textContent='';
+      updatePwd(); newCaptcha(); reflect(); setStep(0); toast('Cleared');
+    });
+
+    // --- Code Viewer (shows this page's key sections) ---
+    const viewBtn = document.getElementById('viewCode');
+    viewBtn.addEventListener('click', ()=>{
+      const html = document.documentElement.outerHTML; // full page
+      const pre = document.createElement('pre');
+      pre.className = 'code-view';
+      pre.textContent = html; // quick and honest: full source the user can copy
+      const dlg = document.createElement('div');
+      dlg.className = 'card'; dlg.style.maxHeight = '65vh'; dlg.style.overflow = 'auto'; dlg.style.position='fixed'; dlg.style.left='50%'; dlg.style.top='10%'; dlg.style.transform='translateX(-50%)'; dlg.style.width='min(1000px, 92vw)'; dlg.style.zIndex='9999';
+      dlg.innerHTML = '<div class="row" style="justify-content:space-between;align-items:center;margin-bottom:10px"><b>Page Source (Read‑only)</b><button class="btn warn" id="closeDlg">Close</button></div>';
+      dlg.appendChild(pre);
+      document.body.appendChild(dlg);
+      document.getElementById('closeDlg').onclick = ()=> dlg.remove();
+    });
+
+    // --- Submit handler with full validation + captcha + terms ---
+    f.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const ok = await validateAll();
+      if (!ok) { announce('Please fix errors'); return }
+      if (String(capQ.dataset.ans) !== capAns.value.trim()) { capErr.textContent = 'Wrong answer'; announce('Captcha failed'); return }
+      if (!terms.checked) { document.getElementById('termsErr').textContent = 'You must accept terms'; announce('Terms not accepted'); return }
+      document.getElementById('termsErr').textContent = '';
+      toast('Submitted ✅');
+    });
+
+    async function validateAll(){
+      // trigger checks
+      const u = await checkUsername(username.value.trim()); usernameErr.textContent = u.ok? '': u.msg;
+      emailErr.textContent = email.validity.valid? '': 'Invalid email format';
+      updatePwd(); confirmCheck(); phoneCheck(); dobCheck(); pinCheck(); cardFormat();
+      if (url.value) {
+        try { const u = new URL(url.value); urlErr.textContent = u.protocol.startsWith('http')? '': 'Use http/https' } catch(e){ urlErr.textContent = 'Invalid URL' }
+      }
+      if (resume.files?.[0]) {
+        const f = resume.files[0]; const okType = ['application/pdf','image/jpeg','image/png'].includes(f.type); const okSize = f.size <= 2*1024*1024; fileErr.textContent = okType? (okSize? '' : 'Max size 2 MB') : 'Only PDF/JPG/PNG';
+      }
+      reflect();
+      return [usernameErr,emailErr,confirmErr,phoneErr,dobErr,urlErr,pinErr,cardErr,fileErr].every(e=>!e.textContent)
+    }
+
+    function validateCurrentStep(){
+      if (stepIndex===0) return !usernameErr.textContent && !emailErr.textContent && password.value && confirmPwd.value && !confirmErr.textContent;
+      if (stepIndex===1) return !phoneErr.textContent && !dobErr.textContent && !pinErr.textContent && !cardErr.textContent;
+      if (stepIndex===2) return about.value.length<=250;
+      return true;
+    }
+
+    // --- Accessibility live announcements
+    function announce(msg){ a11yLive.textContent = msg }
+
+    // --- Summary / JSON reflection
+    function collect(){
+      return {
+        username: username.value.trim(), email: email.value.trim(), phone: cc.value + ' ' + phone.value,
+        dob: dob.value, url: url.value, pin: pin.value, city: city.value, state: state.value,
+        cardLast4: card.value.replace(/\D+/g,'').slice(-4), about: about.value.trim(),
+        interests: ['int1','int2','int3'].filter(id=>document.getElementById(id).checked),
+        terms: terms.checked
+      };
+    }
+    function reflect(){
+      const errs = {
+        username: usernameErr.textContent, email: emailErr.textContent, confirm: confirmErr.textContent,
+        phone: phoneErr.textContent, dob: dobErr.textContent, url: urlErr.textContent,
+        pin: pinErr.textContent, card: cardErr.textContent, file: fileErr.textContent
+      };
+      summary.textContent = Object.entries(errs).filter(([,v])=>v).map(([k,v])=>`${k}: ${v}`).join('\n') || 'All good ✓';
+      jsonView.textContent = JSON.stringify(collect(), null, 2);
+    }
+    reflect();
+
+    // --- Toast helper
+    const toastEl = document.getElementById('toast');
+    let toastTimer; function toast(msg){ clearTimeout(toastTimer); toastEl.textContent = msg; toastEl.style.display='block'; toastTimer=setTimeout(()=>{ toastEl.style.display='none' }, 2200) }
+
+    // --- Apply data
+    function applyData(d){
+      username.value=d.username||''; email.value=d.email||'';
+      const parts=(d.phone||'').trim().split(' '); if(parts.length===2){ cc.value=parts[0]; phone.value=parts[1] }
+      dob.value=d.dob||''; url.value=d.url||''; pin.value=d.pin||''; city.value=d.city||''; state.value=d.state||'';
+      card.value = d.cardLast4? `•••• •••• •••• ${d.cardLast4}`:''; about.value=d.about||'';
+      ['int1','int2','int3'].forEach((id,i)=> document.getElementById(id).checked = (d.interests||[]).includes(id));
+      terms.checked = !!d.terms; aboutCount.textContent = `${about.value.length}/250`;
+    }
+  </script>
+</body>
+</html>
